@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Georji & Co. — ウェブデザイン・制作スタジオ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #080c18;
+  --navy-soft: #0e1424;
+  --white: #ffffff;
+  --off-white: #f4f6fb;
+  --slate: #8b9ab5;
+  --slate-light: #c4cfdf;
+  --accent: #2563eb;
+  --accent-light: #60a5fa;
+  --accent-glow: rgba(37,99,235,0.14);
+  --border: rgba(255,255,255,0.07);
+  --syne: 'Plus Jakarta Sans', sans-serif;
+  --body: 'Noto Sans JP', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── RICH BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% -10%, rgba(37,99,235,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at -10% 60%, rgba(99,37,235,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 90%, rgba(14,165,233,0.10) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid lines */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(96,165,250,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96,165,250,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* すべてのセクションをz-index:1に */
+nav, section, .stats-bar, footer { position: relative; z-index: 1; }
+
+/* CURSOR */
+.cursor { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.15s, width 0.2s, height 0.2s; }
+.cursor-ring { width: 32px; height: 32px; border: 1px solid rgba(37,99,235,0.45); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.08s linear; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3.5rem; transition: background 0.3s, border-bottom 0.3s; }
+nav.scrolled { background: rgba(8,12,24,0.94); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--syne); font-size: 1.15rem; font-weight: 800; color: var(--white); text-decoration: none; letter-spacing: 0.01em; }
+.nav-logo .amp { color: var(--accent-light); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.05em; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { color: var(--white) !important; background: var(--accent); padding: 0.55rem 1.25rem; border-radius: 2px; transition: background 0.2s !important; font-size: 0.72rem !important; font-weight: 500 !important; letter-spacing: 0.08em !important; text-transform: uppercase; }
+.nav-cta:hover { background: var(--accent-light) !important; }
+
+/* HERO LOGO */
+.hero-logo { font-family: var(--syne); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); margin-bottom: 2rem; animation: fadeUp 0.7s ease both; line-height: 1; }
+.hero-logo .amp { color: var(--accent-light); }
+.hero-logo .co { color: var(--slate); font-weight: 600; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 3.5rem 6rem; position: relative; overflow: hidden; }
+.hero::before { content: none; }
+.hero::after { content: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent-light); border: 1px solid rgba(96,165,250,0.3); padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 2.5rem; width: fit-content; animation: fadeUp 0.8s ease both; background: rgba(37,99,235,0.08); }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-light); border-radius: 50%; animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+.hero-title { font-family: var(--syne); font-size: clamp(2.8rem,7vw,6rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2.5rem; max-width: 16ch; animation: fadeUp 0.8s 0.1s ease both; }
+.hero-title .line2 { color: var(--slate); }
+.hero-title .accent { color: var(--accent-light); }
+.hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; animation: fadeUp 0.8s 0.2s ease both; }
+.hero-desc { font-size: 1rem; font-weight: 400; color: var(--slate); max-width: 44ch; line-height: 1.9; }
+.hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--syne); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); background: var(--accent); text-decoration: none; padding: 1rem 2rem; border-radius: 2px; transition: all 0.25s; }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-primary .arrow { transition: transform 0.2s; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-ghost { font-size: 0.8rem; font-weight: 400; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+.btn-ghost:hover { color: var(--white); }
+.scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: fadeUp 1s 0.5s ease both; }
+.scroll-hint span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollDown 1.5s ease infinite; }
+@keyframes scrollDown { 0% { transform:scaleY(0); transform-origin:top; } 50% { transform:scaleY(1); transform-origin:top; } 51% { transform:scaleY(1); transform-origin:bottom; } 100% { transform:scaleY(0); transform-origin:bottom; } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+/* STATS */
+.stats-bar { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stat-item { padding: 2.5rem 3.5rem; border-right: 1px solid var(--border); transition: background 0.3s; }
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(255,255,255,0.02); }
+.stat-num { font-family: var(--syne); font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
+.stat-num .unit { font-size: 1.5rem; color: var(--accent-light); }
+.stat-label { font-size: 0.82rem; color: var(--slate); letter-spacing: 0.02em; }
+
+/* SECTION LABEL */
+.section-label { display: flex; align-items: center; gap: 0.75rem; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1.5rem; }
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+
+/* SERVICES */
+.services { padding: 7rem 3.5rem; }
+.services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: end; }
+.services-title { font-family: var(--syne); font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+.services-intro { font-size: 0.97rem; color: var(--slate); line-height: 1.95; max-width: 46ch; }
+.services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5px; background: var(--border); }
+.service-card { background: var(--navy); padding: 3rem; transition: background 0.3s; position: relative; overflow: hidden; }
+.service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.service-card:hover { background: var(--navy-soft); }
+.service-card:hover::after { transform: scaleX(1); }
+.service-num { font-family: var(--syne); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 2.5rem; }
+.service-icon-wrap { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; transition: border-color 0.3s, background 0.3s; }
+.service-card:hover .service-icon-wrap { border-color: rgba(37,99,235,0.4); background: var(--accent-glow); }
+.service-icon-wrap svg { stroke: var(--slate); transition: stroke 0.3s; }
+.service-card:hover .service-icon-wrap svg { stroke: var(--accent-light); }
+.service-name { font-family: var(--syne); font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: -0.01em; }
+.service-desc { font-size: 0.88rem; color: var(--slate); line-height: 1.9; margin-bottom: 2.5rem; }
+.service-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.service-features li { font-size: 0.82rem; color: var(--slate-light); display: flex; align-items: center; gap: 0.6rem; }
+.service-features li::before { content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+.service-price-box { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.ad-platforms { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.ad-badge { font-size: 0.72rem; font-weight: 500; color: var(--slate-light); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.3rem 0.75rem; border-radius: 100px; white-space: nowrap; transition: border-color 0.2s, color 0.2s; }
+.service-card:hover .ad-badge { border-color: rgba(96,165,250,0.3); color: var(--white); }
+.service-price-original { font-size: 0.72rem; color: var(--slate); text-decoration: line-through; margin-bottom: 0.3rem; }
+.service-price-current { display: flex; align-items: baseline; gap: 0.5rem; }
+.service-price-num { font-family: var(--syne); font-size: 1.6rem; font-weight: 700; color: var(--white); }
+.service-price-unit { font-size: 0.75rem; color: var(--slate); }
+.service-price-badge { display: inline-block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(37,99,235,0.2); color: var(--accent-light); border: 1px solid rgba(37,99,235,0.3); padding: 0.2rem 0.6rem; border-radius: 100px; margin-left: 0.25rem; }
+
+/* ABOUT */
+.about { padding: 7rem 3.5rem; background: var(--off-white); color: var(--navy); position: relative; overflow: hidden; }
+.about::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(to left, rgba(37,99,235,0.04), transparent); pointer-events: none; }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; max-width: 640px; }
+.about .section-label { color: var(--accent); }
+.about .section-label::before { background: var(--accent); }
+.about-title { font-family: var(--syne); font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 1.75rem; }
+.about-body { font-size: 0.97rem; color: #475569; line-height: 2.0; }
+.about-body p + p { margin-top: 1rem; }
+.about-right { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: rgba(0,0,0,0.06); }
+.about-fact { background: var(--off-white); padding: 2rem; transition: background 0.2s; }
+.about-fact:hover { background: #f1f5f9; }
+.about-fact-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.about-fact-value { font-family: var(--syne); font-size: 0.95rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+
+/* WORKS */
+.works { padding: 7rem 3.5rem; }
+.works-header { margin-bottom: 4rem; }
+.works-title { font-family: var(--syne); font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.works-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5px; background: var(--border); }
+.work-card { background: var(--navy-soft); overflow: hidden; }
+.work-card-inner { padding: 3rem; height: 100%; display: flex; flex-direction: column; }
+.work-preview { flex: 1; min-height: 220px; border-radius: 4px; margin-bottom: 2rem; overflow: hidden; }
+/* Den mockup */
+.den-mock { background: #060606; height: 100%; display: flex; flex-direction: column; }
+.den-nav-m { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.den-logo-m { font-family: var(--syne); font-size: 0.85rem; font-weight: 700; color: #e5e0d5; letter-spacing: 0.05em; }
+.den-links-m { display: flex; gap: 12px; }
+.den-link-m { width: 22px; height: 3px; background: rgba(255,255,255,0.14); border-radius: 2px; }
+.den-body-m { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 24px 20px; gap: 9px; }
+.den-tag-m { width: 56px; height: 5px; background: rgba(37,99,235,0.55); border-radius: 2px; }
+.den-h1-m { width: 130px; height: 9px; background: rgba(255,255,255,0.7); border-radius: 2px; }
+.den-h2-m { width: 95px; height: 9px; background: rgba(255,255,255,0.35); border-radius: 2px; }
+.den-p-m { width: 160px; height: 4px; background: rgba(255,255,255,0.16); border-radius: 2px; margin-top: 4px; }
+.den-p2-m { width: 130px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+.den-btn-m { width: 52px; height: 17px; background: var(--accent); border-radius: 2px; margin-top: 6px; }
+.work-tag { display: inline-block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); border: 1px solid rgba(37,99,235,0.3); padding: 0.25rem 0.65rem; border-radius: 100px; margin-bottom: 0.75rem; width: fit-content; }
+.work-name { font-family: var(--syne); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.work-desc { font-size: 0.82rem; color: var(--slate); line-height: 1.75; }
+.work-next { background: var(--navy-soft); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px dashed rgba(255,255,255,0.07); background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.01) 10px, rgba(255,255,255,0.01) 20px); transition: border-color 0.3s; min-height: 360px; }
+.work-next:hover { border-color: rgba(37,99,235,0.3); }
+.work-next-inner { text-align: center; padding: 2rem; }
+.next-plus { font-family: var(--syne); font-size: 2.5rem; font-weight: 300; color: rgba(255,255,255,0.1); margin-bottom: 1rem; transition: color 0.3s; }
+.work-next:hover .next-plus { color: var(--accent-light); }
+.next-label { font-size: 0.75rem; color: var(--slate); line-height: 1.6; }
+
+/* PROCESS */
+.process { padding: 7rem 3.5rem; background: var(--navy-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.process-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: end; }
+.process-title { font-family: var(--syne); font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.process-intro { font-size: 0.9rem; color: var(--slate); line-height: 1.85; max-width: 46ch; }
+.process-steps { display: grid; grid-template-columns: repeat(4,1fr); }
+.process-step { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid var(--border); }
+.process-step:last-child { border-right: none; padding-right: 0; }
+.process-step:not(:first-child) { padding-left: 2.5rem; }
+.step-num { font-family: var(--syne); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; color: var(--accent-light); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.step-num::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.step-title { font-family: var(--syne); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+.step-desc { font-size: 0.82rem; color: var(--slate); line-height: 1.8; }
+
+/* CONTACT */
+.contact { padding: 7rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+.contact-title { font-family: var(--syne); font-size: clamp(2rem,4vw,3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+.contact-sub { font-size: 0.9rem; color: var(--slate); line-height: 1.85; margin-bottom: 3rem; max-width: 44ch; }
+.contact-meta { display: flex; flex-direction: column; gap: 1rem; }
+.meta-item { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-radius: 4px; transition: border-color 0.2s, background 0.2s; }
+.meta-item:hover { border-color: rgba(37,99,235,0.3); background: var(--accent-glow); }
+.meta-icon { width: 36px; height: 36px; border-radius: 6px; background: var(--accent-glow); border: 1px solid rgba(37,99,235,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.meta-icon svg { stroke: var(--accent-light); }
+.meta-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.2rem; }
+.meta-value { font-size: 0.88rem; color: var(--white); font-weight: 400; }
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); margin-bottom: 1.5px; }
+.form-field { background: var(--navy-soft); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.form-field.full { background: var(--navy-soft); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5px; }
+.form-field label, .form-field.full label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); font-weight: 400; }
+.form-field input, .form-field.full input, .form-field.full textarea { background: transparent; border: none; border-bottom: 1px solid var(--border); padding: 0.6rem 0; font-family: var(--body); font-size: 0.9rem; font-weight: 300; color: var(--white); outline: none; transition: border-color 0.2s; width: 100%; }
+.form-field input:focus, .form-field.full textarea:focus, .form-field.full input:focus { border-bottom-color: var(--accent-light); }
+.form-field input::placeholder, .form-field.full textarea::placeholder { color: rgba(148,163,184,0.4); }
+.form-field.full textarea { resize: vertical; min-height: 100px; }
+.form-submit-wrap { background: var(--navy-soft); padding: 1.5rem; }
+.form-submit { display: inline-flex; align-items: center; gap: 0.75rem; font-family: var(--syne); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--accent); border: none; padding: 0.9rem 2.25rem; border-radius: 2px; cursor: pointer; transition: all 0.25s; }
+.form-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+.form-submit .arrow { transition: transform 0.2s; }
+.form-submit:hover .arrow { transform: translateX(4px); }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2rem 3.5rem; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: var(--syne); font-size: 0.9rem; font-weight: 700; color: var(--white); }
+.footer-logo .amp { color: var(--accent-light); }
+.footer-links { display: flex; gap: 1.75rem; list-style: none; }
+.footer-links a { font-size: 0.72rem; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 0.72rem; color: var(--slate); letter-spacing: 0.04em; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+
+/* UNDERLINE ACCENT */
+.underline-accent {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-light);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 8rem 1.5rem 5rem; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .services, .works, .process, .contact { padding: 5rem 1.5rem; }
+  .services-header, .process-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about { padding: 5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-right { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 0; }
+  .process-step { border-right: none; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .process-step:last-child { border-bottom: none; }
+  .process-step:not(:first-child) { padding-left: 0; }
+  .works-grid { grid-template-columns: 1fr; }
+  .work-next { min-height: 200px; }
+  .contact { grid-template-columns: 1fr; gap: 4rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-links { display: none; }
+  .cursor, .cursor-ring { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Georji <span class="amp">&</span> Co.</a>
+  <ul class="nav-links">
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#about">について</a></li>
+    <li><a href="#works">実績</a></li>
+    <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-logo">Georji <span class="amp">&</span> <span class="co">Co.</span></div>
+  <div class="hero-badge">ウェブデザイン・制作スタジオ · 東京・埼玉</div>
+  <h1 class="hero-title">
+    <span class="underline-accent">より魅力的に。</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Georji & Co. は、小規模事業者・個人事業主のためのウェブデザインスタジオです。テンプレートを使わず、あなたのブランドのために一からデザイン・制作します。
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">制作を相談する <span class="arrow">→</span></a>
+      <a href="#works" class="btn-ghost">実績を見る ↓</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>スクロール</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">15<span class="unit">+</span></div>
+    <div class="stat-label">年のデジタル実務経験</div>
+  </div>
+  <div class="stat-item reveal d1">
+    <div class="stat-num">100<span class="unit">%</span></div>
+    <div class="stat-label">手書きコード — テンプレート不使用</div>
+  </div>
+  <div class="stat-item reveal d2">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">細部へのこだわり</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-label reveal">サービス</p>
+      <h2 class="services-title reveal">制作から集客まで、<br>ワンストップで。</h2>
+    </div>
+    <p class="services-intro reveal">ウェブ制作・保守・広告運用まで、デジタル周りをまとめてお任せいただけます。余計な中間業者なし、担当者との直接やり取りで進めます。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01 / 制作</div>
+      <div class="service-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M9 21h6"/><path d="M12 17v4"/>
+        </svg>
+      </div>
+      <h3 class="service-name">ウェブサイト制作</h3>
+      <p class="service-desc">コンセプトから公開まで一貫対応。HTML/CSS/JSで手書きしたコードで、表示速度が速く、検索にも強いサイトをゼロから作ります。</p>
+      <ul class="service-features">
+        <li>ブランドに合わせたオリジナルデザイン</li>
+        <li>スマートフォン完全対応</li>
+        <li>Netlifyホスティング・ドメイン設定</li>
+        <li>お問い合わせフォーム設置</li>
+      </ul>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-num">02 / 保守</div>
+      <div class="service-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <h3 class="service-name">保守・運用サポート</h3>
+      <p class="service-desc">公開後もサイトは生き続けます。コンテンツの更新、パフォーマンス監視、細かな修正まで、継続してサポートします。</p>
+      <ul class="service-features">
+        <li>月次コンテンツ更新</li>
+        <li>表示速度・稼働状況の監視</li>
+        <li>直接連絡・迅速対応</li>
+        <li>料金はご相談ください</li>
+      </ul>
+    </div>
+    <div class="service-card reveal d1">
+      <div class="service-num">03 / 広告</div>
+      <div class="service-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <h3 class="service-name">広告運用代行</h3>
+      <p class="service-desc">デジタル広告の設計・配信・改善を一貫して対応。運用経験のある媒体は下記のとおりです。予算規模・目的に合わせて最適な組み合わせをご提案します。</p>
+      <div class="ad-platforms">
+        <span class="ad-badge">Google 広告</span>
+        <span class="ad-badge">Yahoo! 広告</span>
+        <span class="ad-badge">Meta（Facebook / Instagram）</span>
+        <span class="ad-badge">X（旧Twitter）</span>
+        <span class="ad-badge">LINE 広告</span>
+        <span class="ad-badge">TVer 広告</span>
+        <span class="ad-badge">DV360</span>
+        <span class="ad-badge">Netflix（DV360経由）</span>
+      </div>
+    </div>
+    <div class="service-card reveal d2">
+      <div class="service-num">04 / 相談</div>
+      <div class="service-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <h3 class="service-name">ウェブ戦略の相談</h3>
+      <p class="service-desc">「何から始めればいいかわからない」という方も大歓迎。現状を整理して、あなたのビジネスに合った方向性をご提案します。</p>
+      <ul class="service-features">
+        <li>初回相談は無料</li>
+        <li>技術・ツール選定のアドバイス</li>
+        <li>サイト構成・コンテンツ設計</li>
+        <li>正直で実践的な提案</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label reveal">について</p>
+      <h2 class="about-title reveal">15年のデジタル経験が<br>小さなスタジオに。</h2>
+      <div class="about-body reveal">
+        <p>Georji & Co. は、大手企業向けの広告プラットフォームやデータプロダクトの開発・運用に15年以上携わってきた経験を、ウェブ制作に活かして活動しています。</p>
+        <p>大規模なシステムを動かしてきた知見があるからこそ、あなたのビジネス情報を魅力的に伝えるために真摯に向き合います。</p>
+      </div>
+    </div>
+    <div class="reveal">
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="works">
+  <div class="works-header">
+    <p class="section-label reveal">実績</p>
+    <h2 class="works-title reveal">制作実績。</h2>
+  </div>
+  <div class="works-grid">
+    <div class="work-card reveal">
+      <div class="work-card-inner">
+        <div class="work-preview">
+          <div class="den-mock">
+            <div class="den-nav-m">
+              <div class="den-logo-m">Den</div>
+              <div class="den-links-m">
+                <div class="den-link-m"></div>
+                <div class="den-link-m"></div>
+                <div class="den-link-m"></div>
+              </div>
+            </div>
+            <div class="den-body-m">
+              <div class="den-tag-m"></div>
+              <div class="den-h1-m"></div>
+              <div class="den-h2-m"></div>
+              <div class="den-p-m"></div>
+              <div class="den-p2-m"></div>
+              <div class="den-btn-m"></div>
+            </div>
+          </div>
+        </div>
+        <span class="work-tag">コーポレートサイト</span>
+        <h3 class="work-name">株式会社Den</h3>
+        <p class="work-desc">ゼロから設計・制作したコーポレートサイト。ダークトーンのミニマルなデザインで、問い合わせへの導線をシンプルに設計。Netlifyにて公開済み。</p>
+      </div>
+    </div>
+    <div class="work-next reveal d1" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+      <div class="work-next-inner">
+        <div class="next-plus">+</div>
+        <p class="next-label">次はあなたのプロジェクトを。<br>まずはご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div>
+      <p class="section-label reveal">制作の流れ</p>
+      <h2 class="process-title reveal">シンプルで<br>わかりやすい進め方。</h2>
+    </div>
+    <p class="process-intro reveal">複雑な手続きや不要な打ち合わせはありません。明確なコミュニケーションと誠実な仕事で、スムーズに進めます。</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <h3 class="step-title">ヒアリング</h3>
+      <p class="step-desc">まずはお話を聞かせてください。事業の目的、ターゲット、現状の課題など、提案する前にしっかり理解します。</p>
+    </div>
+    <div class="process-step reveal d1">
+      <div class="step-num">02</div>
+      <h3 class="step-title">デザイン提案</h3>
+      <p class="step-desc">ブランドに合ったビジュアル方向性を提案します。コーディングを始める前に、デザインを確認・修正していただけます。</p>
+    </div>
+    <div class="process-step reveal d2">
+      <div class="step-num">03</div>
+      <h3 class="step-title">制作・公開</h3>
+      <p class="step-desc">クリーンなコードで実装。表示速度、スマホ対応、お問い合わせフォームまで含めて、ドメイン設定から公開まで対応します。</p>
+    </div>
+    <div class="process-step reveal d3">
+      <div class="step-num">04</div>
+      <h3 class="step-title">保守・更新</h3>
+      <p class="step-desc">公開後も継続してサポート。内容の更新や修正が必要なときは、直接ご連絡いただければ迅速に対応します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <p class="section-label reveal">お問い合わせ</p>
+    <h2 class="contact-title reveal">まずは、<br>お気軽にどうぞ。</h2>
+    <p class="contact-sub reveal">ご依頼・ご相談はフォームよりお送りください。通常2営業日以内にご連絡いたします。初回のご相談は無料です。</p>
+    <div class="contact-meta reveal">
+      <div class="meta-item">
+        <div class="meta-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <div class="meta-label">返信目安</div>
+          <div class="meta-value">2営業日以内</div>
+        </div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div>
+          <div class="meta-label">初回相談</div>
+          <div class="meta-value">無料</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mzdkleyj" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+        </div>
+        <div class="form-field">
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-field full">
+        <label for="company">会社名・屋号（任意）</label>
+        <input type="text" id="company" name="company" placeholder="株式会社〇〇 / 個人事業主">
+      </div>
+      <div class="form-field full">
+        <label for="project">ご依頼の種類</label>
+        <input type="text" id="project" name="project" placeholder="新規制作 / 保守サポート / 相談のみ">
+      </div>
+      <div class="form-field full">
+        <label for="message">ご要望・ご質問</label>
+        <textarea id="message" name="message" rows="5" placeholder="どのようなサイトを作りたいか、現在の状況、ご予算感など、何でもお聞かせください。" required></textarea>
+      </div>
+      <div class="form-submit-wrap">
+        <button type="submit" class="form-submit">送信する <span class="arrow">→</span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Georji <span class="amp">&</span> Co.</div>
+  <ul class="footer-links">
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#about">について</a></li>
+    <li><a href="#works">実績</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <div class="footer-copy">© 2024–2025 Georji & Co. All rights reserved.</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+
+  // Sticky nav
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Formspree送信後の処理
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.innerHTML = '<p style="font-family:var(--syne);font-size:1.1rem;color:var(--white);padding:2rem 0;">お問い合わせありがとうございます。<br>2営業日以内にご連絡いたします。</p>';
+    } else {
+      btn.textContent = '送信する →';
+      btn.disabled = false;
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+    }
+  });
+
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
