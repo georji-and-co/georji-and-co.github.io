@@ -252,12 +252,24 @@ footer { border-top: 1px solid var(--border); padding: 2rem 3.5rem; display: fle
 .d2 { transition-delay: 0.2s; }
 .d3 { transition-delay: 0.3s; }
 
-/* UNDERLINE ACCENT */
-.underline-accent {
-  text-decoration: underline;
-  text-decoration-color: var(--accent-light);
-  text-decoration-thickness: 4px;
-  text-underline-offset: 10px;
+/* BRUSH STROKE */
+.brush-wrap {
+  position: relative;
+  display: inline-block;
+}
+.brush-wrap .brush-svg {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  width: calc(100% + 40px);
+  height: 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+.brush-wrap > span {
+  position: relative;
+  z-index: 1;
 }
 
 /* RESPONSIVE */
@@ -309,7 +321,19 @@ footer { border-top: 1px solid var(--border); padding: 2rem 3.5rem; display: fle
   <div class="hero-logo">Georji <span class="amp">&</span> <span class="co">Co.</span></div>
   <div class="hero-badge">ウェブデザイン・制作スタジオ · 東京・埼玉</div>
   <h1 class="hero-title">
-    <span class="underline-accent">より魅力的に。</span>
+    <span class="brush-wrap">
+      <svg class="brush-svg" viewBox="0 0 400 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="brushGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#2563eb" stop-opacity="0"/>
+            <stop offset="60%" stop-color="#2563eb" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#1e3a8a" stop-opacity="1"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="10" width="400" height="40" fill="url(#brushGrad)" rx="2"/>
+      </svg>
+      <span>より魅力的に。</span>
+    </span>
   </h1>
   <div class="hero-bottom">
     <p class="hero-desc">
