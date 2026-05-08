@@ -1,5 +1,17 @@
 /* common.js - 鶴ヶ島カイロプラクティックセンター */
 
+// ===== DYNAMIC OFFSET =====
+// ヘッダー実高 + デモバナー高を測定して .page-top に適用
+function applyOffset() {
+  const banner = document.querySelector('.demo-banner');
+  const header = document.querySelector('.site-header');
+  const pageTop = document.querySelector('.page-top');
+  if (!header || !pageTop) return;
+  const bannerH = banner ? banner.offsetHeight : 0;
+  const headerH = header.offsetHeight;
+  pageTop.style.paddingTop = (bannerH + headerH) + 'px';
+}
+
 // ===== CLINIC STATUS =====
 const CLINIC_INFO = {
   tel: '049-234-6326',
@@ -82,6 +94,9 @@ function initFadeIn() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+  // dynamic offset
+  applyOffset();
+  window.addEventListener('resize', applyOffset);
   // status chips
   document.querySelectorAll('.js-status-chip').forEach(el => renderStatusChip(el));
   // today detail
