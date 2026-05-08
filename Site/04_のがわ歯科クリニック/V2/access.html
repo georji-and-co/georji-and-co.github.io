@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス・診療時間 | 鶴ヶ島のがわ歯科</title>
+<meta name="description" content="鶴ヶ島のがわ歯科のアクセスと診療時間。埼玉県鶴ヶ島市五味ヶ谷202-25。駐車場8台完備。月火木金18時まで、土日17時まで診療。">
+<meta name="keywords" content="鶴ヶ島のがわ歯科,アクセス,駐車場,診療時間,鶴ヶ島市五味ヶ谷">
+<link rel="canonical" href="https://nogawashika-demo.georji-and-co.github.io/access.html">
+<meta property="og:title" content="アクセス・診療時間 | 鶴ヶ島のがわ歯科">
+<meta property="og:description" content="埼玉県鶴ヶ島市五味ヶ谷202-25。駐車場8台完備。土日も診療。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.access-section { background: var(--warm-white); }
+.access-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--gray-300);
+  margin-bottom: 32px;
+}
+.access-map-wrap {
+  height: 240px;
+  background: var(--navy-pale);
+  overflow: hidden;
+}
+.access-map-wrap iframe { width: 100%; height: 100%; border: none; }
+.access-map-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 13px;
+  gap: 8px;
+}
+.access-details { padding: 24px; }
+.access-row {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gray-300);
+  align-items: flex-start;
+  font-size: 14px;
+}
+.access-row:last-child { border-bottom: none; }
+.access-label { color: var(--text-muted); min-width: 64px; flex-shrink: 0; font-size: 12px; padding-top: 2px; }
+.access-value { color: var(--text-main); line-height: 1.8; }
+.map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  background: var(--navy);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+/* ─── HOURS ─── */
+.hours-section {
+  background: var(--navy);
+  color: white;
+  padding: 60px 24px;
+}
+.hours-section .section-label { color: var(--wood-light); }
+.hours-section .section-title { color: white; margin-bottom: 32px; }
+.today-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+}
+.today-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 8px; letter-spacing: 0.1em; }
+.today-time { font-family: var(--font-serif); font-size: 32px; color: white; font-weight: 500; margin-bottom: 4px; }
+.today-note { font-size: 13px; color: rgba(255,255,255,0.6); }
+.hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: var(--radius-md); overflow: hidden; }
+.hours-row { display: contents; }
+.hours-day, .hours-time { background: rgba(255,255,255,0.06); padding: 14px 16px; font-size: 13px; }
+.hours-day { color: rgba(255,255,255,0.7); }
+.hours-time { color: white; text-align: right; }
+.hours-row.highlight .hours-day,
+.hours-row.highlight .hours-time { background: rgba(255,255,255,0.14); font-weight: 500; }
+.hours-row.closed .hours-time { color: rgba(255,255,255,0.35); }
+.holiday-note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  border-left: 2px solid var(--wood-light);
+  padding-left: 12px;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .hours-section { padding: 80px 48px; }
+  .access-map-wrap { height: 320px; }
+}
+@media (min-width: 1024px) {
+  .hours-section { padding: 100px max(48px, calc(50vw - 560px)); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="demo-banner">✦ デモサイト / Georji &amp; Co. 制作</div>
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo">
+      <span class="logo-main">鶴ヶ島のがわ歯科</span>
+      <span class="logo-sub">NOGAWA DENTAL CLINIC</span>
+    </a>
+    <nav class="header-nav">
+      <a href="clinic.html">院長・診療案内</a>
+      <a href="facility.html">院内設備</a>
+      <a href="access.html" class="active">アクセス・時間</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+  </div>
+  <nav class="bottom-nav">
+    <a href="clinic.html">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      院長
+    </a>
+    <a href="clinic.html#services">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      診療
+    </a>
+    <a href="access.html" class="active">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      時間
+    </a>
+    <a href="facility.html">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      設備
+    </a>
+    <a href="access.html" class="active">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      アクセス
+    </a>
+    <a href="contact.html">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      お問合せ
+    </a>
+  </nav>
+</header>
+
+<!-- STATUS CHIP -->
+<div class="status-chip">
+  <div class="status-dot" id="statusDot"></div>
+  <span class="status-text" id="statusText">診療中</span>
+  <span class="status-time" id="statusTime"></span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">Access</p>
+  <h1 class="page-hero-title">アクセス・診療時間</h1>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">トップ</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">アクセス・診療時間</span>
+</div>
+
+<!-- ACCESS -->
+<section class="access-section fade-in">
+  <div class="section-label">アクセス</div>
+  <h2 class="section-title">お気軽にお越しください</h2>
+  <div class="access-card">
+    <div class="access-map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.5!2d139.395!3d35.935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6bKL44Gg5bO255Sf44Gu44KP44GM44Gw5q2j56K6!5e0!3m2!1sja!2sjp!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="鶴ヶ島のがわ歯科 地図">
+      </iframe>
+    </div>
+    <div class="access-details">
+      <div class="access-row">
+        <span class="access-label">住所</span>
+        <span class="access-value">〒350-2202<br>埼玉県鶴ヶ島市五味ヶ谷202-25</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">電話</span>
+        <span class="access-value"><a href="tel:049-292-9201" style="color:var(--navy); font-weight:500;">049-292-9201</a></span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">駐車場</span>
+        <span class="access-value">8台（無料）</span>
+      </div>
+      <div class="access-row">
+        <span class="access-label">休診日</span>
+        <span class="access-value">水曜日・祝日</span>
+      </div>
+      <a href="https://maps.google.com/maps?q=埼玉県鶴ヶ島市五味ヶ谷202-25" target="_blank" rel="noopener" class="map-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Googleマップで見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section fade-in">
+  <div class="section-label">診療時間</div>
+  <h2 class="section-title">今日の診療案内</h2>
+  <div class="today-card">
+    <div class="today-label">本日（<span id="todayLabel"></span>）</div>
+    <div class="today-time" id="todayHours">——</div>
+    <div class="today-note" id="todayStatus"></div>
+  </div>
+  <div class="hours-grid" id="hoursGrid"></div>
+  <p class="holiday-note">
+    ※ 水曜日・祝日は休診となります。<br>
+    ※ 土・日曜日の午後は14:00〜17:00となります。<br>
+    ※ 急患の方はお電話でご相談ください。
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">鶴ヶ島のがわ歯科</div>
+  <div class="footer-address">
+    〒350-2202 埼玉県鶴ヶ島市五味ヶ谷202-25<br>
+    TEL: 049-292-9201<br>
+    診療時間: 月火木金 9:20〜18:00 ／ 土日 9:20〜17:00（水・祝休診）
+  </div>
+  <nav class="footer-nav">
+    <a href="index.html">トップ</a>
+    <a href="clinic.html">院長・診療案内</a>
+    <a href="facility.html">院内設備</a>
+    <a href="access.html">アクセス・時間</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
+  <div class="footer-copy">© 2025 鶴ヶ島のがわ歯科. All rights reserved.</div>
+  <div class="footer-credit">Web Design &amp; Development by <a href="https://georji-and-co.github.io/" target="_blank">Georji &amp; Co.</a></div>
+</footer>
+
+<!-- STICKY CTA BAR -->
+<div class="sticky-bar">
+  <a href="tel:049-292-9201" class="sticky-btn sticky-btn-call">
+    <div class="sticky-btn-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    </div>
+    <span class="sticky-btn-label">電話をかける</span>
+    <span class="sticky-btn-sub">049-292-9201</span>
+  </a>
+  <a href="https://www.v-apo.net/nogawashika/login" target="_blank" rel="noopener" class="sticky-btn sticky-btn-web">
+    <div class="sticky-btn-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <span class="sticky-btn-label">WEB予約</span>
+    <span class="sticky-btn-sub">24時間受付</span>
+  </a>
+</div>
+
+<script src="common.js"></script>
+<script>
+initStatus();
+renderTodayHours('todayLabel','todayHours','todayStatus');
+renderHoursGrid('hoursGrid');
+initFadeIn();
+</script>
+</body>
+</html>

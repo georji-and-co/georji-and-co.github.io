@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アクセス | 鶴ヶ島のがわ歯科</title>
+<meta name="description" content="鶴ヶ島のがわ歯科のアクセス情報。埼玉県鶴ヶ島市五味ヶ谷202-25。駐車場8台完備。診療時間・地図・お問い合わせ先。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; max-width: 100%; }
+
+:root {
+  --ink: #1a1a18;
+  --ink-2: #3d3c38;
+  --ink-3: #6b6a64;
+  --cream: #f7f4ee;
+  --cream-2: #eeeae0;
+  --sage: #5a7a6a;
+  --sage-light: #e8efe9;
+  --sage-dark: #3d5a4a;
+  --gold: #b89a5a;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 33px; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(247,244,238,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(90,122,106,0.15);
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  display: block;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--sage); }
+.nav-links a.active { color: var(--sage); border-bottom: 1px solid var(--sage); padding-bottom: 1px; }
+
+.nav-reserve {
+  background: var(--sage) !important;
+  color: white !important;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-size: 17px !important;
+  letter-spacing: 0.15em;
+  transition: background 0.2s !important;
+  border-bottom: none !important;
+}
+.nav-reserve:hover { background: var(--ink) !important; }
+
+/* ─── PAGE HERO ─── */
+.page-hero { /* fixed */
+  padding-top: 113px;
+  background: var(--ink);
+  color: white;
+  padding-bottom: 64px;
+  padding-left: 80px;
+  padding-right: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: 80px;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.page-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  display: block;
+}
+
+.page-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+/* ─── SECTION COMMONS ─── */
+.section-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  color: var(--sage);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--sage);
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.section-title-white {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sage);
+  color: white;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.25s, transform 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: white;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 2px;
+  transition: all 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+/* ─── CTA STRIP ─── */
+.cta-strip {
+  background: var(--sage);
+  padding: 72px 80px;
+  text-align: center;
+}
+.cta-strip-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.cta-strip-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.1em;
+  margin-bottom: 36px;
+}
+.cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 44px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  color: white;
+  text-decoration: none;
+}
+.footer-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  display: block;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+.footer-copy {
+  font-size: 17px;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.1em;
+}
+
+/* ─── DEMO BANNER ─── */
+.demo-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--gold);
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  z-index: 300;
+}
+
+/* ─── SCROLL ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── HOURS TABLE ─── */
+.hours-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--cream-2);
+  border-radius: 4px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 17px; min-width: 420px; }
+thead th {
+  background: var(--sage);
+  color: white;
+  padding: 12px 8px;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+thead th:first-child { text-align: left; padding-left: 20px; }
+tbody tr:nth-child(even) { background: var(--cream); }
+tbody td {
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--cream-2);
+}
+tbody td:first-child {
+  text-align: left; padding-left: 20px;
+  font-weight: 400; color: var(--ink);
+}
+.ok { color: var(--sage); font-size: 17px; }
+.star { color: var(--gold); font-size: 17px; }
+.no { color: var(--ink-3); font-size: 17px; }
+
+/* ─── SP ─── */
+@media (max-width: 768px) {
+  .access-main { padding: 48px 20px; grid-template-columns: 1fr; gap: 36px; }
+  .info-block { border-radius: 8px; }
+  .info-row { grid-template-columns: 72px 1fr; }
+  .info-label { font-size: 10px; padding: 14px 12px; }
+  .info-value { font-size: 13px; padding: 14px 16px; }
+  .map-embed { aspect-ratio: 4/3; }
+  .hours-full { padding: 48px 20px; }
+  .hours-content { grid-template-columns: 1fr; gap: 20px; }
+  .hours-note { font-size: 12px; }
+  .note-item { font-size: 12px; }
+  .contact-section { padding: 48px 20px; grid-template-columns: 1fr; gap: 28px; }
+  .contact-title { font-size: 22px; }
+  .contact-sub { font-size: 13px; }
+  .contact-tel-num { font-size: 26px; }
+  .contact-tel-hours { font-size: 11px; }
+  html, body { overflow-x: hidden; }
+  nav { padding: 14px 16px; }
+  .page-hero { padding: 100px 20px 40px; }
+  .nav-links { display: flex; gap: 0; }
+  .nav-links li:not(:last-child) { display: none; }
+  body { font-size: 14px; }
+  p, div, span, li { max-width: 100%; }
+  footer { margin-bottom: 64px; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .page-hero { /* fixed */ padding: 113px 24px 48px; }
+  .cta-strip { padding: 56px 24px; }
+  footer { padding: 36px 24px; flex-direction: column; gap: 14px; text-align: center; }
+}
+
+
+/* ─── GLOBAL TEXT WRAP ─── */
+*, *::before, *::after {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+
+@media (max-width: 768px) {
+  footer { margin-bottom: 64px; }
+}
+
+
+@media (max-width: 768px) {
+  footer { margin-bottom: 72px; }
+}
+
+@media (max-width: 768px) {
+  footer { margin-bottom: 72px; }
+}
+
+</style>
+<style>
+/* ─── ACCESS MAIN ─── */
+.access-main {
+  padding: 80px;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.access-info-section {}
+
+.info-block {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--cream-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border-bottom: 1px solid var(--cream-2);
+}
+.info-row:last-child { border-bottom: none; }
+
+.info-label {
+  padding: 20px 20px;
+  background: var(--cream);
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--sage);
+  text-transform: uppercase;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.info-value {
+  padding: 20px 24px;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+}
+
+.info-value a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.info-value a:hover { color: var(--sage); }
+
+.access-note {
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 2;
+  letter-spacing: 0.04em;
+  padding: 16px 20px;
+  background: var(--cream);
+  border-radius: 2px;
+}
+
+/* ─── MAP AREA ─── */
+.map-section {}
+
+.map-embed {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid var(--cream-2);
+  background: var(--sage-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.map-embed::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #daeade 0%, #c2d4c6 100%);
+}
+
+.map-embed-inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+.map-placeholder-text {
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  color: rgba(90,122,106,0.7);
+}
+
+.map-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--sage);
+  padding: 12px 22px;
+  border-radius: 2px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.map-open-btn:hover { background: var(--sage); color: white; }
+
+.map-note {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+
+/* ─── HOURS FULL ─── */
+.hours-full {
+  padding: 80px;
+  background: var(--cream);
+}
+
+.hours-content {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.hours-table-section {}
+.hours-note-section {
+  padding: 32px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+.note-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cream-2);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+.note-item:last-child { border-bottom: none; }
+.note-dot {
+  width: 6px; height: 6px;
+  background: var(--sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* ─── CONTACT ─── */
+.contact-section {
+  padding: 80px;
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.contact-left {}
+.contact-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.contact-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+
+.contact-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+.contact-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-tel-block {
+  padding: 28px 32px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+.contact-tel-label {
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.contact-tel-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: white;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+.contact-tel-num:hover { color: var(--gold); }
+.contact-tel-hours {
+  font-size: 17px;
+  color: rgba(255,255,255,0.38);
+  margin-top: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ─── SP ─── */
+@media (max-width: 768px) {
+  .access-main { padding: 48px 20px; grid-template-columns: 1fr; gap: 40px; }
+  .hours-full { padding: 48px 20px; }
+  .hours-content { grid-template-columns: 1fr; gap: 20px; }
+  .hours-content { grid-template-columns: 1fr; gap: 24px; }
+  .contact-section { padding: 48px 20px; grid-template-columns: 1fr; gap: 32px; }
+}
+
+
+@media (max-width: 768px) {
+  footer { margin-bottom: 64px; }
+}
+
+/* ─── SP BOTTOM BAR ─── */
+.sp-bar { display: none; }
+@media (max-width: 768px) {
+  .sp-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: white;
+    border-top: 1px solid var(--cream-2);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .sp-bar a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    gap: 4px;
+  }
+  .sp-bar-tel { color: var(--ink); border-right: 1px solid var(--cream-2); }
+  .sp-bar-tel strong { font-size: 13px; font-weight: 500; display: block; }
+  .sp-bar-reserve { background: var(--sage); color: white; }
+  footer { margin-bottom: 72px; }
+}
+</style>
+</head>
+<body>
+<div class="sp-bar">
+  <a href="tel:049-292-9201" class="sp-bar-tel">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    <strong>049-292-9201</strong>
+    電話で予約
+  </a>
+  <a href="https://www.v-apo.net/nogawashika/login" class="sp-bar-reserve">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    WEB予約
+    24時間受付
+  </a>
+</div>
+
+
+
+<div class="demo-banner">✦ デモサイト / Georji & Co. 制作</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    のがわ歯科
+    <span>NOGAWA DENTAL CLINIC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="clinic.html">医院案内</a></li>
+    <li><a href="treatment.html">診療案内</a></li>
+    <li><a href="facility.html">院内・設備</a></li>
+    <li><a href="access.html" class="active">アクセス</a></li>
+    <li><a href="https://www.v-apo.net/nogawashika/login" class="nav-reserve">WEB予約</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-eyebrow">Access</div>
+  <h1 class="page-title">アクセス</h1>
+</div>
+
+<!-- ACCESS MAIN -->
+<section class="access-main">
+  <div class="access-info-section fade-up">
+    <div class="section-eyebrow">Location</div>
+    <h2 class="section-title">所在地・診療時間</h2>
+
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-label">住所</div>
+        <div class="info-value">
+          〒350-2202<br>埼玉県鶴ヶ島市五味ヶ谷202-25
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">電話</div>
+        <div class="info-value">
+          <a href="tel:049-292-9201">049-292-9201</a>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">駐車場</div>
+        <div class="info-value">8台完備</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">休診日</div>
+        <div class="info-value">水曜日・祝日</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">WEB予約</div>
+        <div class="info-value">
+          <a href="https://www.v-apo.net/nogawashika/login" style="color:var(--sage);">24時間受付中 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="access-note">
+      ※ お急ぎの場合はお電話でご連絡ください。<br>
+      ※ 初診の方もWEB予約からお気軽にどうぞ。
+    </div>
+
+    <div style="margin-top: 32px;">
+      <a href="https://www.v-apo.net/nogawashika/login" class="btn-primary">WEB予約はこちら</a>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section fade-up" style="transition-delay:0.15s">
+    <div class="section-eyebrow">Map</div>
+    <h2 class="section-title">地図</h2>
+    <div class="map-embed" style="margin-top: 32px;">
+      <div class="map-embed-inner">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(90,122,106,0.5)" stroke-width="1">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <span class="map-placeholder-text">埼玉県鶴ヶ島市五味ヶ谷202-25</span>
+        <a href="https://maps.google.com/?q=埼玉県鶴ヶ島市五味ヶ谷202-25" target="_blank" class="map-open-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Googleマップで開く
+        </a>
+      </div>
+    </div>
+    <p class="map-note">
+      ※ 受注後にGoogleマップを埋め込みます。<br>
+      ※ 現在はプレースホルダー表示です。
+    </p>
+  </div>
+</section>
+
+<!-- HOURS FULL -->
+<section class="hours-full">
+  <div class="fade-up">
+    <div class="section-eyebrow">Hours</div>
+    <h2 class="section-title">診療時間</h2>
+  </div>
+  <div class="hours-content">
+    <div class="hours-table-section fade-up" style="transition-delay:0.1s">
+      <div class="hours-table-wrap" style="margin-top: 0;">
+        <table>
+          <thead>
+            <tr>
+              <th>時間帯</th>
+              <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th><th>祝</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9:20〜13:00</td>
+              <td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+              <td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+            </tr>
+            <tr>
+              <td>14:00〜18:00</td>
+              <td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+              <td class="ok">○</td><td class="ok">○</td><td class="star">★</td><td class="star">★</td><td class="no">／</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="hours-note-section fade-up" style="transition-delay:0.2s">
+      <div class="note-item">
+        <div class="note-dot"></div>
+        <span>★ 土・日の午後は 14:00〜17:00 まで</span>
+      </div>
+      <div class="note-item">
+        <div class="note-dot"></div>
+        <span>休診日：水曜日・祝日</span>
+      </div>
+      <div class="note-item">
+        <div class="note-dot"></div>
+        <span>WEB予約は24時間受け付けています</span>
+      </div>
+      <div class="note-item">
+        <div class="note-dot"></div>
+        <span>お電話での予約は診療時間内にお願いします</span>
+      </div>
+      <div class="note-item">
+        <div class="note-dot"></div>
+        <span>急患の方はお電話にてご相談ください</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-left fade-up">
+    <div class="contact-eyebrow">Contact</div>
+    <h2 class="contact-title">ご予約・<br>お問い合わせ</h2>
+    <p class="contact-sub">
+      初めての方もお気軽にどうぞ。<br>
+      WEB予約なら24時間いつでもご予約いただけます。<br>
+      お電話でのご相談もお待ちしています。
+    </p>
+  </div>
+  <div class="contact-right fade-up" style="transition-delay:0.15s">
+    <div class="contact-tel-block">
+      <div class="contact-tel-label">Phone</div>
+      <a href="tel:049-292-9201" class="contact-tel-num">049-292-9201</a>
+      <div class="contact-tel-hours">
+        月〜金 9:20〜18:00 ／ 土・日 9:20〜17:00<br>
+        水曜・祝日 休診
+      </div>
+    </div>
+    <a href="https://www.v-apo.net/nogawashika/login" class="btn-primary" style="text-align:center; justify-content:center; padding: 18px 32px; font-size:13px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      WEB予約はこちら（24時間受付）
+    </a>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">
+    のがわ歯科
+    <span>NOGAWA DENTAL CLINIC — 鶴ヶ島市五味ヶ谷</span>
+  </a>
+  <div class="footer-copy">© 2025 鶴ヶ島のがわ歯科. All rights reserved.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+
+

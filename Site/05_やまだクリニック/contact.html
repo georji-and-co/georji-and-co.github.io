@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ｜やまだクリニック</title>
+  <meta name="description" content="やまだクリニックへのお問い合わせ。お電話（049-288-7788）またはメールフォームからご連絡いただけます。">
+  <link rel="canonical" href="https://georji-and-co.github.io/yamada-clinic-demo/contact.html">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-grid { display: grid; gap: 28px; max-width: 920px; margin: 36px auto 0; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .tel-block { background: var(--green); border-radius: 16px; padding: 32px 24px; text-align: center; color: var(--white); }
+    .tel-block-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .tel-block-icon svg { width: 36px !important; height: 36px !important; color: var(--white); }
+    .tel-block-title { font-family: var(--font-min); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .tel-block-num { font-family: var(--font-min); font-size: 32px; font-weight: 700; color: var(--white); letter-spacing: 0.04em; display: block; margin: 10px 0 4px; }
+    .tel-block-note { font-size: 12px; color: rgba(255,255,255,.7); line-height: 1.8; }
+    .form-block { background: var(--cream); border-radius: 16px; padding: 28px 20px; border: 1px solid var(--border); }
+    @media (min-width: 768px) { .form-block { padding: 32px 28px; } }
+    .form-block-title { font-family: var(--font-min); font-size: 17px; font-weight: 700; color: var(--green); margin-bottom: 20px; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .form-label .req { background: var(--terra); color: var(--white); font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+    .form-input, .form-select, .form-textarea { width: 100%; max-width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-sans); font-size: 15px; color: var(--text); background: var(--white); transition: border-color .2s; outline: none; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,61,43,.08); }
+    .form-textarea { min-height: 110px; resize: vertical; }
+    .form-note { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+    .notice-bar { background: var(--terra-light); border-top: 2px solid var(--terra); padding: 14px 16px; }
+    .notice-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+    .notice-tag { background: var(--terra); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+<div class="demo-banner"><span>DEMO</span><p>このサイトはGeorji &amp; Co.が制作したデモサイトです</p></div>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap"><div class="logo-ja">やまだクリニック</div><div class="logo-en">Yamada Clinic</div><div class="logo-sub">内科・消化器内科・外科</div></div>
+    <nav class="pc-nav"><a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間</a><a href="access.html">アクセス</a><a href="contact.html" style="background:var(--green-light);color:var(--green);">お問い合わせ</a></nav>
+    <div class="header-cta"><a href="tel:0492887788" class="btn-tel"><small>お電話でのお問い合わせ</small>049-288-7788</a></div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="sp-menu" id="spMenu">
+  <a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間・休診情報</a><a href="access.html">アクセス</a><a href="contact.html">お問い合わせ</a>
+  <a href="tel:0492887788" class="sp-tel"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>049-288-7788</a>
+</nav>
+<div class="page-hero"><h1 class="page-hero-title">お問い合わせ</h1><p class="page-hero-sub">Contact</p></div>
+<nav class="breadcrumb"><ol><li><a href="index.html">ホーム</a></li><li>お問い合わせ</li></ol></nav>
+
+<div class="notice-bar">
+  <div class="notice-bar-inner"><span class="notice-tag">ご注意</span><p>お急ぎの場合や緊急時は、お電話でのお問い合わせをお勧めします。症状についての診断・処方はメールでは承っておりません。</p></div>
+</div>
+
+<section style="background:var(--white);">
+  <div class="container">
+    <p class="section-label fade-in">Get in Touch</p>
+    <h2 class="section-title fade-in">お問い合わせ方法</h2>
+    <div class="contact-grid">
+      <div class="tel-block fade-in">
+        <div class="tel-block-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="tel-block-title">お電話でのお問い合わせ</div>
+        <a href="tel:0492887788" class="tel-block-num">049-288-7788</a>
+        <div class="tel-block-note">月・火・木・金：9:00〜12:00 / 15:00〜18:00<br>水・土：9:00〜12:00<br>日・祝：休診</div>
+        <a href="tel:0492887788" class="btn-primary" style="margin-top:20px;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);width:100%;justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          今すぐ電話する
+        </a>
+      </div>
+      <div class="form-block fade-in">
+        <div class="form-block-title">メールでのお問い合わせ</div>
+        <form action="#" method="post">
+          <div class="form-group"><label class="form-label" for="name">お名前<span class="req">必須</span></label><input class="form-input" type="text" id="name" name="name" placeholder="山田 太郎" required></div>
+          <div class="form-group"><label class="form-label" for="tel">電話番号<span class="req">必須</span></label><input class="form-input" type="tel" id="tel" name="tel" placeholder="049-000-0000" required></div>
+          <div class="form-group"><label class="form-label" for="email">メールアドレス</label><input class="form-input" type="email" id="email" name="email" placeholder="example@email.com"></div>
+          <div class="form-group"><label class="form-label" for="subject">お問い合わせ種別<span class="req">必須</span></label><select class="form-select" id="subject" name="subject" required><option value="">選択してください</option><option>診療について</option><option>診療時間・休診について</option><option>受診方法について</option><option>その他</option></select></div>
+          <div class="form-group"><label class="form-label" for="message">お問い合わせ内容<span class="req">必須</span></label><textarea class="form-textarea" id="message" name="message" placeholder="お問い合わせ内容をご記入ください" required></textarea></div>
+          <p class="form-note">※症状についての診断・処方はメールでは承っておりません。ご来院ください。</p>
+          <div style="margin-top:18px;"><button type="submit" class="btn-primary" style="width:100%;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>送信する</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><div class="footer-logo-ja">やまだクリニック</div><div class="footer-logo-sub">内科・消化器内科・外科</div><div class="footer-info">〒350-0222 埼玉県坂戸市清水町46番46号<br><a href="tel:0492887788">049-288-7788</a></div></div>
+    <div><div class="footer-nav-title">メニュー</div><nav class="footer-nav"><a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間</a><a href="access.html">アクセス</a><a href="contact.html">お問い合わせ</a></nav></div>
+    <div><div class="footer-nav-title">診療時間</div><div class="footer-info" style="font-size:13px;line-height:2.1;">月・火・木・金<br>9:00〜12:00 ／ 15:00〜18:00<br>水・土　9:00〜12:00（午前のみ）<br>日・祝　休診</div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; やまだクリニック. All Rights Reserved.</span><span class="footer-credit">Designed by <a href="https://georji-and-co.github.io/" target="_blank" rel="noopener">Georji &amp; Co.</a></span></div>
+</footer>
+<div class="sticky-cta">
+  <a href="tel:0492887788" class="cta-tel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>電話する</a>
+  <a href="contact.html" class="cta-web"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>お問い合わせ</a>
+</div>
+<nav class="sp-bottom-nav">
+  <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>ホーム</a>
+  <a href="clinic.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>診療</a>
+  <a href="hours.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>時間</a>
+  <a href="access.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>アクセス</a>
+  <a href="contact.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>問合せ</a>
+</nav>
+<script src="common.js"></script>
+</body>
+</html>

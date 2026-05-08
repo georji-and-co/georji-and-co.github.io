@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鶴ヶ島のがわ歯科 | 鶴ヶ島市五味ヶ谷の歯医者</title>
+<meta name="description" content="埼玉県鶴ヶ島市五味ヶ谷の歯科医院。むし歯・歯周病・小児歯科・審美治療・矯正歯科など。土日診療・駐車場8台完備。WEB予約受付中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; max-width: 100%; }
+
+:root {
+  --ink: #1a1a18;
+  --ink-2: #3d3c38;
+  --ink-3: #6b6a64;
+  --cream: #f7f4ee;
+  --cream-2: #eeeae0;
+  --sage: #5a7a6a;
+  --sage-light: #e8efe9;
+  --sage-dark: #3d5a4a;
+  --gold: #b89a5a;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 33px; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(247,244,238,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(90,122,106,0.15);
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  display: block;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--sage); }
+.nav-links a.active { color: var(--sage); border-bottom: 1px solid var(--sage); padding-bottom: 1px; }
+
+.nav-reserve {
+  background: var(--sage) !important;
+  color: white !important;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font-size: 17px !important;
+  letter-spacing: 0.15em;
+  transition: background 0.2s !important;
+  border-bottom: none !important;
+}
+.nav-reserve:hover { background: var(--ink) !important; }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  padding-top: 80px;
+  background: var(--ink);
+  color: white;
+  padding-bottom: 64px;
+  padding-left: 80px;
+  padding-right: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: 80px;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.page-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--gold);
+  display: block;
+}
+
+.page-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+/* ─── SECTION COMMONS ─── */
+.section-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  color: var(--sage);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--sage);
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.section-title-white {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+/* ─── BUTTONS ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sage);
+  color: white;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.25s, transform 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: white;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 2px;
+  transition: all 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+/* ─── CTA STRIP ─── */
+.cta-strip {
+  background: var(--sage);
+  padding: 72px 80px;
+  text-align: center;
+}
+.cta-strip-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.cta-strip-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.1em;
+  margin-bottom: 36px;
+}
+.cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 44px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  color: white;
+  text-decoration: none;
+}
+.footer-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  display: block;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+.footer-copy {
+  font-size: 17px;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.1em;
+}
+
+/* ─── DEMO BANNER ─── */
+.demo-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--gold);
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  z-index: 300;
+}
+
+/* ─── SCROLL ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── HOURS TABLE ─── */
+.hours-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--cream-2);
+  border-radius: 4px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 17px; min-width: 420px; }
+thead th {
+  background: var(--sage);
+  color: white;
+  padding: 12px 8px;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+thead th:first-child { text-align: left; padding-left: 20px; }
+tbody tr:nth-child(even) { background: var(--cream); }
+tbody td {
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--cream-2);
+}
+tbody td:first-child {
+  text-align: left; padding-left: 20px;
+  font-weight: 400; color: var(--ink);
+}
+.ok { color: var(--sage); font-size: 17px; }
+.star { color: var(--gold); font-size: 17px; }
+.no { color: var(--ink-3); font-size: 17px; }
+
+/* ─── SP ─── */
+
+
+
+/* ─── GLOBAL TEXT WRAP ─── */
+*, *::before, *::after {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+</style>
+<style>
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 113px;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 56px 80px 80px;
+}
+
+.hero-eyebrow {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--sage);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--sage);
+  display: block;
+}
+
+.hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(32px, 3.8vw, 50px);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+.hero-title em { font-style: normal; color: var(--sage); }
+
+.hero-subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  line-height: 2.1;
+  margin-bottom: 44px;
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-text:hover { color: var(--sage); border-color: var(--sage); }
+
+.hero-tel {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--cream-2);
+}
+.hero-tel-label {
+  font-size: 17px;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.hero-tel-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+.hero-tel-number:hover { color: var(--sage); }
+.hero-tel-hours {
+  font-size: 17px;
+  color: var(--ink-3);
+  font-weight: 300;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.hero-right {
+  position: relative;
+  background: var(--sage-light);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(150deg, #daeade 0%, #c4d8c8 100%);
+  position: relative;
+}
+.hero-image-area::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 55%, rgba(90,122,106,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 22%, rgba(184,154,90,0.1) 0%, transparent 50%);
+}
+
+.img-placeholder-label {
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: rgba(90,122,106,0.8);
+  position: relative; z-index: 1;
+}
+.img-circle {
+  width: 88px; height: 88px;
+  border: 1px solid rgba(90,122,106,0.35);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: 44px; left: -18px;
+  background: white;
+  padding: 18px 22px;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+  z-index: 10;
+}
+.hero-badge-label {
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: var(--sage);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.hero-badge-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ─── STATS ─── */
+@media (min-width: 769px) {
+  .stat-num-wrap { display: contents; }
+  .stat-text-wrap { display: contents; }
+}
+.stats {
+  background: var(--ink);
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat-item {
+  padding: 48px 40px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+}
+.stat-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.stat-item:hover::before { opacity: 1; }
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.stat-suffix {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.45em;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(184,154,90,0.7);
+  vertical-align: baseline;
+  margin-left: 2px;
+}
+.stat-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+}
+
+/* ─── FEATURES ─── */
+.features {
+  background: var(--white);
+  padding: 100px 80px;
+}
+.features-intro {
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+.features-intro p {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 2.1;
+  margin-top: 20px;
+  letter-spacing: 0.04em;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--cream-2);
+}
+.feature-card {
+  background: white;
+  padding: 44px 36px;
+  transition: background 0.25s;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+.feature-card:hover { background: var(--sage-light); }
+.feature-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--sage);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 22px;
+  transition: opacity 0.25s;
+}
+.feature-card:hover .feature-num {
+  opacity: 1;
+}
+.feature-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+.feature-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 2;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* ─── TREATMENT OVERVIEW ─── */
+.treatment-overview {
+  padding: 100px 80px;
+  background: var(--cream);
+}
+.treatment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+  background: var(--cream-2);
+}
+.treatment-card {
+  background: var(--white);
+  padding: 32px 28px;
+  transition: background 0.2s;
+  cursor: default;
+}
+.treatment-card:hover { background: var(--sage-light); }
+.treatment-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--sage);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  color: var(--sage);
+}
+.treatment-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.treatment-desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 1.9;
+}
+
+/* ─── AESTHETIC ─── */
+.aesthetic {
+  background: var(--ink);
+  padding: 100px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.aesthetic-left {}
+.aesthetic-eyebrow {
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.aesthetic-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+.aesthetic-intro {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.62);
+  line-height: 2.1;
+  margin-top: 20px;
+  letter-spacing: 0.04em;
+}
+.aesthetic-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aesthetic-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 32px;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.aesthetic-card:hover { background: rgba(255,255,255,0.07); }
+.aesthetic-card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+.aesthetic-card-text {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 2;
+}
+
+/* ─── HOURS ─── */
+.hours-section {
+  padding: 100px 80px;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.hours-note {
+  margin-top: 16px;
+  font-size: 17px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  line-height: 2;
+}
+
+.access-mini {
+  padding-top: 8px;
+}
+.access-mini-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 24px;
+  letter-spacing: 0.05em;
+}
+.access-info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.access-info-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-2);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+.access-info-list .label {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--sage);
+  min-width: 52px;
+  padding-top: 3px;
+  text-transform: uppercase;
+}
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sage);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin-top: 8px;
+  border-bottom: 1px solid rgba(90,122,106,0.35);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.map-link:hover { border-color: var(--sage); }
+
+/* ─── SP ─── */
+@media (max-width: 768px) {
+  /* SP全体のfont-sizeリセット */
+  body { font-size: 14px; }
+  p, li, span, div { max-width: 100%; }
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+
+  .hero { display: block; min-height: auto; padding-top: 100px; }
+  .hero-left { padding: 48px 20px 36px; }
+  .hero-right { display: none; }
+  .hero-tel { max-width: 100%; }
+  .hero-title { font-size: 26px; }
+  .hero-subtitle { max-width: 100%; font-size: 14px; }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border-top: none;
+    gap: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 24px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    gap: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-item::before { display: none; }
+  .stat-num-wrap {
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    flex-shrink: 0;
+    padding-right: 16px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: baseline;
+  }
+  .stat-num { font-size: 32px; margin-bottom: 0; line-height: 1; }
+  .stat-text-wrap {
+    padding-left: 16px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .stat-title {
+    font-size: 13px;
+    margin-bottom: 3px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+  }
+  .stat-label {
+    font-size: 11px;
+    line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .features { padding: 48px 20px; box-sizing: border-box; width: 100%; }
+  .features-intro { max-width: 100%; margin-bottom: 28px; }
+  .features-grid { grid-template-columns: 1fr; gap: 2px; width: 100%; }
+  .feature-card { padding: 28px 20px; }
+  .feature-title { font-size: 15px; }
+  .feature-text { font-size: 14px; }
+  .treatment-name { font-size: 13px; }
+  .treatment-desc { font-size: 12px; }
+  .aesthetic-card-title { font-size: 14px; }
+  .aesthetic-card-text { font-size: 13px; }
+  .aesthetic-intro { font-size: 13px; }
+  .section-title { font-size: 22px; }
+  .section-title-white { font-size: 22px; }
+  .hero-tel-number { font-size: 22px; }
+  table { font-size: 13px; }
+  thead th { font-size: 12px; padding: 10px 4px; }
+  tbody td { font-size: 12px; padding: 10px 4px; }
+  .access-info-list li { font-size: 13px; }
+
+  .treatment-overview { padding: 48px 20px; }
+  .treatment-grid { grid-template-columns: 1fr; gap: 10px; }
+  .treatment-card { padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
+  .treatment-icon { margin-bottom: 0; flex-shrink: 0; }
+
+  .aesthetic { display: block; padding: 48px 20px; }
+  .aesthetic-left { margin-bottom: 28px; }
+  .aesthetic-cards { gap: 12px; }
+
+  .hours-section { display: block; padding: 48px 20px; }
+  .access-mini { margin-top: 40px; }
+  .hours-table-wrap { overflow-x: auto; }
+
+  .cta-strip { padding: 48px 20px; }
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns a { justify-content: center; }
+
+  footer { padding: 28px 20px; flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 768px) {
+  /* SP barの分だけ下に余白 */
+  footer { margin-bottom: 64px; }
+}
+
+/* ─── SP BOTTOM BAR ─── */
+.sp-bar { display: none; }
+@media (max-width: 768px) {
+  .sp-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: white;
+    border-top: 1px solid var(--cream-2);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .sp-bar a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    gap: 4px;
+  }
+  .sp-bar-tel { color: var(--ink); border-right: 1px solid var(--cream-2); }
+  .sp-bar-tel strong { font-size: 13px; font-weight: 500; display: block; }
+  .sp-bar-reserve { background: var(--sage); color: white; }
+  footer { margin-bottom: 72px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SP BOTTOM BAR -->
+<div class="sp-bar">
+  <a href="tel:049-292-9201" class="sp-bar-tel">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    <span>049-292-9201</span>
+    電話で予約
+  </a>
+  <a href="https://www.v-apo.net/nogawashika/login" class="sp-bar-reserve">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    WEB予約
+    24時間受付
+  </a>
+</div>
+
+<div class="demo-banner">✦ デモサイト / Georji & Co. 制作</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    のがわ歯科
+    <span>NOGAWA DENTAL CLINIC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="clinic.html">医院案内</a></li>
+    <li><a href="treatment.html">診療案内</a></li>
+    <li><a href="facility.html">院内・設備</a></li>
+    <li><a href="access.html">アクセス</a></li>
+    <li><a href="https://www.v-apo.net/nogawashika/login" class="nav-reserve">WEB予約</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nogawa Dental Clinic</div>
+    <h1 class="hero-title">
+      お一人おひとりに<br>
+      寄り添う<em>歯科医療</em>を。
+    </h1>
+    <p class="hero-subtitle">
+      鶴ヶ島市五味ヶ谷の歯科医院です。丁寧なカウンセリングと、通いやすい環境で皆さまのお口の健康をサポートします。
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.v-apo.net/nogawashika/login" class="btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        WEB予約はこちら
+      </a>
+      <a href="treatment.html" class="btn-text">
+        診療案内を見る
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="hero-tel">
+      <div class="hero-tel-label">お電話でのご予約・お問い合わせ</div>
+      <a href="tel:049-292-9201" class="hero-tel-number">049-292-9201</a>
+      <div class="hero-tel-hours">月〜金 9:20〜18:00 ／ 土・日 9:20〜17:00（水・祝 休診）</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-area">
+      <div class="img-circle">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5a7a6a" stroke-width="1">
+          <path d="M12 2C8 2 5 5 5 9c0 5 4 11 7 13 3-2 7-8 7-13 0-4-3-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+      </div>
+      <span class="img-placeholder-label">クリニック外観・院内写真</span>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-label">Access</div>
+      <div class="hero-badge-text">埼玉県鶴ヶ島市五味ヶ谷202-25<br>駐車場 8台完備</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item fade-up">
+    <div class="stat-num-wrap">
+      <div class="stat-num">2024<span class="stat-suffix">年</span></div>
+    </div>
+    <div class="stat-text-wrap">
+      <div class="stat-title">新規開院</div>
+      <div class="stat-label">清潔で新しい設備を整えてお待ちしています</div>
+    </div>
+  </div>
+  <div class="stat-item fade-up" style="transition-delay:0.1s">
+    <div class="stat-num-wrap">
+      <div class="stat-num">12<span class="stat-suffix">科目</span></div>
+    </div>
+    <div class="stat-text-wrap">
+      <div class="stat-title">幅広い診療メニュー</div>
+      <div class="stat-label">むし歯から美容診療までお口の悩みに対応</div>
+    </div>
+  </div>
+  <div class="stat-item fade-up" style="transition-delay:0.2s">
+    <div class="stat-num-wrap">
+      <div class="stat-num">8<span class="stat-suffix">台</span></div>
+    </div>
+    <div class="stat-text-wrap">
+      <div class="stat-title">無料駐車場を完備</div>
+      <div class="stat-label">お車でのご来院も安心してお越しください</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="about">
+  <div class="features-intro fade-up">
+    <div class="section-eyebrow">Our Philosophy</div>
+    <h2 class="section-title">のがわ歯科が<br>大切にしていること</h2>
+    <p>患者さん一人ひとりに向き合い、最適な治療を提案します。年齢や生活環境に合わせた柔軟な対応で、長く通い続けていただける歯科医院を目指しています。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card fade-up">
+      <div class="feature-num">01</div>
+      <div class="feature-title">お一人おひとりに合わせた治療</div>
+      <p class="feature-text">あらゆる治療法を提案し、メリット・デメリットをお伝えした上で治療計画を立てます。患者さんとよく話し合うことを大切にしています。</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.1s">
+      <div class="feature-num">02</div>
+      <div class="feature-title">快適で通いやすい環境</div>
+      <p class="feature-text">木目を基調としたあたたかい院内。キッズスペースやファミリールームも完備。土日も診療しています。</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.2s">
+      <div class="feature-num">03</div>
+      <div class="feature-title">安心して受けていただくために</div>
+      <p class="feature-text">「痛い」「こわい」が苦手な方も大丈夫。お子さんには充分なコミュニケーションを大切に、根気強く接してまいります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENT OVERVIEW -->
+<section class="treatment-overview">
+  <div class="fade-up">
+    <div class="section-eyebrow">Treatment</div>
+    <h2 class="section-title">診療案内</h2>
+  </div>
+  <div class="treatment-grid">
+    <div class="treatment-card fade-up">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="treatment-name">むし歯</div>
+      <p class="treatment-desc">早期発見・早期治療で歯を守ります</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.05s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+      </div>
+      <div class="treatment-name">歯周病</div>
+      <p class="treatment-desc">定期検診・クリーニングで予防</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.1s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="treatment-name">小児歯科</div>
+      <p class="treatment-desc">子どものペースで丁寧に対応</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.15s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="treatment-name">予防・クリーニング</div>
+      <p class="treatment-desc">病気になる前に予防する</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.2s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <div class="treatment-name">審美治療</div>
+      <p class="treatment-desc">見た目と機能の美しさを両立</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.25s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="treatment-name">ホワイトニング</div>
+      <p class="treatment-desc">オフィス・ホームから選択可</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.3s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <div class="treatment-name">矯正歯科</div>
+      <p class="treatment-desc">子どもから大人まで対応</p>
+    </div>
+    <div class="treatment-card fade-up" style="transition-delay:0.35s">
+      <div class="treatment-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <div class="treatment-name">訪問歯科診療</div>
+      <p class="treatment-desc">通院が難しい方のご自宅へ</p>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="treatment.html" class="btn-primary fade-up">すべての診療案内を見る</a>
+  </div>
+</section>
+
+<!-- AESTHETIC HIGHLIGHT -->
+<section class="aesthetic">
+  <div class="aesthetic-left fade-up">
+    <div class="aesthetic-eyebrow">Aesthetic & Beauty</div>
+    <h2 class="section-title-white">美容診療も<br>ご相談ください</h2>
+    <p class="aesthetic-intro">のがわ歯科では、一般歯科に加えてヒアルロン酸注入・ボツリヌス治療など、口元の美容診療も対応しています。歯科医師の技術で、より自然で美しい表情へ。</p>
+  </div>
+  <div class="aesthetic-cards fade-up" style="transition-delay:0.15s">
+    <div class="aesthetic-card">
+      <div class="aesthetic-card-title">ヒアルロン酸注入</div>
+      <p class="aesthetic-card-text">ほうれい線・マリオネットラインの改善、口唇のボリュームアップ。メスを使わず、ダウンタイムがほとんどない施術です。効果は約6ヶ月〜1年持続します。</p>
+    </div>
+    <div class="aesthetic-card">
+      <div class="aesthetic-card-title">ボツリヌス治療</div>
+      <p class="aesthetic-card-text">歯ぎしり・食いしばり・ガミースマイルの改善に。咬筋への注射でエラ張りの改善も。頭痛や肩こりの軽減効果も期待できます。</p>
+    </div>
+    <div style="margin-top: 24px;">
+      <a href="treatment.html#aesthetic" class="btn-outline">詳しく見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + ACCESS MINI -->
+<section class="hours-section">
+  <div class="fade-up">
+    <div class="section-eyebrow">Hours</div>
+    <h2 class="section-title">診療時間</h2>
+    <div class="hours-table-wrap" style="margin-top: 32px;">
+      <table>
+        <thead>
+          <tr>
+            <th>時間帯</th>
+            <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th><th>祝</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9:20〜13:00</td>
+            <td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+            <td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+          </tr>
+          <tr>
+            <td>14:00〜18:00</td>
+            <td class="ok">○</td><td class="ok">○</td><td class="no">／</td>
+            <td class="ok">○</td><td class="ok">○</td><td class="star">★</td><td class="star">★</td><td class="no">／</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hours-note">★ 土・日の午後は 14:00〜17:00まで<br>休診日：水曜日・祝日</p>
+  </div>
+  <div class="access-mini fade-up" style="transition-delay:0.15s">
+    <div class="section-eyebrow">Access</div>
+    <h2 class="section-title">アクセス</h2>
+    <ul class="access-info-list" style="margin-top: 32px;">
+      <li>
+        <span class="label">住所</span>
+        <span>〒350-2202<br>埼玉県鶴ヶ島市五味ヶ谷202-25</span>
+      </li>
+      <li>
+        <span class="label">電話</span>
+        <span><a href="tel:049-292-9201" style="color:var(--ink-2); text-decoration:none;">049-292-9201</a></span>
+      </li>
+      <li>
+        <span class="label">駐車場</span>
+        <span>8台完備</span>
+      </li>
+    </ul>
+    <a href="https://maps.google.com/?q=埼玉県鶴ヶ島市五味ヶ谷202-25" target="_blank" class="map-link" style="margin-top: 20px; display: inline-flex;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Googleマップで確認する
+    </a>
+    <div style="margin-top:32px;">
+      <a href="https://www.v-apo.net/nogawashika/login" class="btn-primary">WEB予約はこちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <h2 class="cta-strip-title fade-up">まずはお気軽にご相談ください</h2>
+  <p class="cta-strip-sub fade-up">WEB予約なら24時間いつでも受け付けています</p>
+  <div class="cta-btns fade-up">
+    <a href="https://www.v-apo.net/nogawashika/login" class="btn-primary" style="background:white; color:var(--sage);">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      WEB予約はこちら
+    </a>
+    <a href="tel:049-292-9201" class="btn-outline">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      電話で問い合わせる
+    </a>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">
+    のがわ歯科
+    <span>NOGAWA DENTAL CLINIC — 鶴ヶ島市五味ヶ谷</span>
+  </a>
+  <div class="footer-copy">© 2025 鶴ヶ島のがわ歯科. All rights reserved.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); }), { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 鶴ヶ島のがわ歯科</title>
+<meta name="description" content="鶴ヶ島のがわ歯科へのお問い合わせ。初診のご相談、治療内容のご質問など、お気軽にご連絡ください。WEB予約は24時間受付中。">
+<meta name="keywords" content="鶴ヶ島のがわ歯科,お問い合わせ,予約,初診">
+<link rel="canonical" href="https://nogawashika-demo.georji-and-co.github.io/contact.html">
+<meta property="og:title" content="お問い合わせ | 鶴ヶ島のがわ歯科">
+<meta property="og:description" content="初診のご相談、治療内容のご質問など、お気軽にご連絡ください。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-section { background: var(--warm-white); }
+.contact-intro { font-size: 14px; color: var(--text-muted); line-height: 2.2; margin-bottom: 40px; max-width: 560px; }
+.contact-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.contact-option {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid var(--gray-300);
+}
+.contact-option-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--navy-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-option-icon svg { width: 24px; height: 24px; stroke: var(--navy); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.contact-option-title { font-family: var(--font-serif); font-size: 16px; color: var(--navy); font-weight: 500; margin-bottom: 4px; }
+.contact-option-sub { font-size: 12px; color: var(--text-muted); }
+.contact-option-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--navy);
+  color: white;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.contact-option-btn.wood {
+  background: var(--wood-pale);
+  color: var(--wood);
+  border: 1px solid var(--wood-light);
+}
+
+.form-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  border: 1px solid var(--gray-300);
+}
+.form-section-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.contact-fields { display: grid; gap: 20px; margin-bottom: 24px; }
+.field-label { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.05em; }
+.field-required { color: #c0392b; margin-left: 4px; }
+.field-input, .field-textarea, .field-select {
+  width: 100%;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text-main);
+  background: white;
+  transition: border-color 0.2s;
+  min-height: 44px;
+  outline: none;
+  appearance: none;
+}
+.field-input:focus, .field-textarea:focus, .field-select:focus { border-color: var(--navy); }
+.field-textarea { height: 140px; resize: vertical; }
+.privacy-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-300);
+}
+.submit-btn {
+  width: 100%;
+  height: 56px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.1s;
+}
+.submit-btn:active { background: var(--navy-light); transform: scale(0.98); }
+
+@media (min-width: 768px) {
+  .contact-options { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="demo-banner">✦ デモサイト / Georji &amp; Co. 制作</div>
+<header class="site-header">
+  <div class="header-top">
+    <a href="index.html" class="logo">
+      <span class="logo-main">鶴ヶ島のがわ歯科</span>
+      <span class="logo-sub">NOGAWA DENTAL CLINIC</span>
+    </a>
+    <nav class="header-nav">
+      <a href="clinic.html">院長・診療案内</a>
+      <a href="facility.html">院内設備</a>
+      <a href="access.html">アクセス・時間</a>
+      <a href="contact.html" class="active">お問い合わせ</a>
+    </nav>
+  </div>
+  <nav class="bottom-nav">
+    <a href="clinic.html">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      院長
+    </a>
+    <a href="clinic.html#services">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      診療
+    </a>
+    <a href="access.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      時間
+    </a>
+    <a href="facility.html">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      設備
+    </a>
+    <a href="access.html">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      アクセス
+    </a>
+    <a href="contact.html" class="active">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      お問合せ
+    </a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">Contact</p>
+  <h1 class="page-hero-title">お問い合わせ</h1>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">トップ</a>
+  <span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">お問い合わせ</span>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section fade-in">
+  <div class="section-label">お問い合わせ</div>
+  <h2 class="section-title">お気軽にご相談ください</h2>
+  <p class="contact-intro">初診のご相談、治療内容のご質問、お口のお悩みなど、どんなことでもお気軽にご連絡ください。WEB予約は24時間いつでも受け付けております。</p>
+
+  <div class="contact-options">
+    <div class="contact-option">
+      <div class="contact-option-icon">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      </div>
+      <div>
+        <div class="contact-option-title">お電話</div>
+        <div class="contact-option-sub">受付時間内に承ります</div>
+      </div>
+      <a href="tel:049-292-9201" class="contact-option-btn">049-292-9201</a>
+    </div>
+    <div class="contact-option">
+      <div class="contact-option-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <div class="contact-option-title">WEB予約</div>
+        <div class="contact-option-sub">24時間いつでも受付</div>
+      </div>
+      <a href="https://www.v-apo.net/nogawashika/login" target="_blank" rel="noopener" class="contact-option-btn wood">予約する</a>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-section-title">メールでのお問い合わせ</div>
+    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+      <div class="contact-fields">
+        <div>
+          <div class="field-label">お名前<span class="field-required">*</span></div>
+          <input class="field-input" type="text" name="name" placeholder="山田 太郎" required>
+        </div>
+        <div>
+          <div class="field-label">電話番号</div>
+          <input class="field-input" type="tel" name="phone" placeholder="049-000-0000">
+        </div>
+        <div>
+          <div class="field-label">メールアドレス<span class="field-required">*</span></div>
+          <input class="field-input" type="email" name="email" placeholder="example@email.com" required>
+        </div>
+        <div>
+          <div class="field-label">お問い合わせ種別</div>
+          <select class="field-select" name="category">
+            <option value="">選択してください</option>
+            <option>初診のご相談</option>
+            <option>治療内容について</option>
+            <option>診療時間・予約について</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div>
+          <div class="field-label">お問い合わせ内容<span class="field-required">*</span></div>
+          <textarea class="field-textarea" name="message" placeholder="お気軽にご記入ください。" required></textarea>
+        </div>
+      </div>
+      <div class="privacy-note">
+        ご記入いただいた個人情報は、お問い合わせへの返答のみに使用し、第三者への提供は行いません。
+      </div>
+      <button type="submit" class="submit-btn">送信する</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">鶴ヶ島のがわ歯科</div>
+  <div class="footer-address">
+    〒350-2202 埼玉県鶴ヶ島市五味ヶ谷202-25<br>
+    TEL: 049-292-9201<br>
+    診療時間: 月火木金 9:20〜18:00 ／ 土日 9:20〜17:00（水・祝休診）
+  </div>
+  <nav class="footer-nav">
+    <a href="index.html">トップ</a>
+    <a href="clinic.html">院長・診療案内</a>
+    <a href="facility.html">院内設備</a>
+    <a href="access.html">アクセス・時間</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
+  <div class="footer-copy">© 2025 鶴ヶ島のがわ歯科. All rights reserved.</div>
+  <div class="footer-credit">Web Design &amp; Development by <a href="https://georji-and-co.github.io/" target="_blank">Georji &amp; Co.</a></div>
+</footer>
+
+<!-- STICKY CTA BAR -->
+<div class="sticky-bar">
+  <a href="tel:049-292-9201" class="sticky-btn sticky-btn-call">
+    <div class="sticky-btn-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    </div>
+    <span class="sticky-btn-label">電話をかける</span>
+    <span class="sticky-btn-sub">049-292-9201</span>
+  </a>
+  <a href="https://www.v-apo.net/nogawashika/login" target="_blank" rel="noopener" class="sticky-btn sticky-btn-web">
+    <div class="sticky-btn-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <span class="sticky-btn-label">WEB予約</span>
+    <span class="sticky-btn-sub">24時間受付</span>
+  </a>
+</div>
+
+<script src="common.js"></script>
+<script>initStatus(); initFadeIn();</script>
+</body>
+</html>

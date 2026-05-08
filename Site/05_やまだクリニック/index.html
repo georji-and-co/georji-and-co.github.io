@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>やまだクリニック｜坂戸市の内科・消化器内科・外科</title>
+  <meta name="description" content="埼玉県坂戸市清水町のやまだクリニック。内科・消化器内科・外科を診療。院長・山田 保（群馬大学医学部卒）。駐車場10台無料。マイナ保険証対応。">
+  <link rel="canonical" href="https://georji-and-co.github.io/yamada-clinic-demo/">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .main-hero {
+      margin-top: var(--offset);
+      background: var(--green);
+      min-height: calc(100svh - var(--offset));
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 48px 20px 120px;
+      max-width: 100%;
+      contain: paint;
+    }
+    @media (min-width: 768px) { .main-hero { padding: 60px 40px; } }
+    .main-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-deco {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,114,74,.18) 0%, transparent 70%); pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 620px; }
+    .hero-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+    .hero-title { font-family: var(--font-min); font-size: clamp(28px, 7vw, 50px); font-weight: 700; color: var(--white); line-height: 1.45; letter-spacing: 0.06em; }
+    .hero-title em { color: rgba(255,255,255,.5); font-style: normal; font-size: .88em; }
+    .hero-desc { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 18px; line-height: 2; word-break: break-all; overflow-wrap: anywhere; }
+    .hero-actions { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .hero-tel-block { font-family: var(--font-min); font-size: 26px; font-weight: 700; color: var(--white); letter-spacing: 0.04em; margin-top: 20px; display: block; }
+    .hero-tel-block small { display: block; font-family: var(--font-sans); font-size: 11px; color: rgba(255,255,255,.6); font-weight: 400; }
+    .hero-status { margin-top: 16px; }
+
+    .info-bar { background: var(--terra-light); border-top: 2px solid var(--terra); padding: 12px 16px; }
+    .info-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+    .info-tag { background: var(--terra); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.06em; flex-shrink: 0; }
+
+    .dept-section { background: var(--white); }
+    .dept-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
+    @media (min-width: 560px) { .dept-grid { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .dept-card { border: 1px solid var(--border); border-radius: 12px; padding: 22px 14px; text-align: center; transition: box-shadow .3s, transform .3s; background: var(--cream); min-width: 0; }
+    .dept-card:hover { box-shadow: 0 8px 28px rgba(26,61,43,.1); transform: translateY(-4px); }
+    .dept-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+    .dept-icon svg { width: 32px !important; height: 32px !important; color: var(--green); }
+    .dept-name { font-family: var(--font-min); font-size: 16px; font-weight: 700; color: var(--green); letter-spacing: 0.05em; }
+    .dept-desc { font-size: 12px; color: var(--text-mid); margin-top: 8px; line-height: 1.75; }
+
+    .hours-section { background: var(--green-light); }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 24px; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(26,61,43,.08); }
+    .hours-table th { background: var(--green); color: var(--white); font-family: var(--font-min); font-size: 12px; font-weight: 700; padding: 12px 4px; text-align: center; }
+    .hours-table td { padding: 11px 4px; text-align: center; font-size: 12px; border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child td { border-bottom: none; }
+    .hours-table .row-label { font-weight: 700; color: var(--green); text-align: left; padding-left: 10px; font-size: 11px; line-height: 1.5; }
+    .hours-table .row-label small { display: block; font-weight: 400; color: var(--text-light); font-size: 10px; }
+    .hours-table .cell-o { color: var(--green); font-weight: 700; }
+    .hours-table .cell-x { color: var(--text-light); }
+    .hours-table .cell-am { color: var(--terra); font-weight: 700; font-size: 10px; }
+    .hours-table tr:nth-child(even) td { background: rgba(232,240,235,.3); }
+    .hours-note { font-size: 12px; color: var(--text-mid); margin-top: 12px; line-height: 2; }
+    .hours-note li { padding-left: 14px; position: relative; }
+    .hours-note li::before { content: '※'; position: absolute; left: 0; }
+    .hours-current { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+
+    .greeting-section { background: var(--white); }
+    .greeting-inner { max-width: 780px; margin: 32px auto 0; background: var(--cream); border-radius: 16px; padding: 28px 20px; border-left: 4px solid var(--green); }
+    @media (min-width: 768px) { .greeting-inner { padding: 40px 36px; } }
+    .greeting-text { font-size: 15px; line-height: 2.2; }
+    .greeting-sign { text-align: right; margin-top: 24px; font-family: var(--font-min); font-size: 13px; color: var(--text-mid); }
+    .greeting-sign strong { display: block; font-size: 18px; color: var(--green); margin-top: 4px; }
+    .greeting-sign span { display: block; font-size: 11px; color: var(--text-light); }
+
+    .access-grid { display: grid; gap: 24px; margin-top: 32px; }
+    @media (min-width: 768px) { .access-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+    .access-map iframe { width: 100%; height: 260px; border-radius: 12px; border: none; display: block; }
+    .access-info-list { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  </style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <span>DEMO</span>
+  <p>このサイトはGeorji &amp; Co.が制作したデモサイトです</p>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="logo-ja">やまだクリニック</div>
+      <div class="logo-en">Yamada Clinic</div>
+      <div class="logo-sub">内科・消化器内科・外科</div>
+    </div>
+    <nav class="pc-nav">
+      <a href="index.html">ホーム</a>
+      <a href="clinic.html">診療案内</a>
+      <a href="hours.html">診療時間</a>
+      <a href="access.html">アクセス</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0492887788" class="btn-tel"><small>お電話でのお問い合わせ</small>049-288-7788</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="sp-menu" id="spMenu">
+  <a href="index.html">ホーム</a>
+  <a href="clinic.html">診療案内</a>
+  <a href="hours.html">診療時間・休診情報</a>
+  <a href="access.html">アクセス</a>
+  <a href="contact.html">お問い合わせ</a>
+  <a href="tel:0492887788" class="sp-tel">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    049-288-7788
+  </a>
+</nav>
+
+<section class="main-hero">
+  <div class="hero-deco"></div>
+  <div class="hero-content">
+    <div class="hero-label">Yamada Clinic / Sakado, Saitama</div>
+    <h1 class="hero-title">地域に根ざした<br><em>丁寧な</em>かかりつけ医</h1>
+    <p class="hero-desc">坂戸市で長年にわたり地域の皆さまの健康を支えるやまだクリニック。内科・消化器内科・外科を専門に、患者様お一人おひとりに寄り添います。</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        お問い合わせ
+      </a>
+      <a href="clinic.html" class="btn-outline" style="color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.45);">診療案内を見る</a>
+    </div>
+    <div class="hero-status"><span class="status-chip"></span></div>
+    <a href="tel:0492887788" class="hero-tel-block"><small>お電話でのご予約・お問い合わせ</small>049-288-7788</a>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <span class="info-tag">お知らせ</span>
+    <p>マイナ保険証・電子処方せんに対応しています。受付にてスタッフへお申し付けください。</p>
+  </div>
+</div>
+
+<section class="dept-section">
+  <div class="container">
+    <p class="section-label fade-in">Departments</p>
+    <h2 class="section-title fade-in">診療科のご案内</h2>
+    <p class="fade-in">内科・消化器内科・外科を診療しています。日常的な体調不良から専門的な消化器疾患まで幅広く対応いたします。</p>
+    <div class="dept-grid">
+      <div class="dept-card fade-in">
+        <div class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="dept-name">内科</div>
+        <p class="dept-desc">発熱・倦怠感などの一般症状から、高血圧・糖尿病・高脂血症などの生活習慣病まで幅広く対応します。</p>
+      </div>
+      <div class="dept-card fade-in">
+        <div class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="dept-name">消化器内科</div>
+        <p class="dept-desc">胃・腸・肝臓・胆のう・膵臓などの消化器疾患を専門的に診療します。胃痛・腹痛でお困りの方はご相談ください。</p>
+      </div>
+      <div class="dept-card fade-in">
+        <div class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2v4h4"/><path d="M12 2a10 10 0 1 0 10 10"/></svg></div>
+        <div class="dept-name">外科</div>
+        <p class="dept-desc">切り傷・擦り傷などの外傷処置から、皮膚の腫瘤・粉瘤など小手術まで対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hours-section">
+  <div class="container">
+    <p class="section-label fade-in">Hours</p>
+    <h2 class="section-title fade-in">診療時間</h2>
+    <div class="hours-current fade-in">
+      <span class="status-chip"></span>
+      <span style="font-size:13px;color:var(--text-mid);">本日の診療状況</span>
+    </div>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;" class="fade-in">
+      <table class="hours-table" style="min-width:320px;">
+        <thead>
+          <tr><th style="min-width:72px;">時間帯</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日祝</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">午前<small>9:00〜12:00</small></td>
+            <td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-am">午前<br>のみ</td><td class="cell-x">休</td>
+          </tr>
+          <tr>
+            <td class="row-label">午後<small>15:00〜18:00</small></td>
+            <td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-x">休</td><td class="cell-o">○</td><td class="cell-o">○</td><td class="cell-x">休</td><td class="cell-x">休</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="hours-note fade-in">
+      <li>水曜・土曜は午前診療のみ（15:00以降は休診）</li>
+      <li>祝日・臨時休診あり。事前にお電話でご確認ください。</li>
+      <li>受付は各診療終了の15分前までにお済ませください。</li>
+    </ul>
+    <div style="margin-top:22px;" class="fade-in"><a href="hours.html" class="btn-outline">詳細・休診情報を確認する →</a></div>
+  </div>
+</section>
+
+<section class="greeting-section">
+  <div class="container">
+    <p class="section-label fade-in">From the Doctor</p>
+    <h2 class="section-title fade-in">院長ごあいさつ</h2>
+    <div class="greeting-inner fade-in">
+      <p class="greeting-text">やまだクリニックは、患者様お一人おひとりのお話をしっかりとお聞きし、丁寧でわかりやすい説明を心がけております。<br><br>内科・消化器内科・外科を専門に、「なんとなく体の調子が悪い」「以前から気になっている症状がある」など、些細なことでもお気軽にご相談ください。地域の皆さまのかかりつけ医として、日常の健康管理から専門的な診療まで、誠実に対応してまいります。</p>
+      <div class="greeting-sign">
+        やまだクリニック 院長
+        <strong>山田 保</strong>
+        <span>群馬大学医学部 卒業</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream);overflow:hidden;">
+  <div class="container">
+    <p class="section-label fade-in">Access</p>
+    <h2 class="section-title fade-in">アクセス</h2>
+    <div class="access-grid">
+      <div class="access-map fade-in">
+        <iframe src="https://maps.google.com/maps?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E5%9D%82%E6%88%B0%E5%B8%82%E6%B8%85%E6%B0%B4%E7%94%BA46%E7%95%AA46%E5%8F%B7&output=embed&hl=ja&z=16" loading="lazy" allowfullscreen title="やまだクリニック 地図"></iframe>
+      </div>
+      <div class="access-info-list fade-in">
+        <div class="access-row">
+          <div class="access-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div style="min-width:0;"><div class="access-label">住所</div><div class="access-val">〒350-0222<br>埼玉県坂戸市清水町46番46号</div></div>
+        </div>
+        <div class="access-row">
+          <div class="access-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div style="min-width:0;"><div class="access-label">電話番号</div><div class="access-val"><a href="tel:0492887788">049-288-7788</a></div></div>
+        </div>
+        <div class="access-row">
+          <div class="access-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div style="min-width:0;"><div class="access-label">最寄り駅</div><div class="access-val">東武東上線 坂戸駅 徒歩約15分 / 車5分<br>北坂戸駅 徒歩約20分 / 車7分</div></div>
+        </div>
+        <div class="access-row">
+          <div class="access-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/></svg></div>
+          <div style="min-width:0;"><div class="access-label">駐車場</div><div class="access-val">無料 10台</div></div>
+        </div>
+        <div class="access-row">
+          <div class="access-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+          <div style="min-width:0;"><div class="access-label">対応サービス</div><div class="access-val">マイナ保険証・電子処方せん対応</div></div>
+        </div>
+        <a href="access.html" class="btn-outline">詳細アクセスを見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-ja">やまだクリニック</div>
+      <div class="footer-logo-sub">内科・消化器内科・外科</div>
+      <div class="footer-info">〒350-0222 埼玉県坂戸市清水町46番46号<br><a href="tel:0492887788">049-288-7788</a><br>東武東上線 坂戸駅より徒歩約15分</div>
+    </div>
+    <div>
+      <div class="footer-nav-title">メニュー</div>
+      <nav class="footer-nav">
+        <a href="index.html">ホーム</a><a href="clinic.html">診療案内</a>
+        <a href="hours.html">診療時間・休診情報</a><a href="access.html">アクセス</a><a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-title">診療時間</div>
+      <div class="footer-info" style="font-size:13px;line-height:2.1;">月・火・木・金<br>9:00〜12:00 ／ 15:00〜18:00<br>水・土　9:00〜12:00（午前のみ）<br>日・祝　休診</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; やまだクリニック. All Rights Reserved.</span>
+    <span class="footer-credit">Designed by <a href="https://georji-and-co.github.io/" target="_blank" rel="noopener">Georji &amp; Co.</a></span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:0492887788" class="cta-tel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>電話する</a>
+  <a href="contact.html" class="cta-web"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>お問い合わせ</a>
+</div>
+<nav class="sp-bottom-nav">
+  <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>ホーム</a>
+  <a href="clinic.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>診療</a>
+  <a href="hours.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>時間</a>
+  <a href="access.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>アクセス</a>
+  <a href="contact.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>問合せ</a>
+</nav>
+<script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施術例｜鶴ヶ島カイロプラクティックセンター</title>
+  <meta name="description" content="鶴ヶ島カイロプラクティックセンターの施術例。肩こり・頭痛・腰痛・ぎっくり腰・膝痛・股関節痛など、実際の施術事例をカテゴリ別にご紹介します。">
+  <link rel="canonical" href="cases.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--text-mid);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+    .case-item { display: none; }
+    .case-item.show { display: block; }
+  </style>
+</head>
+<body class="pb-cta">
+
+<div class="demo-banner">
+  🌿 デモサイト <span>※実際の制作イメージです</span>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <span class="logo-en">TSURUGASHIMA CHIROPRACTIC CENTER</span>
+      <span class="logo-ja">鶴ヶ島カイロプラクティックセンター</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html#about">当院について</a>
+      <a href="index.html#symptoms">対応症状</a>
+      <a href="price.html">施術料金</a>
+      <a href="cases.html" class="active">施術例</a>
+      <a href="sebone.html">背骨のゆがみ</a>
+      <a href="access.html">アクセス</a>
+    </nav>
+    <div class="header-cta">
+      <span class="status-chip js-status-chip">確認中…</span>
+      <div class="header-tel">
+        <span class="tel-label">お電話でのご予約</span>
+        <a href="tel:049-234-6326" class="tel-number">049-234-6326</a>
+      </div>
+      <a href="tel:049-234-6326" class="btn-tel-sm">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.2a16 16 0 006 6l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        電話予約
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="page-top">
+  <div class="page-hero">
+    <h1>施術例</h1>
+    <p>Cases &amp; Treatments</p>
+  </div>
+  <nav class="breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="index.html">HOME</a>
+      <span>›</span>
+      <span>施術例</span>
+    </div>
+  </nav>
+</div>
+
+<section style="padding:60px 0;background:var(--cream);">
+  <div class="section-inner">
+    <p style="font-size:14px;color:var(--text-mid);line-height:2;margin-bottom:32px;">
+      鶴ヶ島カイロプラクティックセンターで実際に施術を行った症例の一部をご紹介します。<br>
+      お悩みの症状に近い事例をご参照ください。
+    </p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" data-cat="all">すべて</button>
+      <button class="tab-btn" data-cat="kata">肩・首・腕</button>
+      <button class="tab-btn" data-cat="yotu">腰痛</button>
+      <button class="tab-btn" data-cat="hiza">膝・股関節</button>
+    </div>
+
+    <div class="cases-grid" id="cases-list">
+      <!-- 肩・首・腕 -->
+      <div class="case-card fade-in case-item show" data-cat="kata">
+        <span class="case-card-tag">肩・首・腕のこり・痛み・しびれ</span>
+        <div class="case-card-body">
+          <h3>肩こり、頭痛、長期に抜けない不快感。</h3>
+          <p>長期間にわたる肩こりと頭痛に悩まれていた患者様の施術例。複数回の施術を経て不快感が軽減されました。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="kata">
+        <span class="case-card-tag">肩・首・腕のこり・痛み・しびれ</span>
+        <div class="case-card-body">
+          <h3>肩こりから？ この手のしびれと頭痛？</h3>
+          <p>肩こりに伴う手のしびれと頭痛を訴えていた患者様。カイロプラクティックによる調整で症状の改善が見られました。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="kata">
+        <span class="case-card-tag">肩・首・腕のこり・痛み・しびれ</span>
+        <div class="case-card-body">
+          <h3>肩の痛み</h3>
+          <p>日常動作で感じる肩の痛みについての施術例。関節の動きを整えることで動作時の痛みが軽くなりました。</p>
+        </div>
+      </div>
+
+      <!-- 腰痛 -->
+      <div class="case-card fade-in case-item show" data-cat="yotu">
+        <span class="case-card-tag">腰痛</span>
+        <div class="case-card-body">
+          <h3>急性腰痛（ぎっくり腰）</h3>
+          <p>突然発症した急性腰痛（ぎっくり腰）の施術例。早期の施術開始により回復が早まりました。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="yotu">
+        <span class="case-card-tag">腰痛</span>
+        <div class="case-card-body">
+          <h3>腰痛</h3>
+          <p>慢性的な腰の痛みを持つ患者様の施術例。継続的なケアで日常生活の質が改善されました。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="yotu">
+        <span class="case-card-tag">腰痛</span>
+        <div class="case-card-body">
+          <h3>辛い腰の痛み！</h3>
+          <p>長年の腰痛で悩まれていた患者様。施術と生活習慣の見直しで痛みが大幅に軽減しました。</p>
+        </div>
+      </div>
+
+      <!-- 膝・股関節 -->
+      <div class="case-card fade-in case-item show" data-cat="hiza">
+        <span class="case-card-tag">膝・股関節</span>
+        <div class="case-card-body">
+          <h3>膝、股関節痛のため歩行困難 Ⅰ</h3>
+          <p>膝と股関節の痛みで歩行が困難になった患者様。施術を重ねて自力での歩行が改善しました。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="hiza">
+        <span class="case-card-tag">膝・股関節</span>
+        <div class="case-card-body">
+          <h3>膝、股関節痛のため歩行困難 Ⅱ</h3>
+          <p>継続施術による経過報告。段階的な回復が確認された施術例です。</p>
+        </div>
+      </div>
+      <div class="case-card fade-in case-item show" data-cat="hiza">
+        <span class="case-card-tag">膝・股関節</span>
+        <div class="case-card-body">
+          <h3>膝・股関節の施術例 Ⅲ</h3>
+          <p>長期にわたる施術管理の事例。日常動作への支障がほぼなくなった改善例です。</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" class="fade-in">
+      <p style="font-size:14px;color:var(--text-mid);margin-bottom:20px;">ご不明な点はお気軽にお問い合わせください。</p>
+      <a href="tel:049-234-6326" class="btn-lg btn-green">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.2a16 16 0 006 6l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        電話でご相談（049-234-6326）
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">鶴ヶ島カイロプラクティックセンター</div>
+        <p class="footer-tagline">〒350-0081 埼玉県川越市大字小堤910-15<br>TEL: 049-234-6326<br>東武東上線 鶴ヶ島駅東口 徒歩0分</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-title">メニュー</div>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="price.html">施術料金</a></li>
+          <li><a href="cases.html">施術例</a></li>
+          <li><a href="sebone.html">背骨のゆがみ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-title">診療時間</div>
+        <ul>
+          <li><a href="#">平日 9:00〜11:30</a></li>
+          <li><a href="#">平日 15:00〜20:30</a></li>
+          <li><a href="#">土曜 9:00〜11:30</a></li>
+          <li><a href="#">土曜 13:30〜17:00</a></li>
+          <li><a href="#">日祝 定休</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 鶴ヶ島カイロプラクティックセンター All Rights Reserved.</span>
+      <span class="footer-credit">Demo site by <a href="https://georji-and-co.github.io/" target="_blank">Georji &amp; Co.</a></span>
+    </div>
+  </div>
+</footer>
+
+<nav class="sticky-cta">
+  <a href="tel:049-234-6326">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.2a16 16 0 006 6l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    電話予約
+  </a>
+  <a href="access.html">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    アクセス
+  </a>
+  <a href="price.html">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    料金
+  </a>
+  <a href="tel:049-234-6326" class="cta-primary">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.2a16 16 0 006 6l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    今すぐ予約
+  </a>
+</nav>
+
+<script src="common.js"></script>
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.case-item').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.add('show');
+      } else {
+        card.classList.remove('show');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

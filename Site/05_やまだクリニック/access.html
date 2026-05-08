@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アクセス｜やまだクリニック</title>
+  <meta name="description" content="やまだクリニックへのアクセス。埼玉県坂戸市清水町46-46。東武東上線坂戸駅より徒歩約15分。無料駐車場10台完備。">
+  <link rel="canonical" href="https://georji-and-co.github.io/yamada-clinic-demo/access.html">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .map-big iframe { width: 100%; height: 320px; border-radius: 16px; border: none; display: block; margin-top: 28px; }
+    @media (min-width: 768px) { .map-big iframe { height: 480px; } }
+    .info-cards { display: grid; gap: 14px; margin-top: 36px; }
+    @media (min-width: 560px) { .info-cards { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (min-width: 900px) { .info-cards { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .info-card { background: var(--white); border-radius: 12px; padding: 22px 18px; border: 1px solid var(--border); min-width: 0; }
+    .info-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .info-card-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .info-card-icon svg { width: 18px !important; height: 18px !important; color: var(--green); }
+    .info-card-title { font-family: var(--font-min); font-size: 14px; font-weight: 700; color: var(--green); }
+    .info-card-body { font-size: 13px; color: var(--text); line-height: 1.8; }
+    .info-card-body a { color: var(--green); text-decoration: underline; }
+    .route-steps { display: flex; flex-direction: column; max-width: 100%; margin: 28px auto 0; overflow: hidden; }
+    .route-step { display: flex; gap: 14px; }
+    .route-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .route-num { width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: var(--white); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .route-line { width: 2px; flex: 1; background: var(--green); opacity: .25; min-height: 28px; margin: 4px 0; }
+    .route-step:last-child .route-line { display: none; }
+    .route-body { padding: 4px 0 24px; min-width: 0; }
+    .route-title { font-family: var(--font-min); font-size: 15px; font-weight: 700; color: var(--green); }
+    .route-desc { font-size: 13px; color: var(--text-mid); margin-top: 4px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+<div class="demo-banner"><span>DEMO</span><p>このサイトはGeorji &amp; Co.が制作したデモサイトです</p></div>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-wrap"><div class="logo-ja">やまだクリニック</div><div class="logo-en">Yamada Clinic</div><div class="logo-sub">内科・消化器内科・外科</div></div>
+    <nav class="pc-nav"><a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間</a><a href="access.html" style="background:var(--green-light);color:var(--green);">アクセス</a><a href="contact.html">お問い合わせ</a></nav>
+    <div class="header-cta"><a href="tel:0492887788" class="btn-tel"><small>お電話でのお問い合わせ</small>049-288-7788</a></div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="sp-menu" id="spMenu">
+  <a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間・休診情報</a><a href="access.html">アクセス</a><a href="contact.html">お問い合わせ</a>
+  <a href="tel:0492887788" class="sp-tel"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>049-288-7788</a>
+</nav>
+<div class="page-hero"><h1 class="page-hero-title">アクセス</h1><p class="page-hero-sub">Access &amp; Location</p></div>
+<nav class="breadcrumb"><ol><li><a href="index.html">ホーム</a></li><li>アクセス</li></ol></nav>
+
+<section style="background:var(--white);">
+  <div class="container">
+    <p class="section-label fade-in">Location Info</p>
+    <h2 class="section-title fade-in">クリニックの基本情報</h2>
+    <div class="info-cards">
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="info-card-title">住所</div></div><div class="info-card-body">〒350-0222<br>埼玉県坂戸市清水町46番46号</div></div>
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="info-card-title">電話番号</div></div><div class="info-card-body"><a href="tel:0492887788">049-288-7788</a></div></div>
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="info-card-title">最寄り駅</div></div><div class="info-card-body">東武東上線 坂戸駅<br>徒歩約15分 / 車5分<br>北坂戸駅 徒歩約20分 / 車7分</div></div>
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/></svg></div><div class="info-card-title">駐車場</div></div><div class="info-card-body">無料 10台<br>お車でも安心です</div></div>
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div class="info-card-title">マイナ保険証</div></div><div class="info-card-body">マイナ保険証対応<br>電子処方せんも対応</div></div>
+      <div class="info-card fade-in"><div class="info-card-head"><div class="info-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="info-card-title">診療時間</div></div><div class="info-card-body">月火木金 9:00〜18:00<br>水土 9:00〜12:00<br>日・祝 休診</div></div>
+    </div>
+    <div class="map-big fade-in">
+      <iframe src="https://maps.google.com/maps?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E5%9D%82%E6%88%B0%E5%B8%82%E6%B8%85%E6%B0%B4%E7%94%BA46%E7%95%AA46%E5%8F%B7&output=embed&hl=ja&z=16" loading="lazy" allowfullscreen title="やまだクリニック 地図"></iframe>
+    </div>
+    <div style="text-align:center;margin-top:16px;" class="fade-in">
+      <a href="https://maps.google.com/maps?q=埼玉県坂戸市清水町46-46" target="_blank" rel="noopener" class="btn-outline">Google マップで開く →</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--green-light);">
+  <div class="container">
+    <p class="section-label fade-in">Directions</p>
+    <h2 class="section-title fade-in">電車・バスでのアクセス</h2>
+    <div class="route-steps">
+      <div class="route-step fade-in"><div class="route-left"><div class="route-num">1</div><div class="route-line"></div></div><div class="route-body"><div class="route-title">東武東上線「坂戸駅」で下車</div><p class="route-desc">池袋から急行で約35分。各停では約50分です。</p></div></div>
+      <div class="route-step fade-in"><div class="route-left"><div class="route-num">2</div><div class="route-line"></div></div><div class="route-body"><div class="route-title">南口より徒歩約15分（車で約5分）</div><p class="route-desc">南口を出て、清水川沿いの道を直進します。</p></div></div>
+      <div class="route-step fade-in"><div class="route-left"><div class="route-num">3</div><div class="route-line"></div></div><div class="route-body"><div class="route-title">やまだクリニック 到着</div><p class="route-desc">〒350-0222 埼玉県坂戸市清水町46番46号。無料駐車場（10台）は建物横にございます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><div class="footer-logo-ja">やまだクリニック</div><div class="footer-logo-sub">内科・消化器内科・外科</div><div class="footer-info">〒350-0222 埼玉県坂戸市清水町46番46号<br><a href="tel:0492887788">049-288-7788</a></div></div>
+    <div><div class="footer-nav-title">メニュー</div><nav class="footer-nav"><a href="index.html">ホーム</a><a href="clinic.html">診療案内</a><a href="hours.html">診療時間</a><a href="access.html">アクセス</a><a href="contact.html">お問い合わせ</a></nav></div>
+    <div><div class="footer-nav-title">診療時間</div><div class="footer-info" style="font-size:13px;line-height:2.1;">月・火・木・金<br>9:00〜12:00 ／ 15:00〜18:00<br>水・土　9:00〜12:00（午前のみ）<br>日・祝　休診</div></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; やまだクリニック. All Rights Reserved.</span><span class="footer-credit">Designed by <a href="https://georji-and-co.github.io/" target="_blank" rel="noopener">Georji &amp; Co.</a></span></div>
+</footer>
+<div class="sticky-cta">
+  <a href="tel:0492887788" class="cta-tel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.97a16 16 0 0 0 6.29 6.29l1.28-1.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>電話する</a>
+  <a href="contact.html" class="cta-web"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>お問い合わせ</a>
+</div>
+<nav class="sp-bottom-nav">
+  <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>ホーム</a>
+  <a href="clinic.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>診療</a>
+  <a href="hours.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>時間</a>
+  <a href="access.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>アクセス</a>
+  <a href="contact.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>問合せ</a>
+</nav>
+<script src="common.js"></script>
+</body>
+</html>
