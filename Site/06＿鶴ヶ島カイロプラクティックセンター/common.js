@@ -1,15 +1,23 @@
 /* common.js - 鶴ヶ島カイロプラクティックセンター */
 
 // ===== DYNAMIC OFFSET =====
-// ヘッダー実高 + デモバナー高を測定して .page-top に適用
 function applyOffset() {
   const banner = document.querySelector('.demo-banner');
   const header = document.querySelector('.site-header');
-  const pageTop = document.querySelector('.page-top');
-  if (!header || !pageTop) return;
   const bannerH = banner ? banner.offsetHeight : 0;
-  const headerH = header.offsetHeight;
-  pageTop.style.paddingTop = (bannerH + headerH) + 'px';
+  const headerH = header ? header.offsetHeight : 0;
+  const total = bannerH + headerH;
+
+  // today-bar（index.htmlのみ）
+  const todayBar = document.querySelector('.today-bar');
+  if (todayBar) {
+    todayBar.style.paddingTop = (total + 10) + 'px';
+  }
+
+  // 他ページの page-top
+  document.querySelectorAll('.page-top').forEach(el => {
+    el.style.paddingTop = total + 'px';
+  });
 }
 
 // ===== CLINIC STATUS =====
