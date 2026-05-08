@@ -8,6 +8,9 @@ function applyOffset() {
   const headerH = header ? header.offsetHeight : 0;
   const total = bannerH + headerH;
 
+  // CSS変数も更新
+  document.documentElement.style.setProperty('--offset', total + 'px');
+
   // today-bar（index.htmlのみ）
   const todayBar = document.querySelector('.today-bar');
   if (todayBar) {
@@ -24,8 +27,7 @@ function applyOffset() {
 const CLINIC_INFO = {
   tel: '049-234-6326',
   hours: {
-    // 0=日, 1=月, 2=火, 3=水, 4=木, 5=金, 6=土
-    0: null, // 定休
+    0: null,
     1: [{ s: 9, sm: 0, e: 11, em: 30 }, { s: 15, sm: 0, e: 20, em: 30 }],
     2: [{ s: 9, sm: 0, e: 11, em: 30 }, { s: 15, sm: 0, e: 20, em: 30 }],
     3: [{ s: 9, sm: 0, e: 11, em: 30 }, { s: 15, sm: 0, e: 20, em: 30 }],
@@ -42,10 +44,8 @@ function getClinicStatus() {
   const h = now.getHours();
   const m = now.getMinutes();
   const cur = h + m / 60;
-
   const todayHours = CLINIC_INFO.hours[day];
   if (!todayHours) return { open: false, label: '本日は定休日', next: null };
-
   for (const slot of todayHours) {
     const start = slot.s + slot.sm / 60;
     const end = slot.e + slot.em / 60;
@@ -54,8 +54,6 @@ function getClinicStatus() {
       return { open: true, label: `診療中 〜${endStr}まで`, next: null };
     }
   }
-
-  // Find next opening
   for (const slot of todayHours) {
     const start = slot.s + slot.sm / 60;
     if (cur < start) {
@@ -63,7 +61,6 @@ function getClinicStatus() {
       return { open: false, label: `本日 ${startStr}〜 受付`, next: null };
     }
   }
-
   return { open: false, label: '本日の受付は終了', next: null };
 }
 
@@ -79,13 +76,10 @@ function renderTodayDetail(el) {
   const now = new Date();
   const day = now.getDay();
   const todayHours = CLINIC_INFO.hours[day];
-  const status = getClinicStatus();
-
   if (!todayHours) {
     el.textContent = '本日（' + CLINIC_INFO.dayNames[day] + '）は定休日です';
     return;
   }
-
   const slots = todayHours.map(s => `${s.s}:${String(s.sm).padStart(2,'0')}〜${s.e}:${String(s.em).padStart(2,'0')}`).join(' / ');
   el.textContent = `${CLINIC_INFO.dayNames[day]}曜日 ${slots}`;
 }
@@ -102,16 +96,12 @@ function initFadeIn() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
-  // dynamic offset
   applyOffset();
   window.addEventListener('resize', applyOffset);
-  // status chips
+  window.addEventListener('load', applyOffset);
   document.querySelectorAll('.js-status-chip').forEach(el => renderStatusChip(el));
-  // today detail
   renderTodayDetail(document.getElementById('today-status-detail'));
-  // fade in
   initFadeIn();
-  // active nav
   const path = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.header-nav a, .footer-nav a').forEach(a => {
     const href = a.getAttribute('href');
