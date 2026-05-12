@@ -1,0 +1,21 @@
+# OSが勝手に作るゴミファイル
+.DS_Store
+Thumbs.db
+
+# CursorやVS Codeの設定・キャッシュ
+.vscode/
+.cursor/
+*.log
+
+# 依存パッケージ（容量がデカいので絶対上げない）
+node_modules/
+
+# Next.jsやReactなどのビルド生成物
+.next/
+out/
+build/
+dist/
+
+# 環境変数（パスワードなどが入る。これも絶対上げない）
+.env
+.env.local
