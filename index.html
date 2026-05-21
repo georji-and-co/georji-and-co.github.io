@@ -287,6 +287,17 @@
   .hero-main.is-interactive {
     pointer-events: auto;
   }
+  .hero-lead {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-break: strict;
+  }
+  .hero-lead > span {
+    display: block;
+  }
+  .hero-lead > span + span {
+    margin-top: 0.35em;
+  }
   .hero-scroll-hint {
     opacity: clamp(0, (var(--intro-progress, 0) - 0.7) * 3.5, 1);
   }
@@ -712,8 +723,9 @@
               <span class="mt-2 block bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">より魅力的に。</span>
             </h1>
             <div class="mt-12 flex max-w-3xl flex-col gap-10 lg:mt-16 lg:flex-row lg:items-end lg:justify-between">
-              <p class="max-w-xl text-[0.95rem] leading-[2] text-slate-400 reveal reveal-delay-3">
-                Georji &amp; Co. は、小規模事業者・個人事業主のためのウェブデザインスタジオです。<br class="hidden sm:block" />テンプレートを使わずにゼロベースからデザイン・制作します。
+              <p class="hero-lead max-w-2xl text-[0.95rem] leading-[2] text-slate-400 reveal reveal-delay-3">
+                <span>Georji &amp; Co. は、小規模事業者・個人事業主のための<span class="whitespace-nowrap">ウェブデザインスタジオ</span>です。</span>
+                <span>テンプレートを使わずにゼロベースから<span class="whitespace-nowrap">デザイン・制作</span>します。</span>
               </p>
               <div class="flex shrink-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 reveal reveal-delay-4">
                 <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
