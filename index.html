@@ -51,6 +51,8 @@
 }
 </script>
 
+<link rel="preload" href="assets/logo-georji-co.svg" as="image" type="image/svg+xml">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -88,19 +90,261 @@
 
 <style>
   /* 軽量：ヒーロー用グリッド＋ノイズ風レイヤー（画像リクエストなし） */
-  .hero-pattern {
+  #hero {
+    isolation: isolate;
+  }
+  .hero-scroll-pin {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .hero-scroll-spacer {
+    height: 80dvh;
+    pointer-events: none;
+  }
+  .logo-intro {
+    z-index: 3;
+    opacity: calc(1 - var(--intro-progress, 0) * 1.35);
+    transform: translateY(calc(var(--intro-progress, 0) * -72px))
+      scale(calc(1 - var(--intro-progress, 0) * 0.22));
+    transition: opacity 0.15s linear;
+    will-change: transform, opacity;
+  }
+  .nav-brand {
+    font-size: clamp(1.2rem, 2.8vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+  }
+  .logo-intro-glow {
+    position: absolute;
+    width: min(108vw, 1100px);
+    aspect-ratio: 344 / 208;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 52% 48% at 50% 48%, rgba(255, 255, 255, 0.14) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 55% at 50% 50%, rgba(125, 211, 252, 0.08) 0%, transparent 72%);
+    filter: blur(52px);
+    transform: scale(calc(1.1 + var(--intro-progress, 0) * 0.1));
+    opacity: calc(1 - var(--intro-progress, 0) * 0.9);
+  }
+  .logo-intro-visual {
+    position: relative;
+    z-index: 1;
+    transform: translateY(calc(var(--intro-progress, 0) * -40px));
+  }
+  .logo-intro-mist {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 0;
+    width: min(98vw, 980px);
+    height: min(68vh, 580px);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .logo-intro-mist::before,
+  .logo-intro-mist::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    filter: blur(36px);
+  }
+  .logo-intro-mist::before {
+    background: radial-gradient(
+      ellipse 58% 52% at 50% 50%,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.06) 42%,
+      transparent 72%
+    );
+    transform: scale(1.05);
+  }
+  .logo-intro-mist::after {
+    inset: 8% 5%;
+    background: radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      rgba(255, 255, 255, 0.07) 0%,
+      transparent 65%
+    );
+    filter: blur(48px);
+    opacity: 0.85;
+  }
+  .logo-intro__mark {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(96vw, 1040px);
+    height: auto;
+    max-height: min(74vh, 68dvh, 640px);
+    margin: 0 auto;
+    object-fit: contain;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    filter:
+      drop-shadow(0 0 48px rgba(255, 255, 255, 0.22))
+      drop-shadow(0 0 96px rgba(255, 255, 255, 0.1))
+      drop-shadow(0 0 64px rgba(125, 211, 252, 0.14));
+  }
+  @media (min-width: 768px) {
+    .logo-intro-glow {
+      width: min(100vw, 1320px);
+    }
+    .logo-intro-mist {
+      width: min(100vw, 1180px);
+      height: min(78vh, 680px);
+    }
+    .logo-intro__mark {
+      width: min(92vw, 1280px);
+      max-height: min(80vh, 760px);
+    }
+  }
+  @media (min-width: 1280px) {
+    .logo-intro-glow {
+      width: min(95vw, 1480px);
+    }
+    .logo-intro-mist {
+      width: min(92vw, 1380px);
+      height: min(84vh, 820px);
+    }
+    .logo-intro__mark {
+      width: min(88vw, 1400px);
+      max-height: min(86vh, 820px);
+    }
+  }
+  .logo-intro-hint {
+    position: absolute;
+    bottom: clamp(5rem, 12vh, 7rem);
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+    opacity: calc(1 - var(--intro-progress, 0) * 3);
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    color: rgb(100 116 139);
+  }
+  .logo-intro-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 2.25rem;
+    margin: 0.5rem auto 0;
+    background: linear-gradient(to bottom, rgba(125, 211, 252, 0.6), rgba(216, 203, 184, 0.3), transparent);
+    animation: logo-hint-pulse 2s ease-in-out infinite;
+  }
+  @keyframes logo-hint-pulse {
+    0%, 100% { opacity: 0.45; transform: scaleY(0.85); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+  @keyframes logo-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.92) translateY(28px);
+      filter: blur(8px)
+        drop-shadow(0 0 0 transparent)
+        drop-shadow(0 0 0 transparent)
+        drop-shadow(0 0 0 transparent);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0)
+        drop-shadow(0 0 48px rgba(255, 255, 255, 0.22))
+        drop-shadow(0 0 96px rgba(255, 255, 255, 0.1))
+        drop-shadow(0 0 64px rgba(125, 211, 252, 0.14));
+    }
+  }
+  @keyframes logo-mist-enter {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.92);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @keyframes logo-glow-enter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .logo-intro-visual.is-entered .logo-intro-glow {
+    animation: logo-glow-enter 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+  .logo-intro-visual.is-entered .logo-intro-mist {
+    animation: logo-mist-enter 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+  .logo-intro-visual.is-entered .logo-intro__mark {
+    animation: logo-enter 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+  .hero-main {
+    z-index: 2;
+    opacity: clamp(0, (var(--intro-progress, 0) - 0.32) * 2.2, 1);
+    transform: translateY(calc((1 - var(--intro-progress, 0)) * 40px));
+    pointer-events: none;
+  }
+  .hero-main.is-interactive {
+    pointer-events: auto;
+  }
+  .hero-scroll-hint {
+    opacity: clamp(0, (var(--intro-progress, 0) - 0.7) * 3.5, 1);
+  }
+  body.intro-active #nav {
+    border-color: transparent;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll-spacer { height: 0; }
+    .logo-intro {
+      opacity: 0;
+      pointer-events: none;
+      transform: none;
+    }
+    .logo-intro-hint { display: none; }
+    .hero-main {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .logo-intro-visual.is-entered .logo-intro-glow,
+    .logo-intro-visual.is-entered .logo-intro-mist,
+    .logo-intro-visual.is-entered .logo-intro__mark { animation: none; }
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* JS不要：スクロール時にグリッドだけ画面に固定されて遅れて動く */
+  .hero-bg-grid {
     background-color: #030305;
     background-image:
-      linear-gradient(rgba(125, 211, 252, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(125, 211, 252, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 211, 252, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
+    background-attachment: fixed;
     mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
     -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
   }
-  .hero-noise {
-    pointer-events: none;
-    opacity: 0.04;
+  .hero-bg-noise {
+    opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+  .hero-bg-glow {
+    top: -20%;
+    height: 140%;
+    will-change: transform;
+  }
+  .hero-bg-glow-cyan {
+    transform: translate3d(0, calc(var(--hero-scroll, 0px) * 0.7), 0);
+  }
+  .hero-bg-glow-sand {
+    transform: translate3d(0, calc(var(--hero-scroll, 0px) * 0.35), 0);
   }
   .reveal {
     opacity: 0;
@@ -117,6 +361,9 @@
   .reveal-delay-4 { transition-delay: 0.32s; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-bg-grid { background-attachment: scroll; }
+    .hero-bg-glow-cyan,
+    .hero-bg-glow-sand { transform: none; }
     html { scroll-behavior: auto; }
   }
   #menuBtn.is-open [data-bar="1"] { transform: translateY(5px) rotate(45deg); }
@@ -131,6 +378,251 @@
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
   }
+  /* about：写真＋縁をぼかして背景に溶け込ませる */
+  .about-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: none;
+    background: #030305;
+    box-shadow: 0 28px 72px -32px rgba(0, 0, 0, 0.55);
+    isolation: isolate;
+  }
+  .about-media__img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    max-height: min(56vw, 280px);
+    object-fit: cover;
+    object-position: center 50%;
+  }
+  .about-media__overlay,
+  .about-media__edge {
+    z-index: 2;
+  }
+  .about-media__overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse 94% 90% at 50% 48%,
+        transparent 58%,
+        rgba(3, 3, 5, 0.18) 80%,
+        rgba(3, 3, 5, 0.65) 100%
+      ),
+      linear-gradient(155deg, rgba(125, 211, 252, 0.08) 0%, transparent 45%),
+      linear-gradient(to top, rgba(3, 3, 5, 0.55) 0%, transparent 62%),
+      linear-gradient(to right, rgba(3, 3, 5, 0.28) 0%, transparent 52%);
+  }
+  .about-media__edge {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 36px 10px rgba(3, 3, 5, 0.4),
+      inset 0 0 56px 16px rgba(3, 3, 5, 0.18);
+  }
+  .about-media__credit {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.65rem;
+    z-index: 1;
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: rgba(148, 163, 184, 0.55);
+  }
+  .about-media__credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .about-media__credit a:hover {
+    color: rgba(203, 213, 225, 0.85);
+  }
+  @media (min-width: 640px) {
+    .about-media__img {
+      aspect-ratio: 16 / 10;
+      max-height: 320px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .about-media__img {
+      aspect-ratio: 4 / 5;
+      max-height: 420px;
+    }
+  }
+  .services-title {
+    text-wrap: balance;
+  }
+  @media (min-width: 1024px) {
+    .services-title {
+      white-space: nowrap;
+    }
+  }
+  /* 実績カード：傾き＋上端ハイライト＋グロー */
+  .work-card {
+    transform-style: preserve-3d;
+    transition:
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+    will-change: transform;
+  }
+  .work-card-edge {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+  .work-card-edge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(125, 211, 252, 0.55) 35%,
+      rgba(216, 203, 184, 0.65) 65%,
+      transparent
+    );
+    transform: scaleX(0.4);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .work-card-glare {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    border-radius: inherit;
+    opacity: 0;
+    background: radial-gradient(
+      circle at var(--work-mx, 50%) var(--work-my, 30%),
+      rgba(125, 211, 252, 0.14) 0%,
+      transparent 55%
+    );
+    transition: opacity 0.4s ease;
+  }
+  @media (hover: hover) {
+    .work-card:hover,
+    .work-card.is-hover {
+      border-color: rgba(125, 211, 252, 0.28);
+      box-shadow:
+        0 4px 24px -8px rgba(0, 0, 0, 0.5),
+        0 0 56px -16px rgba(125, 211, 252, 0.22);
+    }
+    .work-card:hover .work-card-edge,
+    .work-card.is-hover .work-card-edge {
+      opacity: 1;
+    }
+    .work-card:hover .work-card-edge::before,
+    .work-card.is-hover .work-card-edge::before {
+      transform: scaleX(1);
+    }
+    .work-card:hover .work-card-glare,
+    .work-card.is-hover .work-card-glare {
+      opacity: 1;
+    }
+  }
+  .work-card__preview-link {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+  .work-card__preview-link:focus-visible {
+    outline: 2px solid rgba(125, 211, 252, 0.45);
+    outline-offset: 3px;
+  }
+  .work-card__site-link {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgb(148 163 184);
+    transition: color 0.3s ease, gap 0.3s ease;
+  }
+  .work-card__site-link:hover {
+    color: rgb(125 211 252);
+    gap: 0.65rem;
+  }
+  .work-preview-scale {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .work-card__preview-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  /* サービスカード：透過背景画像（テキストは前面に必ず表示） */
+  .service-card {
+    isolation: isolate;
+    background-color: #111318;
+  }
+  .service-card__bg {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .service-card__inner {
+    position: relative;
+    z-index: 1;
+  }
+  .service-card__bg-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(58%, 300px);
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.14;
+    filter: saturate(0.65) brightness(0.75);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.25) 28%, black 52%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.25) 28%, black 52%);
+    transition: opacity 0.45s ease;
+  }
+  .service-card:hover .service-card__bg-img {
+    opacity: 0.2;
+  }
+  .service-card__bg-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(17, 19, 24, 0.55) 0%,
+      rgba(17, 19, 24, 0.35) 45%,
+      rgba(17, 19, 24, 0.15) 72%,
+      transparent 100%
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .service-card__bg-img { transition: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .work-card { transform: none !important; will-change: auto; }
+  }
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -142,7 +634,7 @@
   gtag('config', 'G-V06KNLZ1MB');
 </script>
 </head>
-<body class="bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
+<body class="intro-active bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
 
   <!-- 背景グラデ＋メッシュ -->
   <div class="pointer-events-none fixed inset-0 z-0 bg-mesh" aria-hidden="true"></div>
@@ -151,7 +643,7 @@
   <!-- NAV -->
   <header class="fixed inset-x-0 top-0 z-[200]">
     <nav id="nav" class="flex items-center justify-between border-b border-transparent px-5 py-4 transition-colors duration-300 sm:px-8 lg:px-12">
-      <a href="#" class="font-display text-base font-medium tracking-[0.14em] text-white sm:text-lg">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</a>
+      <a href="#" class="nav-brand font-display font-medium text-white">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</a>
       <ul class="hidden items-center gap-10 text-[0.72rem] font-normal tracking-[0.12em] text-slate-400 md:flex">
         <li><a href="#services" class="transition-colors hover:text-white">サービス</a></li>
         <li><a href="#about" class="transition-colors hover:text-white">about</a></li>
@@ -175,42 +667,70 @@
   </header>
 
   <main class="relative z-[1]">
-    <!-- HERO -->
-    <section class="relative flex min-h-[100dvh] flex-col justify-center overflow-hidden px-5 pb-24 pt-28 sm:px-8 lg:px-12 lg:pb-32 lg:pt-36">
-      <div class="pointer-events-none absolute inset-0 hero-pattern" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute inset-0 hero-noise mix-blend-overlay" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-1/4 top-1/4 h-[min(90vw,520px)] w-[min(90vw,520px)] rounded-full bg-cyanaccent/10 blur-[100px]" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-1/4 bottom-0 h-[min(70vw,420px)] w-[min(70vw,420px)] rounded-full bg-sand/8 blur-[90px]" aria-hidden="true"></div>
+    <!-- HERO：ロゴイントロ → スクロールで本文 -->
+    <section id="hero" class="relative">
+      <div class="hero-scroll-pin">
+        <div class="hero-bg hero-bg-grid" aria-hidden="true"></div>
+        <div class="hero-bg hero-bg-noise" aria-hidden="true"></div>
+        <div class="hero-bg hero-bg-glow hero-bg-glow-cyan" aria-hidden="true">
+          <div class="absolute -left-1/4 top-1/4 h-[min(90vw,520px)] w-[min(90vw,520px)] rounded-full bg-cyanaccent/16 blur-[100px]"></div>
+        </div>
+        <div class="hero-bg hero-bg-glow hero-bg-glow-sand" aria-hidden="true">
+          <div class="absolute -right-1/4 bottom-0 h-[min(70vw,420px)] w-[min(70vw,420px)] rounded-full bg-sand/14 blur-[90px]"></div>
+        </div>
 
-      <div class="relative mx-auto w-full max-w-6xl">
-        <p class="mb-6 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400 reveal">
-          <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
-          ウェブデザイン・制作スタジオ · 東京・埼玉
-        </p>
-        <p class="font-display text-[clamp(1.75rem,5vw,2.75rem)] font-medium leading-snug tracking-[0.06em] text-white/90 reveal reveal-delay-1">
-          Georji <span class="text-sand">&amp;</span> <span class="text-cyanaccent/85">Co.</span>
-        </p>
-        <h1 class="mt-8 max-w-[18ch] font-display text-[clamp(2.25rem,8.5vw,5.75rem)] font-semibold leading-[1.08] tracking-[0.02em] text-white reveal reveal-delay-2" style="text-wrap: balance;">
-          <span class="block text-[0.42em] font-medium tracking-[0.04em] text-slate-400 sm:text-[0.38em]">あなたのウェブサイトを、</span>
-          <span class="mt-2 block bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">より魅力的に。</span>
-        </h1>
-        <div class="mt-12 flex max-w-3xl flex-col gap-10 lg:mt-16 lg:flex-row lg:items-end lg:justify-between">
-          <p class="max-w-xl text-[0.95rem] leading-[2] text-slate-400 reveal reveal-delay-3">
-            Georji &amp; Co. は、小規模事業者・個人事業主のためのウェブデザインスタジオです。<br class="hidden sm:block" />テンプレートを使わずにゼロベースからデザイン・制作します。
-          </p>
-          <div class="flex shrink-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 reveal reveal-delay-4">
-            <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
-              ご相談はこちら
-              <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-            </a>
-            <a href="#works" class="text-center text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">実績を見る ↓</a>
+        <!-- ロゴイントロ -->
+        <div id="logoIntro" class="logo-intro pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-5" aria-hidden="false">
+          <div class="logo-intro-glow" aria-hidden="true"></div>
+          <div class="logo-intro-visual is-entered" id="logoIntroFrame">
+            <div class="logo-intro-mist" aria-hidden="true"></div>
+            <img
+              src="assets/logo-georji-co.svg"
+              alt="Georji &amp; Co."
+              class="logo-intro__mark"
+              width="1400"
+              height="846"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <p class="logo-intro-hint">スクロール</p>
+        </div>
+
+        <!-- 本文ヒーロー -->
+        <div id="heroMain" class="hero-main absolute inset-0 flex flex-col justify-center overflow-hidden px-5 pb-24 pt-28 sm:px-8 lg:px-12 lg:pb-32 lg:pt-36">
+          <div class="relative z-[1] mx-auto w-full max-w-6xl">
+            <p class="mb-6 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400 reveal">
+              <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
+              ウェブデザイン・制作スタジオ · 東京・埼玉
+            </p>
+            <p class="font-display text-[clamp(1.75rem,5vw,2.75rem)] font-medium leading-snug tracking-[0.06em] text-white/90 reveal reveal-delay-1">
+              Georji <span class="text-sand">&amp;</span> <span class="text-cyanaccent/85">Co.</span>
+            </p>
+            <h1 class="mt-8 max-w-[18ch] font-display text-[clamp(2.25rem,8.5vw,5.75rem)] font-semibold leading-[1.08] tracking-[0.02em] text-white reveal reveal-delay-2" style="text-wrap: balance;">
+              <span class="block text-[0.42em] font-medium tracking-[0.04em] text-slate-400 sm:text-[0.38em]">あなたのウェブサイトを、</span>
+              <span class="mt-2 block bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">より魅力的に。</span>
+            </h1>
+            <div class="mt-12 flex max-w-3xl flex-col gap-10 lg:mt-16 lg:flex-row lg:items-end lg:justify-between">
+              <p class="max-w-xl text-[0.95rem] leading-[2] text-slate-400 reveal reveal-delay-3">
+                Georji &amp; Co. は、小規模事業者・個人事業主のためのウェブデザインスタジオです。<br class="hidden sm:block" />テンプレートを使わずにゼロベースからデザイン・制作します。
+              </p>
+              <div class="flex shrink-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 reveal reveal-delay-4">
+                <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
+                  ご相談はこちら
+                  <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                </a>
+                <a href="#works" class="text-center text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">実績を見る ↓</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-scroll-hint absolute bottom-8 left-1/2 z-[1] hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex" aria-hidden="true">
+            <span class="text-[0.62rem] font-light tracking-[0.22em] text-slate-500">スクロール</span>
+            <span class="h-9 w-px bg-gradient-to-b from-cyanaccent/60 via-sand/30 to-transparent"></span>
           </div>
         </div>
       </div>
-      <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex" aria-hidden="true">
-        <span class="text-[0.62rem] font-light tracking-[0.22em] text-slate-500">スクロール</span>
-        <span class="h-9 w-px bg-gradient-to-b from-cyanaccent/60 via-sand/30 to-transparent"></span>
-      </div>
+      <div class="hero-scroll-spacer" aria-hidden="true"></div>
     </section>
 
     <!-- STATS -->
@@ -240,7 +760,7 @@
               <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
               サービス
             </p>
-            <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">サイトづくりと、その先まで。</h2>
+            <h2 class="services-title reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">サイトづくりと、<span class="whitespace-nowrap">その先まで。</span></h2>
           </div>
           <p class="reveal reveal-delay-2 max-w-xl text-[0.92rem] leading-[2] text-slate-400 lg:justify-self-end">
             制作・保守・発信まで、必要なことをひとつの窓口で。余計な中間は挟まず、担当と直接やり取りします。
@@ -248,7 +768,12 @@
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
           <!-- Card 01 -->
-          <article class="reveal group relative overflow-hidden rounded-2xl border border-line bg-elevated/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-sm transition-all duration-500 hover:border-cyanaccent/25 hover:shadow-[0_24px_80px_-24px_rgba(125,211,252,0.15)] sm:p-10">
+          <article class="service-card reveal group relative overflow-hidden rounded-2xl border border-line p-8 shadow-2xl shadow-black/40 transition-all duration-500 hover:border-cyanaccent/25 hover:shadow-[0_24px_80px_-24px_rgba(125,211,252,0.15)] sm:p-10">
+            <div class="service-card__bg" aria-hidden="true">
+              <img class="service-card__bg-img" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=640&amp;h=400&amp;q=75" alt="" width="640" height="400" loading="lazy" decoding="async" />
+              <div class="service-card__bg-scrim"></div>
+            </div>
+            <div class="service-card__inner">
             <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-cyanaccent to-sand transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true"></div>
             <p class="mb-8 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">01 / 制作</p>
             <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02] transition-colors group-hover:border-sand/30 group-hover:bg-sand/[0.06]">
@@ -264,9 +789,15 @@
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>Cloudflareホスティング・ドメイン設定</li>
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>お問い合わせフォーム設置</li>
             </ul>
+            </div>
           </article>
           <!-- Card 02 -->
-          <article class="reveal reveal-delay-1 group relative overflow-hidden rounded-2xl border border-line bg-elevated/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-sm transition-all duration-500 hover:border-cyanaccent/25 hover:shadow-[0_24px_80px_-24px_rgba(125,211,252,0.12)] sm:p-10">
+          <article class="service-card reveal reveal-delay-1 group relative overflow-hidden rounded-2xl border border-line p-8 shadow-2xl shadow-black/40 transition-all duration-500 hover:border-cyanaccent/25 hover:shadow-[0_24px_80px_-24px_rgba(125,211,252,0.12)] sm:p-10">
+            <div class="service-card__bg" aria-hidden="true">
+              <img class="service-card__bg-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=640&amp;h=400&amp;q=75" alt="" width="640" height="400" loading="lazy" decoding="async" />
+              <div class="service-card__bg-scrim"></div>
+            </div>
+            <div class="service-card__inner">
             <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-cyanaccent to-sand transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true"></div>
             <p class="mb-8 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">02 / 保守</p>
             <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02] transition-colors group-hover:border-cyanaccent/35 group-hover:bg-cyanaccent/[0.06]">
@@ -283,9 +814,15 @@
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>直接連絡・迅速対応</li>
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>料金はご相談ください</li>
             </ul>
+            </div>
           </article>
           <!-- Card 03 -->
-          <article class="reveal reveal-delay-2 group relative overflow-hidden rounded-2xl border border-line bg-elevated/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-sm transition-all duration-500 hover:border-cyanaccent/25 sm:p-10">
+          <article class="service-card reveal reveal-delay-2 group relative overflow-hidden rounded-2xl border border-line p-8 shadow-2xl shadow-black/40 transition-all duration-500 hover:border-cyanaccent/25 sm:p-10">
+            <div class="service-card__bg" aria-hidden="true">
+              <img class="service-card__bg-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=640&amp;h=400&amp;q=75" alt="" width="640" height="400" loading="lazy" decoding="async" />
+              <div class="service-card__bg-scrim"></div>
+            </div>
+            <div class="service-card__inner">
             <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-cyanaccent to-sand transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true"></div>
             <p class="mb-8 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">03 / 広告</p>
             <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02] transition-colors group-hover:border-cyanaccent/35 group-hover:bg-cyanaccent/[0.06]">
@@ -305,9 +842,15 @@
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">DV360</span>
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">Netflix（DV360経由）</span>
             </div>
+            </div>
           </article>
           <!-- Card 04 -->
-          <article class="reveal reveal-delay-3 group relative overflow-hidden rounded-2xl border border-line bg-elevated/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-sm transition-all duration-500 hover:border-sand/25 hover:shadow-[0_24px_80px_-24px_rgba(216,203,184,0.12)] sm:p-10">
+          <article class="service-card reveal reveal-delay-3 group relative overflow-hidden rounded-2xl border border-line p-8 shadow-2xl shadow-black/40 transition-all duration-500 hover:border-sand/25 hover:shadow-[0_24px_80px_-24px_rgba(216,203,184,0.12)] sm:p-10">
+            <div class="service-card__bg" aria-hidden="true">
+              <img class="service-card__bg-img" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=640&amp;h=400&amp;q=75" alt="" width="640" height="400" loading="lazy" decoding="async" />
+              <div class="service-card__bg-scrim"></div>
+            </div>
+            <div class="service-card__inner">
             <div class="pointer-events-none absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-cyanaccent to-sand transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true"></div>
             <p class="mb-8 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">04 / 相談</p>
             <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02] transition-colors group-hover:border-sand/30 group-hover:bg-sand/[0.06]">
@@ -323,8 +866,13 @@
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>サイト構成・コンテンツ設計</li>
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>正直で実践的な提案</li>
             </ul>
+            </div>
           </article>
         </div>
+        <p class="reveal reveal-delay-2 mt-4 text-right text-[0.58rem] tracking-wide text-slate-600">
+          サービス写真：
+          <a class="text-slate-500 transition-colors hover:text-slate-400" href="https://unsplash.com?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a>
+        </p>
       </div>
     </section>
 
@@ -344,14 +892,28 @@
               <p>大規模なシステムを動かしてきた知見があるからこそ、あなたのビジネス情報を魅力的に伝えるために真摯に向き合います。</p>
             </div>
           </div>
-          <div class="reveal reveal-delay-3 hidden min-h-[280px] overflow-hidden rounded-3xl border border-line bg-elevated/50 lg:col-span-5 lg:block" aria-hidden="true">
-            <div class="relative h-full min-h-[280px]">
-              <div class="absolute inset-0 bg-gradient-to-br from-cyanaccent/15 via-transparent to-sand/10"></div>
-              <div class="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06]"></div>
-              <div class="absolute bottom-8 right-8 h-32 w-32 rounded-2xl border border-cyanaccent/20 bg-cyanaccent/[0.04] blur-[1px]"></div>
-              <div class="absolute left-10 top-12 h-24 w-24 rounded-full bg-sand/10 blur-2xl"></div>
-            </div>
-          </div>
+          <figure class="about-media reveal reveal-delay-3 lg:col-span-5">
+            <img
+              class="about-media__img"
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
+              srcset="
+                https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
+                https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
+              "
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              alt="複数の画面に表示されたデータ分析ダッシュボード"
+              width="960"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="about-media__overlay" aria-hidden="true"></div>
+            <div class="about-media__edge" aria-hidden="true"></div>
+            <figcaption class="about-media__credit">
+              <a href="https://unsplash.com/photos/turned-on-monitoring-screen-l_ExpFbbRtco?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
+              · Unsplash
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -367,40 +929,90 @@
           <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">制作実績。</h2>
         </div>
         <div class="grid gap-4 lg:grid-cols-12 lg:gap-5">
-          <article class="reveal group relative overflow-hidden rounded-3xl border border-line bg-elevated lg:col-span-8">
+          <!-- Den -->
+          <article class="work-card reveal group relative overflow-hidden rounded-3xl border border-line bg-elevated lg:col-span-6">
+            <div class="work-card-edge" aria-hidden="true"></div>
+            <div class="work-card-glare" aria-hidden="true"></div>
             <div class="relative overflow-hidden">
-              <div class="work-preview-scale aspect-[16/10] min-h-[220px] origin-center transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:min-h-[280px] lg:min-h-[340px]">
-                <div class="den-mock flex h-full min-h-[220px] flex-col bg-gradient-to-b from-[#060910] to-[#121a26] sm:min-h-[280px] lg:min-h-[340px]">
-                  <div class="flex items-center justify-between border-b border-white/10 px-5 py-3.5">
-                    <div class="font-display text-sm font-medium tracking-[0.08em] text-[#e8e4dc]">Den</div>
-                    <div class="flex gap-3">
-                      <span class="h-0.5 w-5 rounded-sm bg-slate-500/25" aria-hidden="true"></span>
-                      <span class="h-0.5 w-5 rounded-sm bg-slate-500/25" aria-hidden="true"></span>
-                      <span class="h-0.5 w-5 rounded-sm bg-slate-500/25" aria-hidden="true"></span>
-                    </div>
-                  </div>
-                  <div class="flex flex-1 flex-col justify-center gap-2.5 px-5 py-6">
-                    <span class="h-1.5 w-14 rounded-sm bg-gradient-to-r from-cyanaccent/75 to-sand/65" aria-hidden="true"></span>
-                    <span class="h-2.5 w-32 rounded-sm bg-white/70" aria-hidden="true"></span>
-                    <span class="h-2.5 w-24 rounded-sm bg-slate-400/35" aria-hidden="true"></span>
-                    <span class="mt-1 h-1 w-40 rounded-sm bg-slate-400/20" aria-hidden="true"></span>
-                    <span class="h-1 w-32 rounded-sm bg-slate-400/12" aria-hidden="true"></span>
-                    <span class="mt-2 h-4 w-[52px] rounded-sm bg-gradient-to-r from-cyanaccent/65 to-sand/55" aria-hidden="true"></span>
-                  </div>
-                </div>
+              <a
+                href="https://georji-and-co.github.io/den-website/"
+                class="work-card__preview-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="株式会社Denのサイトを見る（新しいタブ）"
+              >
+              <div class="work-preview-scale origin-center overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+                <img
+                  src="assets/work-den-preview.png"
+                  alt="株式会社Den ウェブサイトのプレビュー"
+                  class="work-card__preview-img"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
+              </a>
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80" aria-hidden="true"></div>
             </div>
-            <div class="relative p-6 sm:p-8 lg:p-10">
-              <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">コーポレートサイト</span>
-              <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white sm:text-2xl">株式会社Den</h3>
-              <p class="mt-3 max-w-2xl text-[0.88rem] leading-[1.95] text-slate-400">ゼロから設計・制作したコーポレートサイト。ダークトーンのミニマルなデザインで、問い合わせへの導線をシンプルに設計。</p>
+            <div class="relative p-6 sm:p-8">
+              <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
+              <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社Den</h3>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">関東エリアの外構工事会社向けコーポレートサイト。施工メニューから施工の流れ・事例まで、ダークトーンでサービスと信頼感を伝える構成です。</p>
+              <a
+                href="https://georji-and-co.github.io/den-website/"
+                class="work-card__site-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >サイトを見る <span aria-hidden="true">→</span></a>
             </div>
           </article>
-          <button type="button" class="reveal reveal-delay-1 group relative flex min-h-[240px] cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-elevated to-surface p-8 text-center transition-all duration-500 hover:border-cyanaccent/35 hover:shadow-[0_0_60px_-20px_rgba(125,211,252,0.25)] lg:col-span-4 lg:min-h-0" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
-            <span class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background: radial-gradient(circle at 50% 50%, rgba(125,211,252,0.08), transparent 65%);" aria-hidden="true"></span>
-            <span class="font-display text-5xl font-normal text-slate-700 transition-colors duration-500 group-hover:text-cyanaccent/90">+</span>
-            <p class="relative mt-4 text-[0.82rem] font-light leading-relaxed text-slate-500 transition-colors group-hover:text-slate-300">次のプロジェクトを、<br />ご一緒できれば幸いです。</p>
+
+          <!-- Sea Ground -->
+          <article class="work-card reveal reveal-delay-1 group relative overflow-hidden rounded-3xl border border-line bg-elevated lg:col-span-6">
+            <div class="work-card-edge" aria-hidden="true"></div>
+            <div class="work-card-glare" aria-hidden="true"></div>
+            <div class="relative overflow-hidden">
+              <a
+                href="https://georji-and-co.github.io/seaground_v2/"
+                class="work-card__preview-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="株式会社 Sea Groundのサイトを見る（新しいタブ）"
+              >
+              <div class="work-preview-scale origin-center overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+                <img
+                  src="assets/work-seaground-preview.png"
+                  alt="株式会社 Sea Ground ウェブサイトのプレビュー"
+                  class="work-card__preview-img"
+                  width="1280"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              </a>
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/15 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80" aria-hidden="true"></div>
+            </div>
+            <div class="relative p-6 sm:p-8">
+              <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
+              <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社 Sea Ground</h3>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">「自然と暮らしをデザインする」ブランドのコーポレートサイト。Sea／Ground の哲学と施工メニューを、余白を活かした構成で丁寧に伝えます。</p>
+              <a
+                href="https://georji-and-co.github.io/seaground_v2/"
+                class="work-card__site-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >サイトを見る <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <!-- CTA -->
+          <button type="button" class="work-card reveal reveal-delay-2 group relative flex min-h-[140px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-elevated to-surface p-8 text-center sm:min-h-[160px] lg:col-span-12" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+            <div class="work-card-edge" aria-hidden="true"></div>
+            <div class="work-card-glare" aria-hidden="true"></div>
+            <span class="font-display text-4xl font-normal text-slate-700 transition-colors duration-500 group-hover:text-cyanaccent/90 sm:text-5xl">+</span>
+            <p class="relative mt-3 text-[0.82rem] font-light leading-relaxed text-slate-500 transition-colors group-hover:text-slate-300">次のプロジェクトを、ご一緒できれば幸いです。</p>
           </button>
         </div>
       </div>
@@ -554,6 +1166,93 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
+      var hero = document.getElementById('hero');
+      var heroMain = document.getElementById('heroMain');
+      var logoIntro = document.getElementById('logoIntro');
+      var logoIntroFrame = document.getElementById('logoIntroFrame');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function updateHeroIntro() {
+        if (!hero) return;
+        var rect = hero.getBoundingClientRect();
+        var scrollable = Math.max(1, hero.offsetHeight - window.innerHeight);
+        var progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+        document.documentElement.style.setProperty('--intro-progress', String(progress));
+        document.body.classList.toggle('intro-active', progress < 0.92);
+        if (heroMain) {
+          heroMain.classList.toggle('is-interactive', progress > 0.48);
+          if (progress > 0.42) {
+            heroMain.querySelectorAll('.reveal').forEach(function (el) {
+              el.classList.add('visible');
+            });
+          }
+        }
+        if (logoIntro) {
+          logoIntro.setAttribute('aria-hidden', progress > 0.82 ? 'true' : 'false');
+        }
+      }
+
+      function updateHeroParallax() {
+        if (!hero || reduceMotion) return;
+        var rect = hero.getBoundingClientRect();
+        var scrollable = Math.max(1, hero.offsetHeight - window.innerHeight);
+        var scrolled = Math.min(Math.max(0, -rect.top), scrollable);
+        hero.style.setProperty('--hero-scroll', scrolled + 'px');
+      }
+
+      function onHeroScroll() {
+        updateHeroIntro();
+        updateHeroParallax();
+      }
+
+      if (hero) {
+        if (reduceMotion) {
+          document.documentElement.style.setProperty('--intro-progress', '1');
+          document.body.classList.remove('intro-active');
+          if (heroMain) {
+            heroMain.classList.add('is-interactive');
+            heroMain.querySelectorAll('.reveal').forEach(function (el) {
+              el.classList.add('visible');
+            });
+          }
+          if (logoIntro) logoIntro.setAttribute('aria-hidden', 'true');
+        } else {
+          if (logoIntroFrame) {
+            logoIntroFrame.classList.add('is-entered');
+          }
+          onHeroScroll();
+          window.addEventListener('scroll', onHeroScroll, { passive: true });
+          window.addEventListener('resize', onHeroScroll, { passive: true });
+        }
+      }
+
+      var workCards = document.querySelectorAll('.work-card');
+      var canTiltWorkCards =
+        !reduceMotion &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (workCards.length && canTiltWorkCards) {
+        workCards.forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var rect = card.getBoundingClientRect();
+            var px = (e.clientX - rect.left) / rect.width - 0.5;
+            var py = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.setProperty('--work-mx', ((px + 0.5) * 100).toFixed(1) + '%');
+            card.style.setProperty('--work-my', ((py + 0.5) * 100).toFixed(1) + '%');
+            card.style.transform =
+              'perspective(920px) rotateX(' +
+              (py * -5).toFixed(2) +
+              'deg) rotateY(' +
+              (px * 6).toFixed(2) +
+              'deg) translateY(-6px)';
+            card.classList.add('is-hover');
+          });
+          card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+            card.classList.remove('is-hover');
+          });
+        });
+      }
+
       var btn = document.getElementById('menuBtn');
       var panel = document.getElementById('mobileMenu');
       function setMenu(open) {
@@ -622,6 +1321,7 @@
           { threshold: 0.1, rootMargin: '0px 0px -8% 0px' }
         );
         document.querySelectorAll('.reveal').forEach(function (el) {
+          if (heroMain && heroMain.contains(el)) return;
           observer.observe(el);
         });
       } else {
