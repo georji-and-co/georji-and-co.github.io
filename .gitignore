@@ -1,3 +1,8 @@
 .DS_Store
 .cursor/
 .pip_packages/
+
+# クライアント案件は Site/ で作業し、各社専用リポジトリへ push
+# georji-and-co.github.io には Georgi&Co 本体のみ載せる
+Site/
+kotobuki_jusetsu/
