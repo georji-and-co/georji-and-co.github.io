@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>株式会社 寿住設リフォーム | 外壁塗装・リフォーム</title>
+<meta name="description" content="外壁診断士・一級塗装技能士が在籍。施工実績13,000軒以上。完全自社施工・全工事10年保証。現地調査・お見積り無料。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:        #fffdf8;
+  --bg-alt:    #f7f0e4;
+  --bg-soft:   #efe6d8;
+  --bg-warm:   #e8dcc8;
+  --ink:       #3d3228;
+  --text:      #5c4f42;
+  --text-soft: #7a6b5c;
+  --muted:     #9a8b7a;
+  --accent:    #6d7b52;
+  --accent-lt: #84966a;
+  --accent-dk: #556244;
+  --warm:      #c9a66b;
+  --warm-lt:   #e8d4b0;
+  --cta:       #c4784a;
+  --cta-hover: #d48958;
+  --line:      rgba(61,50,40,.1);
+  --line-accent: rgba(109,123,82,.28);
+  --shadow-warm: 0 12px 40px rgba(61,50,40,.08);
+  --overlay-hero: linear-gradient(105deg,rgba(255,253,248,.94) 0%,rgba(255,253,248,.82) 42%,rgba(255,253,248,.35) 72%,rgba(255,253,248,.15) 100%);
+  /* 互換エイリアス */
+  --cream:     var(--bg-alt);
+  --cream-lt:  var(--bg);
+  --rust:      var(--accent);
+  --rust-lt:   var(--accent-lt);
+  --rust-dim:  var(--accent-dk);
+  --font-serif:'Noto Serif JP',serif;
+  --font-en:  'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --pad-x:   clamp(20px,4vw,64px);
+  --pad-y:   clamp(72px,10vw,140px);
+  --content: min(1120px,100%);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{
+  font-family:var(--font-body);font-weight:300;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  line-height:1.75;
+}
+img{display:block;max-width:100%;height:auto;}
+.img-cover{width:100%;height:100%;object-fit:cover;}
+.img-credit{font-size:9px;color:var(--muted);margin-top:8px;letter-spacing:.04em;}
+.img-credit a{color:var(--accent-dk);text-decoration:underline;}
+a{text-decoration:none;color:inherit;}
+h1,h2,h3,p,li,label,span{overflow-wrap:break-word;word-break:normal;}
+.section-pad{padding:var(--pad-y) var(--pad-x);}
+.section-inner{width:var(--content);max-width:100%;margin-inline:auto;}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(48px);transition:opacity 0.9s var(--ease-out),transform 0.9s var(--ease-out);}
+.sr.sr--left{transform:translateX(-48px);}
+.sr.sr--right{transform:translateX(48px);}
+.sr.visible{opacity:1;transform:none;}
+.sr-d1{transition-delay:.1s;}.sr-d2{transition-delay:.22s;}.sr-d3{transition-delay:.34s;}.sr-d4{transition-delay:.46s;}
+
+/* HEADER */
+#hdr{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad-x);height:64px;
+  padding-top:env(safe-area-inset-top,0);
+  transition:background .4s,box-shadow .4s,height .4s;
+}
+#hdr.scrolled{
+  background:rgba(255,253,248,.94);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 var(--line);
+  height:56px;
+}
+.hdr-logo{display:flex;align-items:center;gap:14px;}
+.hdr-logo-mark{
+  width:32px;height:32px;
+  border:1px solid var(--line-accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:13px;font-weight:400;
+  color:var(--accent);flex-shrink:0;
+}
+.hdr-logo-text{
+  font-family:var(--font-body);font-weight:400;
+  font-size:clamp(10px,2.8vw,13px);letter-spacing:.12em;color:var(--ink);
+  line-height:1.4;max-width:min(52vw,220px);
+}
+@media(min-width:480px){.hdr-logo-text{letter-spacing:.18em;max-width:none;}}
+.hdr-right{display:flex;align-items:center;gap:20px;}
+.hdr-tel{font-size:13px;letter-spacing:.06em;color:var(--accent);display:none;}
+@media(min-width:640px){.hdr-tel{display:block;}}
+.hdr-cta{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;background:var(--cta);
+  padding:8px 18px;border-radius:4px;
+  transition:background .25s;white-space:nowrap;
+  box-shadow:0 2px 12px rgba(196,120,74,.25);
+}
+.hdr-cta:hover{background:var(--cta-hover);}
+
+/* SP MENU */
+.hdr-burger{display:none;background:none;border:none;color:var(--ink);font-size:20px;cursor:pointer;padding:4px;}
+@media(max-width:639px){.hdr-burger{display:block;}.hdr-cta{display:none;}}
+#sp-nav{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:var(--bg);flex-direction:column;
+  align-items:flex-start;justify-content:center;
+  padding:max(60px,env(safe-area-inset-top)) 32px 40px;gap:28px;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+#sp-nav.open{display:flex;}
+#sp-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;}
+#sp-nav a{font-family:var(--font-serif);font-size:22px;font-weight:200;color:var(--ink);letter-spacing:.06em;}
+
+/* HERO */
+#hero{
+  position:relative;min-height:100svh;min-height:100dvh;
+  background:var(--bg);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(64px + env(safe-area-inset-top,0)) 0 clamp(100px,18vw,120px);
+  overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;overflow:hidden;}
+.hero-bg img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:var(--overlay-hero);
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 50% 40% at 90% 60%,rgba(201,166,107,.12) 0%,transparent 60%);
+}
+/* 縦ライン装飾 */
+.hero-vline{
+  position:absolute;right:15%;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.06) 30%,rgba(0,0,0,.06) 70%,transparent);
+}
+.hero-vline2{
+  position:absolute;right:30%;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(0,0,0,.03) 20%,rgba(0,0,0,.03) 80%,transparent);
+}
+@media(max-width:767px){.hero-vline,.hero-vline2{display:none;}}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 var(--pad-x);width:100%;max-width:min(900px,100%);
+  margin-inline:auto;
+}
+.hero-eyebrow{
+  display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
+  font-size:clamp(10px,2.6vw,12px);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:24px;
+  line-height:1.7;max-width:36em;
+  opacity:0;animation:fadeUp 1s var(--ease-out) .3s forwards;
+}
+.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);display:block;flex-shrink:0;margin-top:.65em;}
+.hero-h1{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(28px,6.5vw,82px);line-height:1.35;
+  color:var(--ink);margin-bottom:20px;
+  text-wrap:balance;
+  opacity:0;animation:fadeUp 1.1s var(--ease-out) .5s forwards;
+}
+.hero-h1 br{display:none;}
+@media(min-width:640px){.hero-h1 br{display:inline;}}
+.hero-sub-en{
+  font-family:var(--font-en);font-style:italic;
+  font-size:clamp(13px,2.2vw,20px);letter-spacing:.12em;
+  color:var(--accent-dk);margin-bottom:32px;line-height:1.6;
+  opacity:0;animation:fadeUp 1s var(--ease-out) .75s forwards;
+}
+.hero-desc{
+  font-size:clamp(13px,1.8vw,15px);line-height:2;
+  color:var(--text-soft);max-width:520px;
+  opacity:0;animation:fadeUp 1s var(--ease-out) .95s forwards;
+}
+.hero-scroll{
+  position:absolute;bottom:clamp(72px,12vw,32px);right:var(--pad-x);
+  display:none;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1.5s forwards;
+}
+@media(min-width:768px){.hero-scroll{display:flex;}}
+.hero-scroll span{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--warm),transparent);animation:lineDown 2s ease-in-out 2s infinite;}
+
+/* ヒーロー下：施工イメージストリップ */
+.photo-strip{
+  background:var(--bg-alt);
+  border-block:1px solid var(--line);
+  padding:20px 0;
+  overflow:hidden;
+}
+.photo-strip-inner{
+  display:flex;gap:12px;
+  padding:0 var(--pad-x);
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.photo-strip-inner::-webkit-scrollbar{display:none;}
+@media(min-width:1024px){
+  .photo-strip-inner{
+    max-width:1280px;margin-inline:auto;
+    overflow:visible;justify-content:center;flex-wrap:wrap;
+  }
+}
+.photo-strip-item{
+  flex:0 0 min(72vw,280px);scroll-snap-align:start;
+  border-radius:6px;overflow:hidden;
+  box-shadow:var(--shadow-warm);
+  border:3px solid #fff;
+}
+@media(min-width:1024px){.photo-strip-item{flex:0 0 calc(16.666% - 10px);}}
+.photo-strip-item img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+.photo-strip-cap{
+  padding:8px 12px;background:#fff;
+  font-size:10px;color:var(--text-soft);letter-spacing:.06em;
+}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes lineDown{
+  0%{transform:scaleY(0);transform-origin:top;}
+  50%{transform:scaleY(1);transform-origin:top;}
+  51%{transform:scaleY(1);transform-origin:bottom;}
+  100%{transform:scaleY(0);transform-origin:bottom;}
+}
+
+/* MISSION */
+#mission{
+  background:var(--bg);padding:var(--pad-y) var(--pad-x);
+  position:relative;
+}
+@media(min-width:768px){
+  #mission{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(48px,6vw,80px);align-items:center;
+    max-width:1280px;margin-inline:auto;
+  }
+}
+.mission-line{position:absolute;top:0;left:50%;width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--warm));transform:translateX(-50%);}
+.section-label{
+  font-size:clamp(9px,2vw,10px);letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:32px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
+  line-height:1.6;
+}
+.section-label span{font-family:var(--font-en);font-size:clamp(11px,2.5vw,12px);color:var(--warm);letter-spacing:.08em;}
+.mission-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(24px,5vw,52px);line-height:1.55;
+  color:var(--ink);max-width:560px;margin-bottom:40px;
+  text-wrap:balance;
+}
+.mission-h2 br{display:none;}
+@media(min-width:640px){.mission-h2 br{display:inline;}}
+.mission-h2 em{font-style:normal;color:var(--accent-dk);}
+.mission-body{font-size:14px;line-height:2.4;color:var(--text);max-width:480px;}
+.mission-phil{
+  font-family:var(--font-en);font-style:italic;
+  font-size:16px;letter-spacing:.12em;color:var(--rust-dim);
+  display:flex;align-items:center;gap:12px;margin-top:40px;
+}
+.mission-phil::before{content:'';width:24px;height:1px;background:var(--rust);display:block;flex-shrink:0;}
+
+/* MISSION aside — photo + facts */
+.mission-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;}
+.mission-fact{
+  background:var(--bg);padding:clamp(20px,4vw,32px) clamp(16px,3vw,24px);
+  border:1px solid var(--line);min-width:0;
+  box-shadow:0 2px 16px rgba(61,50,40,.04);
+}
+.mission-aside{display:flex;flex-direction:column;gap:24px;margin-top:48px;}
+@media(min-width:768px){.mission-aside{margin-top:0;}}
+.mission-visual{
+  border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow-warm);border:4px solid #fff;
+}
+.mission-visual img{aspect-ratio:4/3;object-fit:cover;width:100%;}
+.fact-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;line-height:1.5;}
+.fact-value{font-family:var(--font-serif);font-weight:300;font-size:clamp(20px,4.5vw,30px);color:var(--ink);line-height:1.35;}
+.fact-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;}
+
+/* CERTS strip */
+.certs-strip{background:var(--bg-alt);padding:28px var(--pad-x);border-block:1px solid var(--line);}
+.certs-inner{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1px;
+  max-width:var(--content);margin-inline:auto;
+  background:var(--line);
+}
+@media(min-width:900px){.certs-inner{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(min-width:1100px){
+  .certs-inner{
+    display:flex;flex-wrap:nowrap;
+    border-left:1px solid var(--line);
+    background:transparent;gap:0;
+  }
+}
+.cert-item{
+  padding:clamp(14px,3vw,18px) clamp(14px,2vw,20px);
+  background:var(--bg-alt);min-width:0;
+  border:1px solid var(--line);
+}
+@media(min-width:1100px){
+  .cert-item{
+    flex:1 1 auto;min-width:9.5em;border:none;
+    border-right:1px solid var(--line);
+  }
+}
+.cert-label{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;line-height:1.4;}
+.cert-name{
+  font-family:var(--font-serif);font-size:clamp(11px,2.2vw,13px);font-weight:300;
+  color:var(--ink);letter-spacing:0;line-height:1.45;
+  word-break:keep-all;
+}
+@media(min-width:1100px){.cert-name{font-size:12px;white-space:nowrap;}}
+
+/* SERVICES */
+#services{background:var(--bg);padding:var(--pad-y) var(--pad-x);}
+#services > *{max-width:var(--content);margin-inline:auto;}
+.services-visual{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  margin-bottom:clamp(40px,6vw,56px);
+  border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow-warm);
+}
+@media(min-width:768px){.services-visual{grid-template-columns:1.2fr 1fr;}}
+.services-visual-main{position:relative;min-height:220px;}
+.services-visual-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.services-visual-main::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(61,50,40,.45),transparent 55%);
+}
+.services-visual-cap{
+  position:absolute;bottom:0;left:0;right:0;z-index:1;
+  padding:20px 24px;color:#fff;
+  font-family:var(--font-serif);font-size:clamp(16px,3vw,20px);font-weight:300;
+}
+.services-visual-sub{
+  background:var(--bg-soft);padding:24px;
+  display:flex;flex-direction:column;justify-content:center;gap:12px;
+}
+.services-visual-sub p{font-size:13px;line-height:1.9;color:var(--text-soft);}
+.services-visual-tag{
+  display:inline-block;font-size:10px;letter-spacing:.2em;
+  color:var(--accent-dk);background:var(--warm-lt);
+  padding:6px 12px;border-radius:2px;width:fit-content;
+}
+.services-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,4.8vw,50px);line-height:1.55;
+  color:var(--ink);margin-bottom:clamp(40px,6vw,72px);max-width:640px;
+  text-wrap:balance;
+}
+.services-h2 br{display:none;}
+@media(min-width:640px){.services-h2 br{display:inline;}}
+.svc-list{display:grid;gap:0;}
+@media(min-width:1024px){
+  .svc-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,4vw,56px);}
+  .svc-item:nth-child(odd){padding-right:8px;}
+  .svc-item:nth-child(even){padding-left:8px;border-left:1px solid var(--line);}
+}
+.svc-item{
+  display:grid;grid-template-columns:48px minmax(0,1fr);
+  gap:0 clamp(16px,3vw,28px);padding:clamp(28px,4vw,44px) 0;
+  border-top:1px solid var(--line);
+  transition:background .25s;min-width:0;
+}
+.svc-item:last-child{border-bottom:1px solid var(--line);}
+.svc-num{
+  font-family:var(--font-en);font-size:clamp(26px,5vw,34px);font-weight:300;
+  color:rgba(92,120,72,.25);line-height:1;padding-top:4px;
+}
+.svc-name{
+  font-family:var(--font-serif);font-weight:300;
+  font-size:clamp(16px,2.5vw,18px);color:var(--ink);margin-bottom:10px;line-height:1.55;
+}
+.svc-body{font-size:clamp(13px,1.8vw,14px);line-height:2;color:var(--text);}
+
+/* WORKS */
+#works{background:var(--bg-alt);padding:var(--pad-y) var(--pad-x);position:relative;}
+#works > *{max-width:var(--content);margin-inline:auto;}
+.works-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,4.8vw,50px);line-height:1.55;
+  color:var(--ink);margin-bottom:clamp(40px,6vw,72px);max-width:560px;
+  text-wrap:balance;
+}
+.works-h2 br{display:none;}
+@media(min-width:480px){.works-h2 br{display:inline;}}
+.works-grid{
+  display:grid;grid-template-columns:1fr;gap:2px;
+  margin-bottom:clamp(40px,6vw,64px);
+}
+@media(min-width:768px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.work-item{
+  background:var(--bg);
+  border:1px solid var(--line);
+  padding:0;
+  position:relative;min-width:0;
+  overflow:hidden;border-radius:8px;
+  transition:border-color .3s,box-shadow .3s;
+  box-shadow:0 4px 20px rgba(61,50,40,.06);
+}
+.work-img{aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft);}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out);}
+.work-item:hover .work-img img{transform:scale(1.04);}
+.work-content{padding:clamp(20px,3vw,28px) clamp(18px,2.5vw,24px);}
+.work-item::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--warm),var(--accent));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease-out);z-index:2;
+}
+.work-item:hover{border-color:var(--line-accent);box-shadow:var(--shadow-warm);}
+.work-item:hover::before{transform:scaleX(1);}
+.work-cat{
+  font-size:clamp(9px,2vw,10px);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-dk);margin-bottom:16px;line-height:1.6;
+}
+.work-num{font-family:var(--font-en);font-size:clamp(32px,6vw,40px);font-weight:300;color:rgba(92,120,72,.2);line-height:1;margin-bottom:12px;}
+.work-name{font-family:var(--font-serif);font-weight:300;font-size:clamp(16px,2.5vw,18px);color:var(--ink);margin-bottom:12px;line-height:1.55;}
+.work-body{font-size:clamp(12px,1.8vw,13px);line-height:1.9;color:var(--text-soft);}
+.works-note{
+  font-family:var(--font-en);font-style:italic;
+  font-size:clamp(12px,2vw,14px);letter-spacing:.06em;color:var(--rust-dim);
+  display:flex;align-items:flex-start;gap:12px;line-height:1.7;flex-wrap:wrap;
+}
+.works-note::before{content:'';width:24px;height:1px;background:var(--rust);display:block;flex-shrink:0;}
+
+/* VOICE */
+#voice{
+  background:var(--bg-alt);padding:var(--pad-y) var(--pad-x);
+  position:relative;overflow:hidden;
+}
+#voice::before{
+  content:'';position:absolute;inset:0;
+  background:url('images/family.jpg') center/cover no-repeat;
+  opacity:.06;
+}
+#voice > *{position:relative;z-index:1;}
+#voice > *{max-width:var(--content);margin-inline:auto;}
+.voice-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,4.8vw,50px);line-height:1.55;
+  color:var(--ink);margin-bottom:clamp(48px,7vw,80px);max-width:560px;
+  text-wrap:balance;
+}
+.voice-h2 br{display:none;}
+@media(min-width:480px){.voice-h2 br{display:inline;}}
+.voice-list{display:grid;gap:0;max-width:760px;}
+.voice-item{
+  display:grid;grid-template-columns:minmax(40px,48px) minmax(0,1fr);
+  gap:0 clamp(16px,3vw,28px);padding:clamp(24px,4vw,36px);
+  border-top:1px solid var(--line);min-width:0;
+  background:rgba(255,253,248,.7);
+  border-radius:6px;margin-bottom:12px;
+}
+.voice-item:first-of-type{border-top:none;}
+.voice-item:last-child{margin-bottom:0;}
+.voice-stars{
+  font-size:11px;color:var(--warm);line-height:1;
+  padding-top:6px;letter-spacing:0;white-space:nowrap;
+}
+.voice-text{font-size:clamp(13px,1.8vw,14px);line-height:2;color:var(--text);margin-bottom:14px;}
+.voice-from{font-size:clamp(10px,2vw,11px);letter-spacing:.12em;color:var(--muted);line-height:1.6;}
+
+/* ABOUT */
+#about{
+  background:var(--bg);padding:var(--pad-y) var(--pad-x);
+  position:relative;
+}
+@media(min-width:768px){
+  #about{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(48px,6vw,80px);align-items:center;
+    max-width:1280px;margin-inline:auto;
+  }
+}
+.about-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,4.5vw,46px);line-height:1.55;
+  color:var(--ink);margin-bottom:28px;text-wrap:balance;
+}
+.about-h2 br{display:none;}
+@media(min-width:640px){.about-h2 br{display:inline;}}
+.about-h2 span{color:var(--accent-dk);}
+.about-body{font-size:clamp(13px,1.8vw,14px);line-height:2;color:var(--text);margin-bottom:22px;}
+.about-sig{
+  font-family:var(--font-en);font-style:italic;
+  font-size:clamp(15px,2.5vw,17px);letter-spacing:.06em;color:var(--rust-dim);
+  display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px;
+}
+.about-sig::before{content:'';width:20px;height:1px;background:var(--rust);display:block;flex-shrink:0;}
+.about-title{font-size:clamp(10px,2vw,11px);letter-spacing:.1em;color:var(--muted);line-height:1.7;padding-left:0;}
+@media(min-width:480px){.about-title{padding-left:32px;}}
+.about-right{margin-top:48px;}
+@media(min-width:768px){.about-right{margin-top:0;}}
+.about-logo-wrap{
+  background:var(--bg-soft);aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(32px,8vw,60px);
+  border:1px solid var(--line);border-radius:8px;
+  box-shadow:var(--shadow-warm);
+}
+.about-wordmark{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(32px,5vw,56px);color:rgba(61,50,40,.12);
+  letter-spacing:.15em;text-align:center;line-height:1.5;
+}
+.about-wordmark span{display:block;font-size:.45em;letter-spacing:.5em;color:rgba(109,123,82,.5);margin-top:8px;}
+.lions-note{
+  margin-top:20px;padding:16px 18px;
+  background:var(--bg-soft);border:1px solid var(--line);
+  border-radius:6px;
+  font-size:clamp(11px,2vw,12px);letter-spacing:.04em;color:var(--text-soft);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.65;
+}
+.lions-note::before{content:'⚾';font-size:14px;flex-shrink:0;}
+
+/* PROCESS */
+#process{
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%);
+  padding:var(--pad-y) var(--pad-x);position:relative;
+}
+#process > *{max-width:var(--content);margin-inline:auto;}
+.process-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,4.8vw,50px);line-height:1.55;
+  color:var(--ink);margin-bottom:clamp(40px,6vw,72px);max-width:520px;
+  text-wrap:balance;
+}
+.process-h2 br{display:none;}
+@media(min-width:480px){.process-h2 br{display:inline;}}
+.process-list{display:grid;gap:0;max-width:640px;position:relative;}
+.process-list::before{
+  content:'';position:absolute;left:23px;top:8px;bottom:8px;
+  width:1px;
+  background:linear-gradient(to bottom,var(--rust-dim),transparent);
+}
+.process-item{display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 clamp(16px,3vw,24px);padding:clamp(24px,3vw,32px) 0;min-width:0;}
+.process-dot{width:48px;display:flex;align-items:flex-start;padding-top:3px;flex-shrink:0;}
+.process-dot-inner{
+  width:8px;height:8px;border-radius:50%;background:var(--warm);
+  margin:0 auto;box-shadow:0 0 0 4px rgba(201,166,107,.25);
+}
+.process-step-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:6px;}
+.process-title{font-family:var(--font-serif);font-weight:300;font-size:17px;color:var(--ink);margin-bottom:10px;line-height:1.5;}
+.process-body{font-size:13px;line-height:2.1;color:var(--text-soft);}
+
+/* CONTACT */
+#contact{background:var(--bg-alt);padding:var(--pad-y) var(--pad-x);position:relative;overflow:hidden;}
+.contact-bg{
+  position:absolute;bottom:-40px;right:0;
+  font-family:var(--font-en);font-size:clamp(72px,18vw,200px);font-weight:300;
+  color:rgba(0,0,0,.03);pointer-events:none;user-select:none;
+  max-width:100%;overflow:hidden;line-height:1;
+}
+.contact-inner{
+  position:relative;z-index:2;max-width:640px;margin-inline:auto;width:100%;
+  background:var(--bg);padding:clamp(32px,5vw,48px);
+  border:1px solid var(--line);border-radius:8px;
+  box-shadow:var(--shadow-warm);
+}
+.contact-h2{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,5vw,48px);line-height:1.5;
+  color:var(--ink);margin-bottom:20px;text-wrap:balance;
+}
+.contact-h2 br{display:none;}
+@media(min-width:480px){.contact-h2 br{display:inline;}}
+.contact-sub{font-size:14px;line-height:2.2;color:var(--text-soft);margin-bottom:64px;}
+.form-field{margin-bottom:36px;}
+.form-field label{display:block;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:10px;}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid var(--line);
+  padding:10px 0;color:var(--ink);
+  font-family:var(--font-body);font-size:16px;font-weight:300;
+  outline:none;transition:border-color .3s;
+  -webkit-appearance:none;border-radius:0;
+}
+.form-field select{
+  padding-right:8px;text-overflow:ellipsis;
+  white-space:nowrap;overflow:hidden;
+}
+.form-field select option{background:var(--bg);color:var(--ink);}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(0,0,0,.25);}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-bottom-color:var(--accent);}
+.form-field textarea{resize:none;min-height:72px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+.form-footer{
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:20px;align-items:flex-start;
+}
+@media(min-width:560px){.form-footer{flex-direction:row;align-items:center;justify-content:space-between;}}
+.form-note{font-size:11px;line-height:1.8;color:var(--muted);}
+.contact-tel-wrap{margin-bottom:40px;}
+.contact-tel-label{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:8px;}
+.contact-tel-num{
+  font-family:var(--font-serif);font-weight:200;
+  font-size:clamp(22px,5.5vw,38px);color:var(--ink);
+  letter-spacing:.04em;display:block;word-break:break-all;
+}
+@media(min-width:400px){.contact-tel-num{word-break:normal;}}
+.contact-tel-hours{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.08em;}
+.btn-submit{
+  display:flex;align-items:center;gap:12px;
+  background:var(--cta);border:none;
+  color:#fff;font-family:var(--font-body);
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  padding:14px 32px;cursor:pointer;border-radius:4px;
+  transition:background .25s;white-space:nowrap;flex-shrink:0;
+  box-shadow:0 4px 16px rgba(196,120,74,.3);
+}
+.btn-submit:hover{background:var(--cta-hover);}
+.btn-submit svg{width:14px;height:14px;transition:transform .25s;}
+.btn-submit:hover svg{transform:translateX(4px);}
+
+/* FOOTER */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--line);
+  padding:clamp(40px,6vw,48px) var(--pad-x);
+  padding-bottom:calc(clamp(40px,6vw,48px) + env(safe-area-inset-bottom,0));
+}
+.ft-grid{
+  display:grid;gap:24px;
+  max-width:var(--content);margin-inline:auto;
+}
+@media(min-width:768px){
+  .ft-grid{
+    grid-template-columns:1fr 1.4fr auto;
+    align-items:start;gap:32px;
+  }
+}
+.ft-logo{display:flex;align-items:center;gap:12px;}
+.ft-info{font-size:clamp(11px,2vw,12px);color:var(--text-soft);line-height:1.85;}
+.ft-info a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+.ft-info br{display:none;}
+@media(min-width:640px){.ft-info br{display:inline;}}
+.ft-logo-mark{
+  width:28px;height:28px;border:1px solid var(--line-accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:12px;color:var(--accent);
+}
+.ft-logo-text{font-size:13px;letter-spacing:.2em;color:var(--ink);font-weight:400;}
+.ft-phil{
+  font-family:var(--font-en);font-style:italic;
+  font-size:13px;letter-spacing:.1em;color:var(--muted);
+  margin-bottom:12px;
+}
+@media(min-width:768px){.ft-phil{margin-bottom:0;}}
+.ft-copy{font-size:10px;letter-spacing:.12em;color:var(--muted);}
+
+/* NAV DOTS */
+.nav-dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:99;display:none;flex-direction:column;gap:10px;}
+@media(min-width:1024px){.nav-dots{display:flex;}}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.12);transition:background .3s,transform .3s;cursor:pointer;}
+.nav-dot.active{background:var(--accent);transform:scale(1.5);}
+
+/* FLOAT CTA */
+.float-cta{
+  position:fixed;bottom:0;left:0;right:0;z-index:150;
+  display:none;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+@media(max-width:639px){.float-cta{display:flex;}}
+.ft-tel-btn{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--bg);color:var(--ink);text-decoration:none;
+  padding:15px;font-size:13px;font-weight:400;letter-spacing:.06em;
+  border-right:1px solid var(--line);
+}
+.ft-cta-btn{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:var(--cta);color:#fff;text-decoration:none;
+  padding:15px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+}
+@media(max-width:639px){
+  body{padding-bottom:calc(54px + env(safe-area-inset-bottom,0));}
+  .float-cta{padding-bottom:env(safe-area-inset-bottom,0);}
+}
+@media(min-width:1280px){
+  .hero-vline{right:12%;}
+  .hero-vline2{right:22%;}
+  #hero .hero-content{max-width:960px;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .sr,.hero-eyebrow,.hero-h1,.hero-sub-en,.hero-desc,.hero-scroll{
+    opacity:1;animation:none;transform:none;
+  }
+  .sr{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr-logo">
+    <div class="hdr-logo-mark">寿</div>
+    <span class="hdr-logo-text">寿住設リフォーム</span>
+  </div>
+  <div class="hdr-right">
+    <a href="tel:0428784754" class="hdr-tel">0428-78-4754</a>
+    <a href="#contact" class="hdr-cta">無料見積</a>
+    <button class="hdr-burger" onclick="document.getElementById('sp-nav').classList.add('open')">☰</button>
+  </div>
+</header>
+
+<!-- SP NAV -->
+<div id="sp-nav">
+  <button id="sp-close" onclick="document.getElementById('sp-nav').classList.remove('open')">✕</button>
+  <a href="#mission" onclick="document.getElementById('sp-nav').classList.remove('open')">実績・強み</a>
+  <a href="#services" onclick="document.getElementById('sp-nav').classList.remove('open')">サービス</a>
+  <a href="#works" onclick="document.getElementById('sp-nav').classList.remove('open')">施工事例</a>
+  <a href="#about" onclick="document.getElementById('sp-nav').classList.remove('open')">代表メッセージ</a>
+  <a href="#contact" onclick="document.getElementById('sp-nav').classList.remove('open')">お問い合わせ</a>
+</div>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots">
+  <div class="nav-dot active"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+  <div class="nav-dot"></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img
+      src="images/hero.jpg"
+      alt="リフォーム後の明るい住宅外観（イメージ）"
+      width="1920" height="1280"
+      fetchpriority="high"
+    >
+  </div>
+  <div class="hero-vline"></div>
+  <div class="hero-vline2"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">お住まいのことなんでも頼めるプロ集団 — 外壁診断士・一級塗装技能士・カラーコーディネート完備</p>
+    <h1 class="hero-h1">外壁塗装からリフォームまで、<br>自社職人が直接担当します。</h1>
+    <p class="hero-sub-en">一塗一魂 — One brush, one soul.</p>
+    <p class="hero-desc">施工実績13,000軒以上。完全自社施工・全工事10年保証。当たり前のことにこだわる社訓のもと、現地調査・お見積りは無料です。ご相談だけでも歓迎します。</p>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- 施工イメージ（既存サイトのギャラリー風） -->
+<div class="photo-strip sr" aria-label="施工・リフォームイメージ">
+  <div class="photo-strip-inner">
+    <figure class="photo-strip-item">
+      <img src="images/exterior.jpg" alt="外壁塗装の様子" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">外壁・屋根塗装</figcaption>
+    </figure>
+    <figure class="photo-strip-item">
+      <img src="images/roof.jpg" alt="屋根工事のイメージ" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">屋根・雨漏り修理</figcaption>
+    </figure>
+    <figure class="photo-strip-item">
+      <img src="images/bathroom.jpg" alt="浴室リフォームのイメージ" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">水回りリフォーム</figcaption>
+    </figure>
+    <figure class="photo-strip-item">
+      <img src="images/landscape.jpg" alt="外構・エクステリアのイメージ" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">外構・エクステリア</figcaption>
+    </figure>
+    <figure class="photo-strip-item">
+      <img src="images/craftsman.jpg" alt="職人による塗装作業" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">自社職人が施工</figcaption>
+    </figure>
+    <figure class="photo-strip-item">
+      <img src="images/family.jpg" alt="明るい住まいのリビング" width="600" height="450" loading="lazy">
+      <figcaption class="photo-strip-cap">お客様の笑顔</figcaption>
+    </figure>
+  </div>
+  <p class="img-credit" style="padding:12px var(--pad-x) 0;max-width:var(--content);margin-inline:auto;">
+    ※掲載写真はイメージです（本番では実際の施工写真に差し替え予定）
+  </p>
+</div>
+
+<!-- CERTS STRIP：ヒーロー直下で信頼を即担保 -->
+<div class="certs-strip sr">
+  <div class="certs-inner">
+    <div class="cert-item">
+      <div class="cert-label">Qualification</div>
+      <div class="cert-name">外壁診断士</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-label">Qualification</div>
+      <div class="cert-name">一級塗装技能士</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-label">Qualification</div>
+      <div class="cert-name">カラーコーディネート</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-label">Qualification</div>
+      <div class="cert-name">ニチハ認定施工店</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-label">Support</div>
+      <div class="cert-name">火災保険申請対応</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-label">Estimate</div>
+      <div class="cert-name">現地調査・見積 無料</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES：何ができるか -->
+<section id="services">
+  <div class="section-label sr">Services <span>— できること</span></div>
+  <h2 class="services-h2 sr">外壁塗装・屋根工事から<br>水回りリフォームまで、<br>お住まいのことなら。</h2>
+  <div class="services-visual sr">
+    <div class="services-visual-main">
+      <img src="images/services.jpg" alt="外壁塗装で生まれ変わった住宅" width="1200" height="800" loading="lazy">
+      <p class="services-visual-cap">大切なお住まいを、家族の笑顔が増える住まいへ。</p>
+    </div>
+    <div class="services-visual-sub">
+      <span class="services-visual-tag">完全自社施工</span>
+      <p>外壁診断士・一級塗装技能士が在籍。下請けに丸投げせず、最初の現地調査から完工・アフターフォローまで同じチームが担当します。</p>
+    </div>
+  </div>
+  <div class="svc-list">
+    <div class="svc-item sr">
+      <div class="svc-num">01</div>
+      <div>
+        <div class="svc-name">外壁・屋根塗装</div>
+        <p class="svc-body">一級塗装技能士が直接担当。外壁診断から色選び・施工・保証まで一貫対応。カラーシミュレーションも無料でご提供します。</p>
+      </div>
+    </div>
+    <div class="svc-item sr sr-d1">
+      <div class="svc-num">02</div>
+      <div>
+        <div class="svc-name">屋根工事・雨漏り修理</div>
+        <p class="svc-body">カバー工法・葺き替え・雨漏り修理まで対応。「塗るだけでは解決できない」問題にも正直に向き合います。</p>
+      </div>
+    </div>
+    <div class="svc-item sr sr-d2">
+      <div class="svc-num">03</div>
+      <div>
+        <div class="svc-name">水回り・内装リフォーム</div>
+        <p class="svc-body">キッチン・浴室・トイレ・洗面台の交換から床・クロス張替えまで。小さな工事でもお気軽にご相談ください。</p>
+      </div>
+    </div>
+    <div class="svc-item sr">
+      <div class="svc-num">04</div>
+      <div>
+        <div class="svc-name">外構・エクステリア</div>
+        <p class="svc-body">駐車場・フェンス・アプローチなど、家の顔となる外まわりをトータルで整えます。</p>
+      </div>
+    </div>
+    <div class="svc-item sr sr-d1">
+      <div class="svc-num">05</div>
+      <div>
+        <div class="svc-name">増改築・新築</div>
+        <p class="svc-body">増築・改築・新築の設計から施工まで。家族のライフスタイルに合わせた住まいづくりをご提案します。</p>
+      </div>
+    </div>
+    <div class="svc-item sr sr-d2">
+      <div class="svc-num">06</div>
+      <div>
+        <div class="svc-name">火災保険サポート</div>
+        <p class="svc-body">保険が使えるかどうかを一緒に確認します。知らずに損しているケースも多いので、まずはご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT：誰がやるか、信頼できる人間か -->
+<section id="about">
+  <div class="sr">
+    <div class="section-label">Message <span>— 代表より</span></div>
+    <h2 class="about-h2">「どこに頼んでいいか<br>わからない」<br><span>そんな方こそ、<br>まず話してください。</span></h2>
+    <p class="about-body">創業当時、軽トラック1台と納豆飯から始めた会社です。何度も辞めようと思いました。でも、工事が終わるたびにお客様が「頼んで良かったよ」「こんなに良い仕上がりになるとは思わなかった」と言ってくださる。その言葉が、今日まで私を動かし続けています。</p>
+    <p class="about-body">「一塗一魂」——一つひとつの工事に魂を込める。社訓は「当たり前のことにこだわる」。下請けに丸投げせず、資格を持った自社職人が最初から最後まで担当します。13,000軒以上の施工を重ねてきたからこそ、お住まいに適した工事をご提供できると確信しています。</p>
+    <p class="about-sig">代表　佐藤 寿樹</p>
+    <p class="about-title">株式会社 寿住設リフォーム 代表取締役 ／ 業歴20年以上</p>
+  </div>
+  <div class="about-right sr sr--right">
+    <div class="about-logo-wrap">
+      <div class="about-wordmark">
+        寿<span>KOTOBUKI REFORM</span>
+      </div>
+    </div>
+    <div class="lions-note">西武ライオンズ オフィシャルスポンサー — 地域とともに、住まいと向き合い続けます。</div>
+  </div>
+</section>
+
+<!-- WORKS：本当にちゃんとやってくれるか -->
+<section id="works">
+  <div class="section-label sr">Works <span>— 施工実績</span></div>
+  <h2 class="works-h2 sr">実績が、<br>すべてを語る。</h2>
+  <div class="works-grid">
+    <article class="work-item sr">
+      <div class="work-img">
+        <img src="images/work-01-exterior.jpg" alt="外壁塗装後の一戸建て住宅外観" width="800" height="500" loading="lazy">
+      </div>
+      <div class="work-content">
+        <div class="work-cat">Exterior Paint — 外壁・屋根塗装</div>
+        <div class="work-num">01</div>
+        <div class="work-name">鶴ヶ島市 I様邸</div>
+        <p class="work-body">築18年のサイディング外壁全面塗装。シリコン塗料使用、カラーシミュレーションで色を事前確認。工期14日。</p>
+      </div>
+    </article>
+    <article class="work-item sr sr-d1">
+      <div class="work-img">
+        <img src="images/work-02-roof.jpg" alt="屋根・ガルバリウム鋼板の施工イメージ" width="800" height="500" loading="lazy">
+      </div>
+      <div class="work-content">
+        <div class="work-cat">Roofing — 屋根カバー工法</div>
+        <div class="work-num">02</div>
+        <div class="work-name">坂戸市 S様邸</div>
+        <p class="work-body">築25年、ガルバリウム鋼板によるカバー工法。廃材なし、工期7日。火災保険適用で実質負担を軽減。</p>
+      </div>
+    </article>
+    <article class="work-item sr">
+      <div class="work-img">
+        <img src="images/work-03-bathroom.jpg" alt="ユニットバスへの浴室リフォーム後" width="800" height="500" loading="lazy">
+      </div>
+      <div class="work-content">
+        <div class="work-cat">Interior Reform — 浴室リフォーム</div>
+        <div class="work-num">03</div>
+        <div class="work-name">坂戸市 N様邸</div>
+        <p class="work-body">タイル貼り浴室からユニットバスへ。断熱性が上がり冬場の入浴が快適に。工期3日で完了。</p>
+      </div>
+    </article>
+    <article class="work-item sr sr-d1">
+      <div class="work-img">
+        <img src="images/work-04-exterior-landscape.jpg" alt="外壁塗装と外構・アプローチ工事後の住宅" width="800" height="500" loading="lazy">
+      </div>
+      <div class="work-content">
+        <div class="work-cat">Full Reform — 外壁塗装 + 外構工事</div>
+        <div class="work-num">04</div>
+        <div class="work-name">入間市 N様邸</div>
+        <p class="work-body">外壁塗装と駐車場・アプローチの外構工事を一括施工。火災保険を活用し実質負担を大幅に軽減。工期21日。</p>
+      </div>
+    </article>
+  </div>
+  <p class="works-note sr">施工実績についてはお気軽にお問い合わせください</p>
+  <p class="img-credit" style="max-width:var(--content);margin:16px auto 0;padding:0 var(--pad-x);">※施工実績写真はイメージです。実際の完工写真はお問い合わせください。</p>
+</section>
+
+<!-- VOICE：他の人はどう言っているか -->
+<section id="voice">
+  <div class="section-label sr">Customer Voice <span>— お客様の声</span></div>
+  <h2 class="voice-h2 sr">お客様の言葉が、<br>答えになる。</h2>
+  <div class="voice-list">
+    <div class="voice-item sr">
+      <div class="voice-stars">★★★★★</div>
+      <div>
+        <p class="voice-text">現地調査から丁寧に説明していただき、安心して任せることができました。近所からも「きれいになったね」と声をかけてもらって大満足です。</p>
+        <div class="voice-from">鶴ヶ島市 K様 — 外壁塗装</div>
+      </div>
+    </div>
+    <div class="voice-item sr sr-d1">
+      <div class="voice-stars">★★★★★</div>
+      <div>
+        <p class="voice-text">雨漏りがひどくて困っていたところ、すぐに来ていただいて原因まで突き止めてくれました。火災保険が使えると教えてもらえて本当に助かりました。</p>
+        <div class="voice-from">坂戸市 T様 — 屋根工事</div>
+      </div>
+    </div>
+    <div class="voice-item sr sr-d2">
+      <div class="voice-stars">★★★★★</div>
+      <div>
+        <p class="voice-text">職人さんが毎日丁寧に作業してくれました。近隣への配慮もしっかりしていて、仕上がりも想像以上。次もぜひお願いしたいです。</p>
+        <div class="voice-from">川越市 S様 — 外壁・屋根塗装</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION：数字で裏付け -->
+<section id="mission">
+  <div class="mission-line"></div>
+  <div class="sr">
+    <div class="section-label">Trust <span>— 実績・強み</span></div>
+    <h2 class="mission-h2">「うまい話」より、<br><em>当たり前のことに<br>こだわる。</em></h2>
+    <p class="mission-body">
+      完全自社施工・全工事10年保証・施工中の完了報告書発行。下請けに丸投げせず、資格を持った職人が最初から最後まで担当します。現地調査・お見積りはすべて無料。断っても一切問題ありません。
+    </p>
+    <p class="mission-phil">Honesty outlasts all craft.</p>
+  </div>
+  <div class="mission-aside sr sr--right">
+    <div class="mission-visual">
+      <img
+        src="images/craftsman.jpg"
+        alt="職人による丁寧な施工（イメージ）"
+        width="900" height="675"
+        loading="lazy"
+      >
+    </div>
+    <div class="mission-facts">
+      <div class="mission-fact">
+        <div class="fact-label">Completed Works</div>
+        <div class="fact-value">13,000<br>軒以上</div>
+      </div>
+      <div class="mission-fact">
+        <div class="fact-label">Warranty</div>
+        <div class="fact-value">全工事<br>10年保証</div>
+      </div>
+      <div class="mission-fact">
+        <div class="fact-label">Estimate Fee</div>
+        <div class="fact-value">無料</div>
+        <div class="fact-note">現地調査・色選びも</div>
+      </div>
+      <div class="mission-fact">
+        <div class="fact-label">Branch Offices</div>
+        <div class="fact-value">全国<br>11拠点</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS：依頼後の流れ＝不安解消 -->
+<section id="process">
+  <div class="section-label sr">Process <span>— ご依頼の流れ</span></div>
+  <h2 class="process-h2 sr">はじめての方も<br>安心の5ステップ。</h2>
+  <div class="process-list">
+    <div class="process-item sr">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div>
+        <div class="process-step-label">Step 01</div>
+        <div class="process-title">お問い合わせ・ご相談</div>
+        <p class="process-body">電話・フォームどちらでもOK。「なんとなく気になる」だけでも歓迎です。しつこい営業は一切しません。</p>
+      </div>
+    </div>
+    <div class="process-item sr sr-d1">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div>
+        <div class="process-step-label">Step 02</div>
+        <div class="process-title">無料現地調査・お見積り</div>
+        <p class="process-body">外壁診断士が現地を丁寧に確認。劣化状況を分かりやすくご説明し、明細のお見積りをご提出します。</p>
+      </div>
+    </div>
+    <div class="process-item sr sr-d2">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div>
+        <div class="process-step-label">Step 03</div>
+        <div class="process-title">色選び・プランご確認</div>
+        <p class="process-body">カラーシミュレーションで完成イメージを事前確認。ご納得いただけるまで何度でもご相談します。</p>
+      </div>
+    </div>
+    <div class="process-item sr">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div>
+        <div class="process-step-label">Step 04</div>
+        <div class="process-title">施工</div>
+        <p class="process-body">自社職人が責任を持って丁寧に施工。作業状況はその都度ご報告します。近隣への配慮も徹底します。</p>
+      </div>
+    </div>
+    <div class="process-item sr sr-d1">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div>
+        <div class="process-step-label">Step 05</div>
+        <div class="process-title">完工・アフターフォロー</div>
+        <p class="process-body">完工後も定期的にフォローします。地元に根ざしているからこそできる、長いお付き合いを大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-bg">Contact</div>
+  <div class="contact-inner">
+    <div class="section-label sr">Contact <span>— お問い合わせ</span></div>
+    <h2 class="contact-h2 sr">まずは、<br>気軽に話してください。</h2>
+    <p class="contact-sub sr">現地調査・お見積り・ご相談はすべて無料。断っても問題ありません。「気になっているだけ」で充分です。</p>
+    <div class="contact-tel-wrap sr">
+      <div class="contact-tel-label">Phone — 電話で相談する</div>
+      <a href="tel:0428784754" class="contact-tel-num">0428-78-4754</a>
+      <div class="contact-tel-hours">受付時間 8:00 — 20:00 年中無休</div>
+    </div>
+    <div class="contact-tel-wrap sr" style="margin-top:24px;">
+      <div class="contact-tel-label">埼玉支店（鶴ヶ島駅西口 徒歩2分）</div>
+      <a href="tel:0492775582" class="contact-tel-num" style="font-size:clamp(20px,3vw,28px);">049-277-5582</a>
+    </div>
+    <form class="sr">
+      <div class="form-row">
+        <div class="form-field">
+          <label>お名前</label>
+          <input type="text" placeholder="山田 太郎">
+        </div>
+        <div class="form-field">
+          <label>電話番号</label>
+          <input type="tel" placeholder="090-XXXX-XXXX">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>ご相談内容</label>
+        <select>
+          <option value="" disabled selected>選択してください</option>
+          <option>外壁・屋根塗装</option>
+          <option>屋根工事・雨漏り</option>
+          <option>水回りリフォーム</option>
+          <option>外構・エクステリア</option>
+          <option>火災保険について</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>メッセージ（任意）</label>
+        <textarea placeholder="気になっていることをご自由にどうぞ"></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">送信後、1〜2営業日以内にご連絡します。<br>しつこい営業は一切しません。</p>
+        <button type="submit" class="btn-submit">
+          Send
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 8h12M9 3l5 5-5 5"/>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-logo">
+      <div class="ft-logo-mark">寿</div>
+      <span class="ft-logo-text">寿住設リフォーム</span>
+    </div>
+    <p class="ft-info">
+      営業本部：東京都青梅市東青梅3-5-12 東青梅桑田ビル3F　TEL <a href="tel:0428784754">0428-78-4754</a><br>
+      埼玉支店：埼玉県鶴ヶ島市鶴ヶ丘69-19 第5今泉ビル102　TEL <a href="tel:0492775582">049-277-5582</a><br>
+      受付 8:00〜20:00 年中無休（全国11拠点）
+    </p>
+    <p class="ft-copy">© 2026 株式会社 寿住設リフォーム</p>
+  </div>
+</footer>
+
+<!-- FLOAT CTA -->
+<div class="float-cta">
+  <a href="tel:0428784754" class="ft-tel-btn">📞 電話する</a>
+  <a href="#contact" class="ft-cta-btn">無料で相談する</a>
+</div>
+
+<script>
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const srEls = document.querySelectorAll('.sr');
+const srObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); srObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+srEls.forEach(el => srObs.observe(el));
+
+const dots = document.querySelectorAll('.nav-dot');
+const sections = ['hero','services','about','works','voice','mission','process','contact'];
+const dotObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = sections.indexOf(e.target.id);
+      if(idx >= 0) dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(id => { const el = document.getElementById(id); if (el) dotObs.observe(el); });
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => { document.getElementById(sections[i])?.scrollIntoView({ behavior: 'smooth' }); });
+});
+</script>
+</body>
+</html>
