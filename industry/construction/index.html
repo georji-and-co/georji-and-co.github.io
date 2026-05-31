@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外構・エクステリア会社のホームページ制作 | Georji & Co.</title>
+
+<!-- ▼ SEO基本 -->
+<meta name="description" content="埼玉・川越エリアの外構・エクステリア会社向けウェブサイト制作。施工事例・メニュー・問い合わせフォームを備えた集客サイトを制作します。初回相談無料。">
+<link rel="canonical" href="https://georjiandco.com/industry/construction/">
+
+<!-- ▼ OGP -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://georjiandco.com/industry/construction/">
+<meta property="og:title" content="外構・エクステリア会社のホームページ制作 | Georji & Co.">
+<meta property="og:description" content="埼玉・川越エリアの外構・エクステリア会社向けウェブサイト制作。施工事例・メニュー・問い合わせフォームを備えた集客サイトを制作します。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+
+<!-- ▼ 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "外構・エクステリア会社向けホームページ制作",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Georji & Co.",
+    "url": "https://georjiandco.com/"
+  },
+  "description": "埼玉・川越エリアの外構・エクステリア会社向けウェブサイト制作サービス",
+  "areaServed": ["鶴ヶ島市", "坂戸市", "川越市"],
+  "url": "https://georjiandco.com/industry/construction/"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#030305',
+          surface: '#0a0b0f',
+          elevated: '#111318',
+          line: 'rgba(148, 163, 184, 0.12)',
+          sand: '#d8cbb8',
+          sanddeep: '#b8a892',
+          cyanaccent: '#7dd3fc',
+          cyanmuted: '#5b9cb8',
+          tealglow: '#5eead4',
+        },
+        fontFamily: {
+          display: ['"Zen Old Mincho"', 'serif'],
+          sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        },
+        backgroundImage: {
+          'mesh': 'radial-gradient(ellipse 120% 80% at 50% -30%, rgba(125, 211, 252, 0.12) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 100% 80%, rgba(94, 234, 212, 0.06) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 0% 60%, rgba(216, 203, 184, 0.07) 0%, transparent 45%)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  *, *::before, *::after { word-break: keep-all; overflow-wrap: break-word; }
+  p, li, dd { word-break: normal; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  #nav.is-scrolled {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(3, 3, 5, 0.85);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+  #menuBtn.is-open [data-bar="1"] { transform: translateY(5px) rotate(45deg); }
+  #menuBtn.is-open [data-bar="2"] { opacity: 0; }
+  #menuBtn.is-open [data-bar="3"] { transform: translateY(-5px) rotate(-45deg); }
+  #menuBtn [data-bar="1"], #menuBtn [data-bar="3"] { transition: transform 0.3s ease; }
+  #menuBtn [data-bar="2"] { transition: opacity 0.3s ease; }
+
+  /* ヒーロー */
+  .page-hero {
+    min-height: min(92dvh, 680px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 120px;
+  }
+  .hero-bg-grid {
+    background-color: #030305;
+    background-image:
+      linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 211, 252, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-attachment: fixed;
+    mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
+  }
+
+  /* 課題カード */
+  .pain-card {
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .pain-card:hover {
+    border-color: rgba(125, 211, 252, 0.2);
+    background: rgba(17, 19, 24, 0.9);
+  }
+
+  /* 実績カード */
+  .work-card {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease;
+  }
+  .work-card:hover {
+    border-color: rgba(125, 211, 252, 0.28);
+    box-shadow: 0 4px 24px -8px rgba(0,0,0,0.5), 0 0 56px -16px rgba(125, 211, 252, 0.22);
+    transform: translateY(-4px);
+  }
+  .work-preview-scale {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+  .work-card__preview-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.7s ease;
+  }
+  .work-card:hover .work-card__preview-img {
+    transform: scale(1.03);
+  }
+
+  /* CTA帯 */
+  .cta-band {
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.06) 0%, rgba(94, 234, 212, 0.04) 50%, rgba(216, 203, 184, 0.05) 100%);
+  }
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V06KNLZ1MB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-V06KNLZ1MB');
+</script>
+</head>
+<body class="bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
+
+  <!-- 背景 -->
+  <div class="pointer-events-none fixed inset-0 z-0 bg-mesh" aria-hidden="true"></div>
+  <div class="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-slate-900/20 via-transparent to-ink" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-[200]">
+    <nav id="nav" class="flex items-center justify-between border-b border-transparent px-5 py-4 transition-colors duration-300 sm:px-8 lg:px-12">
+      <a href="/" class="font-display font-medium text-white text-[clamp(1.2rem,2.8vw,1.85rem)] tracking-[0.12em]">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</a>
+      <ul class="hidden items-center gap-10 text-[0.72rem] font-normal tracking-[0.12em] text-slate-400 md:flex">
+        <li><a href="/#services" class="transition-colors hover:text-white">サービス</a></li>
+        <li><a href="/#about" class="transition-colors hover:text-white">about</a></li>
+        <li><a href="/#works" class="transition-colors hover:text-white">実績</a></li>
+        <li><a href="/#contact" class="border-b border-cyanaccent/40 pb-0.5 text-white transition-colors hover:border-sand hover:text-sand">お問い合わせ</a></li>
+      </ul>
+      <button type="button" id="menuBtn" class="relative z-[210] flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="メニューを開く">
+        <span class="block h-px w-5 bg-slate-300" data-bar="1"></span>
+        <span class="block h-px w-5 bg-slate-300" data-bar="2"></span>
+        <span class="block h-px w-5 bg-slate-300" data-bar="3"></span>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="fixed inset-0 z-[199] flex flex-col bg-ink/95 px-8 pb-10 pt-24 backdrop-blur-xl transition-opacity duration-300 opacity-0 pointer-events-none md:hidden" aria-hidden="true">
+      <ul class="flex flex-col gap-6 font-display text-2xl text-white">
+        <li><a href="/#services" class="mobile-link">サービス</a></li>
+        <li><a href="/#about" class="mobile-link">about</a></li>
+        <li><a href="/#works" class="mobile-link">実績</a></li>
+        <li><a href="/#contact" class="mobile-link text-cyanaccent">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-[1]">
+
+    <!-- HERO -->
+    <section class="page-hero relative overflow-hidden px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12 lg:pb-36">
+      <div class="hero-bg-grid absolute inset-0" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -left-1/4 top-1/4 h-[min(90vw,520px)] w-[min(90vw,520px)] rounded-full bg-cyanaccent/10 blur-[120px]"></div>
+        <div class="absolute -right-1/4 bottom-0 h-[min(70vw,420px)] w-[min(70vw,420px)] rounded-full bg-sand/8 blur-[100px]"></div>
+      </div>
+      <div class="relative mx-auto max-w-7xl">
+        <!-- パンくず -->
+        <nav class="reveal mb-10 flex items-center gap-2 text-[0.65rem] tracking-[0.12em] text-slate-500" aria-label="パンくずリスト">
+          <a href="/" class="transition-colors hover:text-slate-300">Georji &amp; Co.</a>
+          <span aria-hidden="true">/</span>
+          <a href="/industry/" class="transition-colors hover:text-slate-300">業種別</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-400">外構・エクステリア</span>
+        </nav>
+
+        <p class="reveal mb-4 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400">
+          <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
+          業種特化 / 外構・エクステリア
+        </p>
+        <h1 class="reveal reveal-delay-1 font-display text-[clamp(2rem,7vw,5rem)] font-semibold leading-tight tracking-[0.02em] text-white max-w-4xl">
+          外構・エクステリア会社の<br />
+          <span class="bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">集客を、ウェブサイトから。</span>
+        </h1>
+        <p class="reveal reveal-delay-2 mt-8 max-w-2xl text-[0.95rem] leading-[2] text-slate-400">
+          施工事例・サービスメニュー・お問い合わせフォームを備えた、地域密着型の外構会社向けサイトを制作します。鶴ヶ島・坂戸・川越エリアで実績あり。
+        </p>
+        <div class="reveal reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <a href="/#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
+            無料相談はこちら
+            <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+          </a>
+          <a href="#works" class="text-center text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">制作実績を見る ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="relative border-y border-line px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-14 lg:mb-20">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            こんなお悩みありませんか？
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">外構会社に多い、<br /><span class="text-slate-400">ウェブの課題。</span></h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- 課題1 -->
+          <div class="pain-card reveal group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">写真映えしない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">施工写真はたくさんあるのに、サイトで魅力的に見せられていない。せっかくの実績が伝わっていない。</p>
+          </div>
+          <!-- 課題2 -->
+          <div class="pain-card reveal reveal-delay-1 group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">スマホ対応していない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">検索する人の7〜8割はスマートフォン。崩れたレイアウトや小さすぎる文字で離脱されている。</p>
+          </div>
+          <!-- 課題3 -->
+          <div class="pain-card reveal reveal-delay-2 group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">問い合わせが来ない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">サイトはあるのに問い合わせにつながらない。フォームが使いにくい、どこにあるかわからない。</p>
+          </div>
+          <!-- 課題4 -->
+          <div class="pain-card reveal reveal-delay-3 group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">Googleで出てこない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">「川越 外構工事」で検索しても競合に埋もれてしまう。地域検索での露出が不十分。</p>
+          </div>
+          <!-- 課題5 -->
+          <div class="pain-card reveal reveal-delay-1 group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">更新できていない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">新しい施工事例を追加したいが、制作会社への依頼がめんどう・費用がかかる。情報が古いまま。</p>
+          </div>
+          <!-- 課題6 -->
+          <div class="pain-card reveal reveal-delay-2 group rounded-2xl border border-line bg-elevated/70 p-8 sm:p-10">
+            <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-white/[0.02]">
+              <svg class="stroke-slate-400" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-medium text-white">効果が見えない</h3>
+            <p class="mt-3 text-[0.86rem] leading-[2] text-slate-400">サイトに何人来ているか、どこから来ているか、わからない。改善のしようがない。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="relative px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-sand/[0.03] via-transparent to-transparent" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="mb-14 lg:mb-20">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            Georji &amp; Co. が提供できること
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">外構会社の強みを、<br /><span class="bg-gradient-to-r from-sand to-cyanaccent bg-clip-text text-transparent">正直に伝えるサイト。</span></h2>
+          <p class="reveal reveal-delay-2 mt-6 max-w-2xl text-[0.92rem] leading-[2] text-slate-400">テンプレートを使わず、御社のブランドに合わせてゼロから設計します。施工写真が映える構成、スマホで見やすいレイアウト、問い合わせにつながる導線まで一貫して対応します。</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="reveal rounded-2xl border border-line bg-elevated p-7">
+            <p class="mb-4 text-[0.58rem] tracking-[0.14em] text-slate-500">01</p>
+            <h3 class="font-display text-base font-medium text-white">施工事例ギャラリー</h3>
+            <p class="mt-3 text-[0.82rem] leading-[1.9] text-slate-400">写真が映える大判レイアウトで、施工のクオリティを正面から伝えます。</p>
+          </div>
+          <div class="reveal reveal-delay-1 rounded-2xl border border-line bg-elevated p-7">
+            <p class="mb-4 text-[0.58rem] tracking-[0.14em] text-cyanaccent/70">02</p>
+            <h3 class="font-display text-base font-medium text-white">スマホ完全対応</h3>
+            <p class="mt-3 text-[0.82rem] leading-[1.9] text-slate-400">全デバイスで崩れない、読みやすいレイアウトを手書きコードで実装します。</p>
+          </div>
+          <div class="reveal reveal-delay-2 rounded-2xl border border-line bg-elevated p-7">
+            <p class="mb-4 text-[0.58rem] tracking-[0.14em] text-slate-500">03</p>
+            <h3 class="font-display text-base font-medium text-white">問い合わせ最適化</h3>
+            <p class="mt-3 text-[0.82rem] leading-[1.9] text-slate-400">電話ボタン・フォームを見やすい位置に配置し、行動につながるページを設計します。</p>
+          </div>
+          <div class="reveal reveal-delay-3 rounded-2xl border border-line bg-elevated p-7">
+            <p class="mb-4 text-[0.58rem] tracking-[0.14em] text-cyanaccent/70">04</p>
+            <h3 class="font-display text-base font-medium text-white">月次レポート</h3>
+            <p class="mt-3 text-[0.82rem] leading-[1.9] text-slate-400">GA4でアクセス状況を毎月レポート。効果を見える化し、改善提案も行います。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works" class="relative border-t border-line px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 lg:mb-16">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            制作実績
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">外構・エクステリア<br />の制作実績。</h2>
+          <p class="reveal reveal-delay-2 mt-4 max-w-xl text-[0.88rem] leading-[2] text-slate-400">いずれも埼玉県内の外構・エクステリア会社様のコーポレートサイトです。</p>
+        </div>
+
+        <div class="grid gap-5 lg:grid-cols-2">
+          <!-- Den -->
+          <article class="work-card reveal group relative overflow-hidden rounded-3xl border border-line bg-elevated">
+            <div class="relative overflow-hidden">
+              <a href="https://georji-and-co.github.io/den-website/" target="_blank" rel="noopener noreferrer" aria-label="株式会社Denのサイトを見る（新しいタブ）">
+                <div class="work-preview-scale">
+                  <img src="../../assets/work-den-preview.png" alt="株式会社Den ウェブサイトのプレビュー" class="work-card__preview-img" width="1280" height="720" loading="lazy" decoding="async" />
+                </div>
+              </a>
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-60" aria-hidden="true"></div>
+            </div>
+            <div class="p-6 sm:p-8">
+              <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
+              <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社Den</h3>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">関東エリアの外構工事会社向けコーポレートサイト。施工メニューから施工の流れ・事例まで、ダークトーンでサービスと信頼感を伝える構成です。</p>
+              <a href="https://georji-and-co.github.io/den-website/" class="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-normal tracking-[0.1em] text-slate-400 transition-all hover:text-cyanaccent hover:gap-3" target="_blank" rel="noopener noreferrer">
+                サイトを見る <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Sea Ground -->
+          <article class="work-card reveal reveal-delay-1 group relative overflow-hidden rounded-3xl border border-line bg-elevated">
+            <div class="relative overflow-hidden">
+              <a href="https://georji-and-co.github.io/seaground_v2/" target="_blank" rel="noopener noreferrer" aria-label="株式会社 Sea Groundのサイトを見る（新しいタブ）">
+                <div class="work-preview-scale">
+                  <img src="../../assets/work-seaground-preview.png" alt="株式会社 Sea Ground ウェブサイトのプレビュー" class="work-card__preview-img" width="1280" height="720" loading="lazy" decoding="async" />
+                </div>
+              </a>
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/15 to-transparent opacity-60" aria-hidden="true"></div>
+            </div>
+            <div class="p-6 sm:p-8">
+              <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
+              <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社 Sea Ground</h3>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">「自然と暮らしをデザインする」ブランドのコーポレートサイト。Sea／Ground の哲学と施工メニューを、余白を活かした構成で丁寧に伝えます。</p>
+              <a href="https://georji-and-co.github.io/seaground_v2/" class="mt-5 inline-flex items-center gap-2 text-[0.78rem] font-normal tracking-[0.1em] text-slate-400 transition-all hover:text-cyanaccent hover:gap-3" target="_blank" rel="noopener noreferrer">
+                サイトを見る <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="relative border-y border-line bg-gradient-to-b from-surface/80 to-elevated/50 px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-14 grid gap-8 lg:mb-20 lg:grid-cols-2 lg:gap-16 lg:items-end">
+          <div>
+            <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+              <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+              制作の流れ
+            </p>
+            <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">シンプルで<br />わかりやすい進め方。</h2>
+          </div>
+          <p class="reveal reveal-delay-2 max-w-xl text-[0.88rem] leading-[2] text-slate-400 lg:justify-self-end">
+            複雑な手続きや不要な打ち合わせはありません。明確なコミュニケーションと誠実な仕事で、スムーズに進めます。
+          </p>
+        </div>
+        <div class="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <div class="reveal bg-ink p-8 transition-colors hover:bg-white/[0.02] sm:p-10">
+            <p class="mb-6 flex items-center gap-2 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">
+              <span>01</span><span class="h-px flex-1 bg-line" aria-hidden="true"></span>
+            </p>
+            <h3 class="font-display text-lg font-medium text-white">ヒアリング</h3>
+            <p class="mt-3 text-[0.8rem] leading-[1.95] text-slate-400">事業の目的、ターゲット、現状の課題などをしっかり伺います。初回相談は無料です。</p>
+          </div>
+          <div class="reveal reveal-delay-1 bg-ink p-8 transition-colors hover:bg-white/[0.02] sm:p-10">
+            <p class="mb-6 flex items-center gap-2 text-[0.62rem] font-normal tracking-[0.14em] text-cyanaccent/80">
+              <span>02</span><span class="h-px flex-1 bg-gradient-to-r from-cyanaccent/30 to-line" aria-hidden="true"></span>
+            </p>
+            <h3 class="font-display text-lg font-medium text-white">デザイン提案</h3>
+            <p class="mt-3 text-[0.8rem] leading-[1.95] text-slate-400">ブランドに合ったビジュアル方向性を提案します。コーディング前に確認・修正できます。</p>
+          </div>
+          <div class="reveal reveal-delay-2 bg-ink p-8 transition-colors hover:bg-white/[0.02] sm:p-10">
+            <p class="mb-6 flex items-center gap-2 text-[0.62rem] font-normal tracking-[0.14em] text-slate-500">
+              <span>03</span><span class="h-px flex-1 bg-line" aria-hidden="true"></span>
+            </p>
+            <h3 class="font-display text-lg font-medium text-white">制作・公開</h3>
+            <p class="mt-3 text-[0.8rem] leading-[1.95] text-slate-400">クリーンなコードで実装。ドメイン設定から公開まで一貫対応します。</p>
+          </div>
+          <div class="reveal reveal-delay-3 bg-ink p-8 transition-colors hover:bg-white/[0.02] sm:p-10">
+            <p class="mb-6 flex items-center gap-2 text-[0.62rem] font-normal tracking-[0.14em] text-cyanaccent/80">
+              <span>04</span><span class="h-px flex-1 bg-gradient-to-r from-cyanaccent/30 to-line" aria-hidden="true"></span>
+            </p>
+            <h3 class="font-display text-lg font-medium text-white">保守・更新</h3>
+            <p class="mt-3 text-[0.8rem] leading-[1.95] text-slate-400">公開後も継続サポート。月次レポートで効果を見える化します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band relative border-b border-line px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute left-1/4 top-1/2 h-[min(60vw,400px)] w-[min(60vw,400px)] -translate-y-1/2 rounded-full bg-cyanaccent/6 blur-[100px]"></div>
+      </div>
+      <div class="relative mx-auto max-w-4xl text-center">
+        <p class="reveal mb-4 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400">初回相談無料</p>
+        <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,4.5vw,3.25rem)] font-medium leading-snug tracking-wide text-white">
+          外構会社のウェブ集客、<br />一度ご相談ください。
+        </h2>
+        <p class="reveal reveal-delay-2 mx-auto mt-6 max-w-xl text-[0.92rem] leading-[2] text-slate-400">
+          「今のサイトをどうにかしたい」「新しく作りたい」など、どんなご相談でも構いません。まずはお気軽にどうぞ。
+        </p>
+        <div class="reveal reveal-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+          <a href="/#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-10 py-4 text-[0.82rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
+            無料相談を申し込む
+            <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+          </a>
+          <a href="/" class="text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-slate-300">
+            Georji &amp; Co. トップへ
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative z-[1] border-t border-line px-5 py-8 sm:flex sm:items-center sm:justify-between sm:px-8 lg:px-12">
+    <p class="font-display text-sm font-medium tracking-[0.1em] text-white">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</p>
+    <ul class="mt-6 hidden flex-wrap gap-8 text-[0.72rem] text-slate-500 sm:mt-0 md:flex">
+      <li><a href="/#services" class="transition-colors hover:text-white">サービス</a></li>
+      <li><a href="/#about" class="transition-colors hover:text-white">about</a></li>
+      <li><a href="/#works" class="transition-colors hover:text-white">実績</a></li>
+      <li><a href="/#contact" class="transition-colors hover:text-white">お問い合わせ</a></li>
+    </ul>
+    <p class="mt-4 text-center text-[0.72rem] text-slate-600 sm:mt-0 sm:text-right">© 2024–2026 Georji &amp; Co. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      // NAVスクロール
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (!nav) return;
+        nav.classList.toggle('is-scrolled', window.scrollY > 48);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // モバイルメニュー
+      var btn = document.getElementById('menuBtn');
+      var panel = document.getElementById('mobileMenu');
+      function setMenu(open) {
+        if (!btn || !panel) return;
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        panel.classList.toggle('opacity-0', !open);
+        panel.classList.toggle('pointer-events-none', !open);
+        document.body.classList.toggle('overflow-hidden', open);
+        btn.classList.toggle('is-open', open);
+      }
+      if (btn && panel) {
+        btn.addEventListener('click', function () {
+          setMenu(btn.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () { setMenu(false); });
+        });
+      }
+
+      // Reveal on scroll
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -8% 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
