@@ -640,9 +640,16 @@
     line-break: strict;
   }
   .services-title {
+    max-width: 100%;
     text-wrap: balance;
     word-break: keep-all;
     line-break: strict;
+  }
+  @media (max-width: 639px) {
+    .services-title {
+      font-size: clamp(1.45rem, 6.2vw, 1.75rem);
+      letter-spacing: 0.03em;
+    }
   }
   @media (min-width: 1024px) {
     .services-title {
@@ -1099,7 +1106,7 @@
               <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
               サービス
             </p>
-            <h2 class="section-heading services-title reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">サイトづくりと、<span class="whitespace-nowrap">その先まで</span></h2>
+            <h2 class="section-heading services-title reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">制作と、その先まで</h2>
           </div>
           <p class="reveal reveal-delay-2 max-w-xl text-[0.92rem] leading-[2] text-slate-400 lg:justify-self-end">
             制作・保守・発信まで、必要なことをひとつの窓口で。余計な中間は挟まず、直接やり取りいたします。
