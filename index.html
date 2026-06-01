@@ -744,6 +744,117 @@
     letter-spacing: 0.16em;
     color: rgb(100 116 139);
   }
+  .brand-story-block + .brand-story-block {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+  }
+  .brand-story-block__title {
+    font-family: "Zen Old Mincho", serif;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgb(248 250 252);
+  }
+  .brand-story-block__body {
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    line-height: 2.05;
+    color: rgb(148 163 184);
+  }
+  .brand-story-block__body p + p {
+    margin-top: 1em;
+  }
+  .about-region-note {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.08);
+    font-size: 0.86rem;
+    line-height: 1.95;
+    color: rgb(100 116 139);
+  }
+  .trust-grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(148, 163, 184, 0.12);
+  }
+  @media (min-width: 640px) {
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .trust-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .trust-card {
+    background: #030305;
+    padding: 1.75rem 1.5rem;
+    transition: background 0.3s ease;
+  }
+  @media (min-width: 640px) {
+    .trust-card { padding: 2rem 1.75rem; }
+  }
+  .trust-card:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .trust-card__value {
+    font-family: "Zen Old Mincho", serif;
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 500;
+    color: rgb(248 250 252);
+    letter-spacing: 0.03em;
+  }
+  .trust-card__label {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgb(203 213 225);
+  }
+  .trust-card__desc {
+    margin-top: 0.65rem;
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: rgb(100 116 139);
+  }
+  .why-card {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(17, 19, 24, 0.5);
+    padding: 1.75rem 1.5rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  @media (min-width: 640px) {
+    .why-card { padding: 2rem 1.75rem; }
+  }
+  .why-card:hover {
+    border-color: rgba(125, 211, 252, 0.18);
+    background: rgba(17, 19, 24, 0.75);
+  }
+  .why-card__num {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: rgb(100 116 139);
+  }
+  .why-card__title {
+    margin-top: 1rem;
+    font-family: "Zen Old Mincho", serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgb(248 250 252);
+  }
+  .why-card__body {
+    margin-top: 0.85rem;
+    font-size: 0.86rem;
+    line-height: 1.95;
+    color: rgb(148 163 184);
+  }
+  .work-card__approach-label {
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: rgb(100 116 139);
+  }
   .work-card__site-link {
     margin-top: 1.25rem;
     display: inline-flex;
@@ -1090,33 +1201,46 @@
     <section id="about" class="relative px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-sand/[0.03] via-transparent to-transparent" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-7xl">
-        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16 lg:items-center">
+        <div class="mb-14 lg:mb-20">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            about
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-medium leading-snug tracking-wide text-white">なぜ、このスタジオがあるのか。</h2>
+        </div>
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-16 lg:items-start">
           <div class="lg:col-span-7">
-            <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
-              <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
-              -about
-            </p>
-            <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-medium leading-snug tracking-wide text-white">15年のデジタル経験が<br />小さなスタジオに。</h2>
-            <div class="reveal reveal-delay-2 mt-8 max-w-2xl space-y-5 text-[0.92rem] leading-[2.05] text-slate-400">
-              <p>Georji &amp; Co. は、大手企業向けの広告プラットフォームやデータプロダクトの開発・運用に15年以上携わってきた経験を、ウェブ制作に活かして活動しています。地域密着型のビジネスが持つ強みを、サイト上でわかりやすく伝えることを大切にしています。</p>
-              <p>外構・クリニック・地域ビジネスなど、中小規模の事業者様を主な対象としています。埼玉県西部を中心に、全国からのご相談にも対応しています。</p>
-              <p>大規模なシステムを動かしてきた知見があるからこそ、情報の整理と導線設計に丁寧に向き合います。見た目だけでなく、訪れた方が迷わず、次の行動につながることを重視しています。</p>
-            </div>
-            <div class="studio-note reveal reveal-delay-3 mt-10 max-w-2xl">
-              <p class="studio-note__label">制作の考え方</p>
-              <p class="mt-4 text-[0.9rem] leading-[2] text-slate-400">テンプレートに当てはめるのではなく、目的に合わせて一から組み立てています。HTML/CSS/JSを手書きするのは、表示を軽く保ち、導線の微調整にも素直に対応するためです。必要だからそうしている、というスタンスでつくっています。</p>
-            </div>
+            <article class="brand-story-block reveal">
+              <h3 class="brand-story-block__title font-display">なぜGeorji &amp; Co.を始めたのか</h3>
+              <div class="brand-story-block__body">
+                <p>大手企業向けの広告運用やデジタル施策に携わる中で、多くの中小企業や地域ビジネスには、同じような知見が十分に届いていないことを感じていました。</p>
+                <p>本来は大企業だけのものではないはずの知識や考え方を、もっと身近な事業者にも届けたい。そんな思いからGeorji &amp; Co.を立ち上げました。</p>
+              </div>
+            </article>
+            <article class="brand-story-block reveal reveal-delay-1">
+              <h3 class="brand-story-block__title font-display">大切にしていること</h3>
+              <div class="brand-story-block__body">
+                <p>必要以上に大きな提案はしません。事業に本当に必要なものを見極め、適切な規模で、適切な価格で提供することを大切にしています。</p>
+              </div>
+            </article>
+            <article class="brand-story-block reveal reveal-delay-2">
+              <h3 class="brand-story-block__title font-display">Georji &amp; Co.の役割</h3>
+              <div class="brand-story-block__body">
+                <p>ウェブサイトを作ること自体が目的ではありません。事業の魅力を伝え、信頼を育て、必要なお客様と出会うための土台を作ること。それがGeorji &amp; Co.の役割です。</p>
+              </div>
+            </article>
+            <p class="about-region-note reveal reveal-delay-3">外構・クリニック・地域ビジネスなど、中小規模の事業者様を主な対象としています。埼玉県西部を中心に、全国からのご相談にも対応しています。</p>
           </div>
-          <figure class="about-media reveal reveal-delay-3 lg:col-span-5">
+          <figure class="about-media reveal reveal-delay-2 lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
             <img
               class="about-media__img"
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
               srcset="
-                https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
-                https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
+                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
+                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
               "
               sizes="(min-width: 1024px) 40vw, 100vw"
-              alt="MacBookの画面にコードが映る制作作業の様子"
+              alt="コードエディタで制作作業を行う様子"
               width="960"
               height="1200"
               loading="lazy"
@@ -1125,10 +1249,82 @@
             <div class="about-media__overlay" aria-hidden="true"></div>
             <div class="about-media__edge" aria-hidden="true"></div>
             <figcaption class="about-media__credit">
-              <a href="https://unsplash.com/photos/gray-and-black-laptop-computer-on-workspace-748790?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
+              <a href="https://unsplash.com/photos/turned-on-monitor-4kf7r3qeia?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
               · Unsplash
             </figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section id="trust" class="relative border-y border-line px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 lg:mb-16">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            経験
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-medium leading-snug tracking-wide text-white">これまで培ってきたこと。</h2>
+          <p class="reveal reveal-delay-2 mt-5 max-w-2xl text-[0.88rem] leading-[2] text-slate-400">誇張せず、事実として積み重ねてきた経験をお伝えします。</p>
+        </div>
+        <div class="trust-grid reveal reveal-delay-2">
+          <div class="trust-card">
+            <p class="trust-card__value font-display">15年以上</p>
+            <p class="trust-card__label">デジタル・広告領域</p>
+            <p class="trust-card__desc">広告運用やデータプロダクトなど、デジタル領域での実務経験</p>
+          </div>
+          <div class="trust-card">
+            <p class="trust-card__value font-display">大規模案件</p>
+            <p class="trust-card__label">プロジェクト経験</p>
+            <p class="trust-card__desc">大手企業向けの施策・開発に携わってきた経験</p>
+          </div>
+          <div class="trust-card">
+            <p class="trust-card__value font-display">集客視点</p>
+            <p class="trust-card__label">導線と行動設計</p>
+            <p class="trust-card__desc">見た目だけでなく、ユーザーの行動と導線を重視した設計</p>
+          </div>
+          <div class="trust-card">
+            <p class="trust-card__value font-display">一貫対応</p>
+            <p class="trust-card__label">企画から改善まで</p>
+            <p class="trust-card__desc">制作だけでなく、公開後の改善まで担当者が継続して対応</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" class="relative px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-cyanaccent/[0.03] via-transparent to-transparent" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="mb-12 lg:mb-16">
+          <p class="reveal mb-4 flex items-center gap-3 text-[0.68rem] font-normal tracking-[0.16em] text-slate-400">
+            <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
+            特徴
+          </p>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-medium leading-snug tracking-wide text-white">Georji &amp; Co.が<br />選ばれる理由。</h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="why-card reveal">
+            <p class="why-card__num">01</p>
+            <h3 class="why-card__title font-display">広告運用視点</h3>
+            <p class="why-card__body">見た目だけではなく、集客や導線を考慮した設計を行います。事業の状況に合わせ、訪れた方の動きを意識しています。</p>
+          </article>
+          <article class="why-card reveal reveal-delay-1">
+            <p class="why-card__num">02</p>
+            <h3 class="why-card__title font-display">小回りの良さ</h3>
+            <p class="why-card__body">大手の分業体制ではなく、直接相談しながら柔軟に進められます。小さな修正にも、無理なく対応します。</p>
+          </article>
+          <article class="why-card reveal reveal-delay-2">
+            <p class="why-card__num">03</p>
+            <h3 class="why-card__title font-display">適正価格</h3>
+            <p class="why-card__body">必要なものを見極め、過剰な提案は行いません。事業の規模に合った、無理のない形でご提案します。</p>
+          </article>
+          <article class="why-card reveal reveal-delay-3">
+            <p class="why-card__num">04</p>
+            <h3 class="why-card__title font-display">事業理解を重視</h3>
+            <p class="why-card__body">ウェブサイトの役割は、業種や事業によって異なります。サービス内容や商圏、お客様との接点を理解したうえで、目的に合った設計を行います。</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1142,7 +1338,7 @@
             実績
           </p>
           <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">制作実績。</h2>
-          <p class="reveal reveal-delay-2 mt-5 max-w-2xl text-[0.88rem] leading-[2] text-slate-400">鶴ヶ島・坂戸・川越をはじめ、埼玉県西部エリアでの実績があります。地域密着型のビジネスに向けた、わかりやすいサイトづくりを得意としています。</p>
+          <p class="reveal reveal-delay-2 mt-5 max-w-2xl text-[0.88rem] leading-[2] text-slate-400">何を作ったかだけでなく、何を考えて設計したかが伝わるよう、実績をご紹介します。</p>
         </div>
         <div class="grid gap-4 lg:grid-cols-12 lg:gap-5">
           <!-- Den -->
@@ -1175,6 +1371,7 @@
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社Den 様</h3>
               <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">埼玉県西部の外構工事会社様向けコーポレートサイト。施工メニューと事例を整理し、スマートフォンからの問い合わせにつながる導線を設計しました。</p>
+              <p class="work-card__approach-label">設計の考え方</p>
               <ul class="work-design-checklist" aria-label="設計の考え方">
                 <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>問い合わせ導線設計</li>
                 <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>スマホファースト設計</li>
@@ -1221,6 +1418,7 @@
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社SEA GROUND 様</h3>
               <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">外構・エクステリアブランド様のコーポレートサイト。サービス内容とブランドの考え方を整理し、初めて訪れた方が迷わず情報にたどり着ける構成にしました。</p>
+              <p class="work-card__approach-label">設計の考え方</p>
               <ul class="work-design-checklist" aria-label="設計の考え方">
                 <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>問い合わせ導線設計</li>
                 <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>スマホファースト設計</li>
