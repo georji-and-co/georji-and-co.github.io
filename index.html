@@ -434,6 +434,7 @@
   }
   /* JS不要：スクロール時にグリッドだけ画面に固定されて遅れて動く */
   .hero-bg-grid {
+    position: relative;
     background-color: #030305;
     background-image:
       linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
@@ -442,6 +443,46 @@
     background-attachment: fixed;
     mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
     -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
+  }
+  .hero-bg-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='540' viewBox='0 0 960 540'%3E%3Cg fill='none' stroke='%237dd3fc' stroke-opacity='0.12' stroke-width='0.75'%3E%3Crect x='80' y='60' width='320' height='200' rx='2'/%3E%3Cline x1='80' y1='120' x2='400' y2='120'/%3E%3Cline x1='200' y1='60' x2='200' y2='260'/%3E%3Crect x='520' y='140' width='280' height='160' rx='2' stroke-dasharray='4 6'/%3E%3Cline x1='520' y1='200' x2='800' y2='200'/%3E%3Cline x1='660' y1='140' x2='660' y2='300'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: min(92vw, 960px) auto;
+    background-position: 55% 42%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  /* 設計・図面を連想させる薄いグリッド（全ページ） */
+  .site-blueprint {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    background-image:
+      linear-gradient(rgba(125, 211, 252, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 211, 252, 0.04) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 30%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 30%, black 0%, transparent 70%);
+  }
+  .site-blueprint::before {
+    content: '';
+    position: absolute;
+    inset: 12% 8%;
+    border: 1px solid rgba(125, 211, 252, 0.06);
+    border-radius: 2px;
+    box-shadow:
+      inset 0 0 0 1px rgba(148, 163, 184, 0.03),
+      24px 24px 0 -23px rgba(125, 211, 252, 0.04),
+      -24px -24px 0 -23px rgba(125, 211, 252, 0.04);
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-blueprint { opacity: 0.35; }
   }
   .hero-bg-noise {
     opacity: 0.05;
@@ -511,7 +552,7 @@
     aspect-ratio: 4 / 5;
     max-height: min(56vw, 280px);
     object-fit: cover;
-    object-position: center 50%;
+    object-position: center 35%;
   }
   .about-media__overlay,
   .about-media__edge {
@@ -659,6 +700,33 @@
     outline: 2px solid rgba(125, 211, 252, 0.45);
     outline-offset: 3px;
   }
+  .work-design-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+  .work-design-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(3, 3, 5, 0.45);
+    padding: 0.35rem 0.65rem 0.35rem 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+    color: rgb(203 213 225);
+  }
+  .work-design-tag__icon {
+    flex-shrink: 0;
+    opacity: 0.75;
+    color: rgba(94, 234, 212, 0.9);
+  }
   .work-card__site-link {
     margin-top: 1.25rem;
     display: inline-flex;
@@ -751,6 +819,7 @@
 
   <!-- 背景グラデ＋メッシュ -->
   <div class="pointer-events-none fixed inset-0 z-0 bg-mesh" aria-hidden="true"></div>
+  <div class="site-blueprint" aria-hidden="true"></div>
   <div class="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-slate-900/20 via-transparent to-ink" aria-hidden="true"></div>
 
   <!-- NAV -->
@@ -819,7 +888,7 @@
           <div class="relative z-[1] mx-auto w-full max-w-6xl py-[max(0px,min(4vh,2.5rem))]">
             <p class="mb-6 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400 reveal">
               <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
-              ウェブデザイン・制作スタジオ · 東京・埼玉
+              ウェブデザイン・制作スタジオ
             </p>
             <p class="font-display text-[clamp(1.75rem,5vw,2.75rem)] font-medium leading-snug tracking-[0.06em] text-white/90 reveal reveal-delay-1">
               Georji <span class="text-sand">&amp;</span> <span class="text-cyanaccent/85">Co.</span>
@@ -856,17 +925,20 @@
     <!-- STATS -->
     <div class="relative border-y border-line bg-gradient-to-r from-cyanaccent/[0.04] via-transparent to-sand/[0.05]">
       <div class="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-line md:grid-cols-3 md:divide-x md:divide-y-0">
-        <div class="reveal px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
+        <div class="stat-card reveal px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
           <p class="font-display text-[clamp(2rem,4vw,2.75rem)] font-medium tabular-nums text-white">15<span class="ml-0.5 text-xl text-cyanaccent/90">+</span></p>
-          <p class="mt-3 text-sm leading-relaxed text-slate-500">年のデジタル実務経験</p>
+          <p class="mt-3 text-[0.8rem] font-medium tracking-[0.06em] text-slate-300">業界経験</p>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500">Web広告・デジタル領域で15年以上</p>
         </div>
-        <div class="reveal reveal-delay-1 px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
-          <p class="font-display text-[clamp(2rem,4vw,2.75rem)] font-medium tabular-nums text-white">100<span class="ml-0.5 text-xl text-sand">%</span></p>
-          <p class="mt-3 text-sm leading-relaxed text-slate-500">手書きコード — テンプレート不使用</p>
+        <div class="stat-card reveal reveal-delay-1 px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
+          <p class="font-display text-[clamp(2rem,4vw,2.75rem)] font-medium tabular-nums text-white">95<span class="ml-0.5 text-xl text-sand">+</span></p>
+          <p class="mt-3 text-[0.8rem] font-medium tracking-[0.06em] text-slate-300">表示速度</p>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500">PageSpeedスコア95以上を目標に設計</p>
         </div>
-        <div class="reveal reveal-delay-2 px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
-          <p class="bg-gradient-to-br from-white via-cyanaccent to-sand bg-clip-text font-display text-[clamp(2rem,4vw,2.75rem)] font-medium text-transparent">∞</p>
-          <p class="mt-3 text-sm leading-relaxed text-slate-500">細部へのこだわり</p>
+        <div class="stat-card reveal reveal-delay-2 px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
+          <p class="font-display text-[clamp(2rem,4vw,2.75rem)] font-medium tabular-nums text-white">1<span class="mx-0.5 text-xl text-cyanaccent/90">:</span>1</p>
+          <p class="mt-3 text-[0.8rem] font-medium tracking-[0.06em] text-slate-300">直接対応</p>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500">企画・制作・改善まで一貫対応</p>
         </div>
       </div>
     </div>
@@ -883,7 +955,7 @@
             <h2 class="services-title reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide text-white">サイトづくりと、<span class="whitespace-nowrap">その先まで。</span></h2>
           </div>
           <p class="reveal reveal-delay-2 max-w-xl text-[0.92rem] leading-[2] text-slate-400 lg:justify-self-end">
-            制作・保守・発信まで、必要なことをひとつの窓口で。余計な中間は挟まず、担当と直接やり取りします。
+            制作・保守・発信まで、必要なことをひとつの窓口で。余計な中間は挟まず、直接やり取りいたします。
           </p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
@@ -906,7 +978,6 @@
             <ul class="mt-6 space-y-2 text-[0.82rem] text-slate-300">
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>ブランドに合わせたオリジナルデザイン</li>
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>スマートフォン完全対応</li>
-              <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>Cloudflareホスティング・ドメイン設定</li>
               <li class="flex items-center gap-2"><span class="h-1 w-1 shrink-0 rounded-full bg-tealglow/80 shadow-[0_0_0_1px_rgba(94,234,212,0.35)]" aria-hidden="true"></span>お問い合わせフォーム設置</li>
             </ul>
             <div class="mt-8 border-t border-line pt-6">
@@ -963,6 +1034,7 @@
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">LINE 広告</span>
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">TVer 広告</span>
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">DV360</span>
+              <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">Amazon DSP</span>
               <span class="rounded-full border border-cyanaccent/20 bg-cyanaccent/[0.06] px-3 py-1 text-[0.72rem] font-medium text-slate-300 transition-colors group-hover:border-cyanaccent/40 group-hover:text-white">Netflix（DV360経由）</span>
             </div>
             </div>
@@ -1018,13 +1090,13 @@
           <figure class="about-media reveal reveal-delay-3 lg:col-span-5">
             <img
               class="about-media__img"
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
               srcset="
-                https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
-                https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
+                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
+                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
               "
               sizes="(min-width: 1024px) 40vw, 100vw"
-              alt="複数の画面に表示されたデータ分析ダッシュボード"
+              alt="MacBookでコーディングするデスクワークの様子"
               width="960"
               height="1200"
               loading="lazy"
@@ -1033,7 +1105,7 @@
             <div class="about-media__overlay" aria-hidden="true"></div>
             <div class="about-media__edge" aria-hidden="true"></div>
             <figcaption class="about-media__credit">
-              <a href="https://unsplash.com/photos/turned-on-monitoring-screen-l_ExpFbbRtco?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
+              <a href="https://unsplash.com/photos/person-using-macbook-pro-on-brown-wooden-table-936944?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
               · Unsplash
             </figcaption>
           </figure>
@@ -1082,6 +1154,24 @@
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社Den 様</h3>
               <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">関東エリアの外構工事会社向けコーポレートサイト。施工メニューから施工の流れ・事例まで、ダークトーンでサービスと信頼感を伝える構成です。</p>
+              <ul class="work-design-tags" aria-label="設計の考え方">
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+                  問い合わせ導線設計
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+                  スマホファースト設計
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  ページ速度最適化
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                  SEOを考慮した構造設計
+                </li>
+              </ul>
               <a
                 href="https://georji-and-co.github.io/den-website/"
                 class="work-card__site-link"
@@ -1121,6 +1211,24 @@
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社SEA GROUND 様</h3>
               <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">「自然と暮らしをデザインする」ブランドのコーポレートサイト。Sea／Ground の哲学と施工メニューを、余白を活かした構成で丁寧に伝えます。</p>
+              <ul class="work-design-tags" aria-label="設計の考え方">
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                  スマホファースト設計
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                  SEOを考慮した構造設計
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
+                  問い合わせ導線設計
+                </li>
+                <li class="work-design-tag">
+                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  ページ速度最適化
+                </li>
+              </ul>
               <a
                 href="https://georji-and-co.github.io/seaground_v2/"
                 class="work-card__site-link"
