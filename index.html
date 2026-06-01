@@ -100,8 +100,13 @@
     overflow: hidden;
   }
   .hero-scroll-spacer {
-    height: 80dvh;
+    height: 48dvh;
     pointer-events: none;
+  }
+  @media (max-width: 767px) {
+    .hero-scroll-spacer {
+      height: 32dvh;
+    }
   }
   .logo-intro {
     z-index: 3;
@@ -440,7 +445,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  /* JS不要：スクロール時にグリッドだけ画面に固定されて遅れて動く */
+  /* fixed はモバイルでスクロールが重くなるため scroll（大画面のみ fixed） */
   .hero-bg-grid {
     position: relative;
     background-color: #030305;
@@ -448,7 +453,7 @@
       linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
       linear-gradient(90deg, rgba(125, 211, 252, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
-    background-attachment: fixed;
+    background-attachment: scroll;
     mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
     -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
   }
@@ -462,6 +467,15 @@
     background-position: 55% 42%;
     background-repeat: no-repeat;
     pointer-events: none;
+  }
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .hero-bg-grid {
+      background-attachment: fixed;
+    }
+  }
+  #hero.is-scroll-complete .logo-intro,
+  #hero.is-scroll-complete .hero-paint {
+    will-change: auto;
   }
   /* 設計・図面を連想させる薄いグリッド（全ページ） */
   .site-blueprint {
@@ -1600,6 +1614,12 @@
       var logoIntro = document.getElementById('logoIntro');
       var logoIntroFrame = document.getElementById('logoIntroFrame');
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var canHeroParallax =
+        !reduceMotion &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      var heroMainRevealed = false;
+      var heroIntroComplete = false;
+      var heroScrollQueued = false;
 
       function updateHeroIntro() {
         if (!hero) return;
@@ -1613,7 +1633,8 @@
         }
         if (heroMain) {
           heroMain.classList.toggle('is-interactive', progress > 0.48);
-          if (progress > 0.42) {
+          if (!heroMainRevealed && progress > 0.42) {
+            heroMainRevealed = true;
             heroMain.querySelectorAll('.reveal').forEach(function (el) {
               el.classList.add('visible');
             });
@@ -1622,25 +1643,39 @@
         if (logoIntro) {
           logoIntro.setAttribute('aria-hidden', progress > 0.82 ? 'true' : 'false');
         }
+        if (!heroIntroComplete && progress >= 0.98) {
+          heroIntroComplete = true;
+          hero.classList.add('is-scroll-complete');
+        }
       }
 
       function updateHeroParallax() {
-        if (!hero || reduceMotion) return;
+        if (!hero || !canHeroParallax) return;
         var rect = hero.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
         var scrollable = Math.max(1, hero.offsetHeight - window.innerHeight);
         var scrolled = Math.min(Math.max(0, -rect.top), scrollable);
         hero.style.setProperty('--hero-scroll', scrolled + 'px');
       }
 
-      function onHeroScroll() {
+      function runHeroScroll() {
+        heroScrollQueued = false;
         updateHeroIntro();
         updateHeroParallax();
+      }
+
+      function onHeroScroll() {
+        if (!heroScrollQueued) {
+          heroScrollQueued = true;
+          requestAnimationFrame(runHeroScroll);
+        }
       }
 
       if (hero) {
         if (reduceMotion) {
           document.documentElement.style.setProperty('--intro-progress', '1');
           document.body.classList.remove('intro-active');
+          hero.classList.add('is-scroll-complete');
           if (heroMain) {
             heroMain.classList.add('is-interactive');
             heroMain.querySelectorAll('.reveal').forEach(function (el) {
@@ -1653,9 +1688,13 @@
           if (logoIntroFrame) {
             logoIntroFrame.classList.add('is-entered');
           }
-          onHeroScroll();
+          runHeroScroll();
           window.addEventListener('scroll', onHeroScroll, { passive: true });
-          window.addEventListener('resize', onHeroScroll, { passive: true });
+          window.addEventListener('resize', function () {
+            heroIntroComplete = false;
+            hero.classList.remove('is-scroll-complete');
+            onHeroScroll();
+          }, { passive: true });
         }
       }
 
