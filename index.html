@@ -287,29 +287,37 @@
   .hero-main.is-interactive {
     pointer-events: auto;
   }
-  .hero-lead {
+  .hero-tagline {
     word-break: keep-all;
     overflow-wrap: break-word;
     line-break: strict;
-    color: rgb(241 245 249);
-    text-shadow:
-      0 0 24px rgba(3, 3, 5, 1),
-      0 0 48px rgba(3, 3, 5, 0.85),
-      0 1px 2px rgba(3, 3, 5, 0.95),
-      0 2px 10px rgba(3, 3, 5, 0.75);
+    max-width: 20em;
+    font-family: "Zen Old Mincho", serif;
+    font-size: clamp(1.1rem, 2.45vw, 1.32rem);
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 28px rgba(3, 3, 5, 0.75);
   }
-  .hero-lead > span {
+  .hero-tagline > span {
     display: block;
   }
-  .hero-lead > span + span {
-    margin-top: 0.35em;
+  .hero-tagline > span + span {
+    margin-top: 0.55em;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
   }
   /* ヒーロー見出し */
   .hero-title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.55rem;
+    gap: 0.75rem;
     max-width: 18ch;
     margin: 0;
   }
@@ -356,10 +364,10 @@
     pointer-events: none;
     background: linear-gradient(
       105deg,
-      rgba(3, 3, 5, 0.92) 0%,
-      rgba(3, 3, 5, 0.7) 36%,
-      rgba(3, 3, 5, 0.32) 60%,
-      rgba(3, 3, 5, 0.08) 100%
+      rgba(3, 3, 5, 0.96) 0%,
+      rgba(3, 3, 5, 0.88) 38%,
+      rgba(3, 3, 5, 0.45) 62%,
+      rgba(3, 3, 5, 0.12) 100%
     );
     opacity: 0;
   }
@@ -388,7 +396,7 @@
   }
   .hero-headline-mark__text {
     display: block;
-    line-height: 1.08;
+    line-height: 1.12;
     white-space: nowrap;
   }
   .hero-scroll-hint {
@@ -700,32 +708,41 @@
     outline: 2px solid rgba(125, 211, 252, 0.45);
     outline-offset: 3px;
   }
-  .work-design-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
+  .work-design-checklist {
     margin-top: 1rem;
     padding: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
   }
-  .work-design-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    background: rgba(3, 3, 5, 0.45);
-    padding: 0.35rem 0.65rem 0.35rem 0.5rem;
-    font-size: 0.68rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    line-height: 1.35;
+  .work-design-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     color: rgb(203 213 225);
   }
-  .work-design-tag__icon {
+  .work-design-checklist__mark {
     flex-shrink: 0;
-    opacity: 0.75;
-    color: rgba(94, 234, 212, 0.9);
+    margin-top: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(94, 234, 212, 0.95);
+  }
+  .studio-note {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem 1.75rem;
+  }
+  .studio-note__label {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    color: rgb(100 116 139);
   }
   .work-card__site-link {
     margin-top: 1.25rem;
@@ -890,27 +907,25 @@
               <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
               ウェブデザイン・制作スタジオ
             </p>
-            <p class="font-display text-[clamp(1.75rem,5vw,2.75rem)] font-medium leading-snug tracking-[0.06em] text-white/90 reveal reveal-delay-1">
+            <p class="font-display text-[clamp(1.65rem,4.2vw,2.5rem)] font-medium leading-snug tracking-[0.06em] text-white/85 reveal reveal-delay-1">
               Georji <span class="text-sand">&amp;</span> <span class="text-cyanaccent/85">Co.</span>
             </p>
-            <h1 class="hero-title reveal reveal-delay-2 mt-8 font-display text-[clamp(2.25rem,8.5vw,5.75rem)] font-semibold tracking-[0.02em] text-white">
+            <h1 class="hero-title reveal reveal-delay-2 mt-10 font-display text-[clamp(2rem,7.2vw,5.1rem)] font-semibold leading-[1.08] tracking-[0.02em] text-white sm:mt-12 lg:mt-14">
               <span class="hero-title__lead">あなたのウェブサイトを、</span>
               <span class="hero-headline-mark w-fit">
-                <span class="hero-headline-mark__text bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">より魅力的に。</span>
+                <span class="hero-headline-mark__text bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">もっと魅力的に。</span>
               </span>
             </h1>
-            <div class="mt-12 flex max-w-3xl flex-col gap-10 lg:mt-16 lg:flex-row lg:items-end lg:justify-between">
-              <p class="hero-lead max-w-2xl text-[0.95rem] leading-[2] reveal reveal-delay-3">
-                <span>Georji &amp; Co. は、小規模事業者・個人事業主のための<span class="whitespace-nowrap">ウェブデザインスタジオ</span>です。</span>
-                <span>テンプレートを使わずにゼロベースから<span class="whitespace-nowrap">デザイン・制作</span>します。</span>
-              </p>
-              <div class="flex shrink-0 flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 reveal reveal-delay-4">
-                <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
-                  ご相談はこちら
-                  <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-                </a>
-                <a href="#works" class="text-center text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">実績を見る ↓</a>
-              </div>
+            <p class="hero-tagline font-display reveal reveal-delay-3 mt-6 sm:mt-7 lg:mt-8">
+              <span>小さな違いの積み重ねが、</span>
+              <span>大きな魅力になる。</span>
+            </p>
+            <div class="hero-actions reveal reveal-delay-4 mt-10 sm:mt-12 lg:mt-14">
+              <a href="#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
+                ご相談はこちら
+                <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </a>
+              <a href="#works" class="text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent">実績を見る ↓</a>
             </div>
           </div>
           <div class="hero-scroll-hint absolute bottom-8 left-1/2 z-[1] hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex" aria-hidden="true">
@@ -938,7 +953,7 @@
         <div class="stat-card reveal reveal-delay-2 px-6 py-10 transition-colors hover:bg-white/[0.02] sm:px-10 lg:px-12">
           <p class="font-display text-[clamp(2rem,4vw,2.75rem)] font-medium tabular-nums text-white">1<span class="mx-0.5 text-xl text-cyanaccent/90">:</span>1</p>
           <p class="mt-3 text-[0.8rem] font-medium tracking-[0.06em] text-slate-300">直接対応</p>
-          <p class="mt-2 text-sm leading-relaxed text-slate-500">企画・制作・改善まで一貫対応</p>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500">企画から公開後の改善まで一貫対応</p>
         </div>
       </div>
     </div>
@@ -1083,20 +1098,25 @@
             </p>
             <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-medium leading-snug tracking-wide text-white">15年のデジタル経験が<br />小さなスタジオに。</h2>
             <div class="reveal reveal-delay-2 mt-8 max-w-2xl space-y-5 text-[0.92rem] leading-[2.05] text-slate-400">
-              <p>Georji &amp; Co. は、大手企業向けの広告プラットフォームやデータプロダクトの開発・運用に15年以上携わってきた経験を、ウェブ制作に活かして活動しています。</p>
-              <p>大規模なシステムを動かしてきた知見があるからこそ、あなたのビジネス情報を魅力的に伝えるために真摯に向き合います。</p>
+              <p>Georji &amp; Co. は、大手企業向けの広告プラットフォームやデータプロダクトの開発・運用に15年以上携わってきた経験を、ウェブ制作に活かして活動しています。地域密着型のビジネスが持つ強みを、サイト上でわかりやすく伝えることを大切にしています。</p>
+              <p>外構・クリニック・地域ビジネスなど、中小規模の事業者様を主な対象としています。埼玉県西部を中心に、全国からのご相談にも対応しています。</p>
+              <p>大規模なシステムを動かしてきた知見があるからこそ、情報の整理と導線設計に丁寧に向き合います。見た目だけでなく、訪れた方が迷わず、次の行動につながることを重視しています。</p>
+            </div>
+            <div class="studio-note reveal reveal-delay-3 mt-10 max-w-2xl">
+              <p class="studio-note__label">制作の考え方</p>
+              <p class="mt-4 text-[0.9rem] leading-[2] text-slate-400">テンプレートに当てはめるのではなく、目的に合わせて一から組み立てています。HTML/CSS/JSを手書きするのは、表示を軽く保ち、導線の微調整にも素直に対応するためです。必要だからそうしている、というスタンスでつくっています。</p>
             </div>
           </div>
           <figure class="about-media reveal reveal-delay-3 lg:col-span-5">
             <img
               class="about-media__img"
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80"
               srcset="
-                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
-                https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
+                https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=640&amp;h=800&amp;q=80 640w,
+                https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=960&amp;h=1200&amp;q=80 960w
               "
               sizes="(min-width: 1024px) 40vw, 100vw"
-              alt="MacBookでコーディングするデスクワークの様子"
+              alt="MacBookの画面にコードが映る制作作業の様子"
               width="960"
               height="1200"
               loading="lazy"
@@ -1105,7 +1125,7 @@
             <div class="about-media__overlay" aria-hidden="true"></div>
             <div class="about-media__edge" aria-hidden="true"></div>
             <figcaption class="about-media__credit">
-              <a href="https://unsplash.com/photos/person-using-macbook-pro-on-brown-wooden-table-936944?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
+              <a href="https://unsplash.com/photos/gray-and-black-laptop-computer-on-workspace-748790?utm_source=georji-and-co&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Photo</a>
               · Unsplash
             </figcaption>
           </figure>
@@ -1122,6 +1142,7 @@
             実績
           </p>
           <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">制作実績。</h2>
+          <p class="reveal reveal-delay-2 mt-5 max-w-2xl text-[0.88rem] leading-[2] text-slate-400">鶴ヶ島・坂戸・川越をはじめ、埼玉県西部エリアでの実績があります。地域密着型のビジネスに向けた、わかりやすいサイトづくりを得意としています。</p>
         </div>
         <div class="grid gap-4 lg:grid-cols-12 lg:gap-5">
           <!-- Den -->
@@ -1153,24 +1174,13 @@
             <div class="relative p-6 sm:p-8">
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社Den 様</h3>
-              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">関東エリアの外構工事会社向けコーポレートサイト。施工メニューから施工の流れ・事例まで、ダークトーンでサービスと信頼感を伝える構成です。</p>
-              <ul class="work-design-tags" aria-label="設計の考え方">
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
-                  問い合わせ導線設計
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
-                  スマホファースト設計
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                  ページ速度最適化
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                  SEOを考慮した構造設計
-                </li>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">埼玉県西部の外構工事会社様向けコーポレートサイト。施工メニューと事例を整理し、スマートフォンからの問い合わせにつながる導線を設計しました。</p>
+              <ul class="work-design-checklist" aria-label="設計の考え方">
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>問い合わせ導線設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>スマホファースト設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>SEOを考慮した構造設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>サービス内容を整理</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>表示速度を最適化</li>
               </ul>
               <a
                 href="https://georji-and-co.github.io/den-website/"
@@ -1210,24 +1220,13 @@
             <div class="relative p-6 sm:p-8">
               <span class="inline-block rounded border border-white/15 px-2.5 py-1 text-[0.62rem] font-normal tracking-[0.08em] text-slate-400">外構・エクステリア</span>
               <h3 class="mt-4 font-display text-xl font-medium tracking-wide text-white">株式会社SEA GROUND 様</h3>
-              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">「自然と暮らしをデザインする」ブランドのコーポレートサイト。Sea／Ground の哲学と施工メニューを、余白を活かした構成で丁寧に伝えます。</p>
-              <ul class="work-design-tags" aria-label="設計の考え方">
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-                  スマホファースト設計
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                  SEOを考慮した構造設計
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h14"/></svg>
-                  問い合わせ導線設計
-                </li>
-                <li class="work-design-tag">
-                  <svg class="work-design-tag__icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                  ページ速度最適化
-                </li>
+              <p class="mt-3 text-[0.88rem] leading-[1.95] text-slate-400">外構・エクステリアブランド様のコーポレートサイト。サービス内容とブランドの考え方を整理し、初めて訪れた方が迷わず情報にたどり着ける構成にしました。</p>
+              <ul class="work-design-checklist" aria-label="設計の考え方">
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>問い合わせ導線設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>スマホファースト設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>SEOを考慮した構造設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>信頼感を高める情報設計</li>
+                <li><span class="work-design-checklist__mark" aria-hidden="true">✓</span>ユーザーが迷わない導線設計</li>
               </ul>
               <a
                 href="https://georji-and-co.github.io/seaground_v2/"
