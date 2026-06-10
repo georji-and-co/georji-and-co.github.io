@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ▼ SEO基本 -->
+<title>ブログ｜Web制作・SEO・MEO・地域ビジネスの知見 | Georji & Co.</title>
+<meta name="description" content="Georji & Co.が発信するWeb制作・SEO・MEO・地域ビジネス向けWebマーケティングのコラム。外構・クリニック・地域ビジネスを対象に、実務から得た知見を発信します。">
+<link rel="canonical" href="https://georjiandco.com/blog/">
+
+<!-- ▼ OGP -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://georjiandco.com/blog/">
+<meta property="og:title" content="ブログ｜Web制作・SEO・MEO・地域ビジネスの知見 | Georji & Co.">
+<meta property="og:description" content="Web制作・SEO・MEO・地域ビジネス向けWebマーケティングの知見を発信するGeorji & Co.のブログ。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+
+<!-- ▼ 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Georji & Co. ブログ",
+  "description": "Web制作・SEO・MEO・地域ビジネス向けWebマーケティングの知見を発信するブログ",
+  "url": "https://georjiandco.com/blog/",
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Georji & Co.",
+    "url": "https://georjiandco.com/",
+    "telephone": "+81-90-6653-8209",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "埼玉県",
+      "addressLocality": "坂戸市",
+      "addressCountry": "JP"
+    }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#030305', surface: '#0a0b0f', elevated: '#111318',
+          line: 'rgba(148, 163, 184, 0.12)', sand: '#d8cbb8', sanddeep: '#b8a892',
+          cyanaccent: '#7dd3fc', cyanmuted: '#5b9cb8', tealglow: '#5eead4',
+        },
+        fontFamily: {
+          display: ['"Zen Old Mincho"', 'serif'],
+          sans: ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        },
+        backgroundImage: {
+          'mesh': 'radial-gradient(ellipse 120% 80% at 50% -30%, rgba(125, 211, 252, 0.12) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 100% 80%, rgba(94, 234, 212, 0.06) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 0% 60%, rgba(216, 203, 184, 0.07) 0%, transparent 45%)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  *, *::before, *::after { word-break: keep-all; overflow-wrap: break-word; }
+  p, li { word-break: normal; }
+  .reveal { opacity: 0; transform: translateY(1.25rem); transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  #nav.is-scrolled { border-bottom: 1px solid rgba(148,163,184,0.12); background: rgba(3,3,5,0.85); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); }
+  #menuBtn.is-open [data-bar="1"] { transform: translateY(5px) rotate(45deg); }
+  #menuBtn.is-open [data-bar="2"] { opacity: 0; }
+  #menuBtn.is-open [data-bar="3"] { transform: translateY(-5px) rotate(-45deg); }
+  #menuBtn [data-bar="1"], #menuBtn [data-bar="3"] { transition: transform 0.3s ease; }
+  #menuBtn [data-bar="2"] { transition: opacity 0.3s ease; }
+  .post-card { transition: border-color 0.3s ease, transform 0.3s ease; }
+  .post-card:hover { border-color: rgba(125,211,252,0.25); transform: translateY(-3px); }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V06KNLZ1MB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V06KNLZ1MB');</script>
+</head>
+<body class="bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
+
+  <div class="pointer-events-none fixed inset-0 z-0 bg-mesh" aria-hidden="true"></div>
+  <div class="pointer-events-none fixed inset-0 z-0 bg-gradient-to-b from-slate-900/20 via-transparent to-ink" aria-hidden="true"></div>
+
+  <header class="fixed inset-x-0 top-0 z-[200]">
+    <nav id="nav" class="flex items-center justify-between border-b border-transparent px-5 py-4 transition-colors duration-300 sm:px-8 lg:px-12">
+      <a href="/" class="font-display font-medium text-white text-[clamp(1.2rem,2.8vw,1.85rem)] tracking-[0.12em]">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</a>
+      <ul class="hidden items-center gap-10 text-[0.72rem] font-normal tracking-[0.12em] text-slate-400 md:flex">
+        <li><a href="/#services" class="transition-colors hover:text-white">サービス</a></li>
+        <li><a href="/#about" class="transition-colors hover:text-white">about</a></li>
+        <li><a href="/#works" class="transition-colors hover:text-white">実績</a></li>
+        <li><a href="/#contact" class="border-b border-cyanaccent/40 pb-0.5 text-white transition-colors hover:border-sand hover:text-sand">お問い合わせ</a></li>
+      </ul>
+      <button type="button" id="menuBtn" class="relative z-[210] flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.03] md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="メニューを開く">
+        <span class="block h-px w-5 bg-slate-300" data-bar="1"></span>
+        <span class="block h-px w-5 bg-slate-300" data-bar="2"></span>
+        <span class="block h-px w-5 bg-slate-300" data-bar="3"></span>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="fixed inset-0 z-[199] flex flex-col bg-ink/95 px-8 pb-10 pt-24 backdrop-blur-xl transition-opacity duration-300 opacity-0 pointer-events-none md:hidden" aria-hidden="true">
+      <ul class="flex flex-col gap-6 font-display text-2xl text-white">
+        <li><a href="/#services">サービス</a></li>
+        <li><a href="/#about">about</a></li>
+        <li><a href="/#works">実績</a></li>
+        <li><a href="/#contact" class="text-cyanaccent">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-[1] pt-32 pb-24 px-5 sm:px-8 lg:px-12">
+    <div class="mx-auto max-w-4xl">
+
+      <!-- ヘッダー -->
+      <nav class="reveal mb-10 flex items-center gap-2 text-[0.65rem] tracking-[0.12em] text-slate-500" aria-label="パンくずリスト">
+        <a href="/" class="transition-colors hover:text-slate-300">Georji &amp; Co.</a>
+        <span>/</span>
+        <span class="text-slate-400">ブログ</span>
+      </nav>
+      <p class="reveal text-[0.72rem] tracking-[0.2em] text-cyanaccent/80 uppercase mb-4">Blog</p>
+      <h1 class="reveal reveal-delay-1 font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold text-white leading-snug mb-4">Web制作・SEO・MEOの知見</h1>
+      <p class="reveal reveal-delay-2 text-[0.92rem] leading-[2] text-slate-400 max-w-2xl mb-16">
+        外構・クリニック・地域ビジネスを対象に、実務から得たWebサイト制作・SEO・MEO・集客の知見を発信します。
+      </p>
+
+      <!-- 記事一覧 -->
+      <div class="space-y-6">
+
+        <!-- 記事1 -->
+        <article class="post-card reveal rounded-2xl border border-line bg-elevated p-6 sm:p-8">
+          <a href="/blog/gaiku-inquiry/" class="block group">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="rounded border border-white/15 px-2.5 py-1 text-[0.62rem] tracking-[0.08em] text-slate-400">外構・エクステリア</span>
+              <span class="rounded border border-white/15 px-2.5 py-1 text-[0.62rem] tracking-[0.08em] text-slate-400">Web制作</span>
+              <time class="text-[0.72rem] text-slate-500" datetime="2026-06-10">2026.06.10</time>
+            </div>
+            <h2 class="font-display text-[clamp(1.1rem,2.2vw,1.45rem)] font-medium text-white leading-snug group-hover:text-cyanaccent/90 transition-colors mb-3">
+              外構会社のホームページに問い合わせが来ない5つの理由と、それぞれの対策
+            </h2>
+            <p class="text-[0.88rem] leading-[1.95] text-slate-400">
+              「サイトを作ったのに問い合わせが来ない」。外構・エクステリア会社からよく聞く悩みです。原因は集客ではなく、サイト内の設計にあることがほとんどです。よくある5つの問題点と具体的な改善策を解説します。
+            </p>
+            <p class="mt-4 text-[0.8rem] tracking-[0.1em] text-cyanaccent/70 group-hover:text-cyanaccent transition-colors">
+              続きを読む <span aria-hidden="true">→</span>
+            </p>
+          </a>
+        </article>
+
+        <!-- 今後の記事予告（薄く表示） -->
+        <div class="rounded-2xl border border-line/50 bg-surface/40 p-6 sm:p-8 opacity-50">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="rounded border border-white/10 px-2.5 py-1 text-[0.62rem] tracking-[0.08em] text-slate-500">SEO・MEO</span>
+            <span class="text-[0.72rem] text-slate-600">近日公開</span>
+          </div>
+          <p class="font-display text-[clamp(1rem,2vw,1.3rem)] font-medium text-slate-500 leading-snug">
+            Googleマップで上位に出るために外構会社がやるべきMEO対策
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-line/50 bg-surface/40 p-6 sm:p-8 opacity-50">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="rounded border border-white/10 px-2.5 py-1 text-[0.62rem] tracking-[0.08em] text-slate-500">Web制作</span>
+            <span class="text-[0.72rem] text-slate-600">近日公開</span>
+          </div>
+          <p class="font-display text-[clamp(1rem,2vw,1.3rem)] font-medium text-slate-500 leading-snug">
+            埼玉県西部の地域ビジネスがWeb集客を始めるときに最初にやること
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="relative z-[1] border-t border-line px-5 py-8 sm:flex sm:items-center sm:justify-between sm:px-8 lg:px-12">
+    <p class="font-display text-sm font-medium tracking-[0.1em] text-white">Georji <span class="text-cyanaccent/90">&amp;</span> Co.</p>
+    <ul class="mt-6 hidden flex-wrap gap-8 text-[0.72rem] text-slate-500 sm:mt-0 md:flex">
+      <li><a href="/#services" class="transition-colors hover:text-white">サービス</a></li>
+      <li><a href="/#about" class="transition-colors hover:text-white">about</a></li>
+      <li><a href="/#works" class="transition-colors hover:text-white">実績</a></li>
+      <li><a href="/#contact" class="transition-colors hover:text-white">お問い合わせ</a></li>
+    </ul>
+    <p class="mt-4 text-center text-[0.72rem] text-slate-600 sm:mt-0 sm:text-right">© 2024–2026 Georji &amp; Co. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function(){
+      var nav=document.getElementById('nav');
+      window.addEventListener('scroll',function(){nav.classList.toggle('is-scrolled',window.scrollY>48);},{passive:true});
+      var btn=document.getElementById('menuBtn'),panel=document.getElementById('mobileMenu');
+      function setMenu(o){btn.setAttribute('aria-expanded',o?'true':'false');btn.setAttribute('aria-label',o?'メニューを閉じる':'メニューを開く');panel.setAttribute('aria-hidden',o?'false':'true');panel.classList.toggle('opacity-0',!o);panel.classList.toggle('pointer-events-none',!o);document.body.classList.toggle('overflow-hidden',o);btn.classList.toggle('is-open',o);}
+      if(btn&&panel){btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true');});panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});}
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.1,rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    })();
+  </script>
+</body>
+</html>
