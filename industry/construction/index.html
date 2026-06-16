@@ -128,6 +128,25 @@
     justify-content: flex-end;
     padding-top: 120px;
   }
+  .page-hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(3, 3, 5, 0.42) 0%,
+      rgba(3, 3, 5, 0.62) 38%,
+      rgba(3, 3, 5, 0.82) 72%,
+      rgba(3, 3, 5, 0.92) 100%
+    );
+  }
+  .page-hero__content {
+    position: relative;
+    z-index: 2;
+  }
+  .page-hero__content :is(nav, p, h1, a) {
+    text-shadow: 0 1px 16px rgba(3, 3, 5, 0.6);
+  }
   .hero-bg-grid {
     background-color: #030305;
     background-image:
@@ -428,17 +447,18 @@
         <div class="absolute -left-1/4 top-1/4 h-[min(90vw,520px)] w-[min(90vw,520px)] rounded-full bg-cyanaccent/10 blur-[120px]"></div>
         <div class="absolute -right-1/4 bottom-0 h-[min(70vw,420px)] w-[min(70vw,420px)] rounded-full bg-sand/8 blur-[100px]"></div>
       </div>
-      <div class="relative mx-auto max-w-7xl">
+      <div class="page-hero__scrim pointer-events-none" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl page-hero__content">
         <!-- パンくず -->
-        <nav class="reveal mb-10 flex items-center gap-2 text-[0.65rem] tracking-[0.12em] text-slate-500" aria-label="パンくずリスト">
-          <a href="/" class="transition-colors hover:text-slate-300">Georji &amp; Co.</a>
-          <span aria-hidden="true">/</span>
-          <a href="/industry/" class="transition-colors hover:text-slate-300">業種別</a>
-          <span aria-hidden="true">/</span>
-          <span class="text-slate-400">外構・エクステリア</span>
+        <nav class="reveal mb-10 flex items-center gap-2 text-[0.65rem] tracking-[0.12em] text-slate-300" aria-label="パンくずリスト">
+          <a href="/" class="text-slate-200 transition-colors hover:text-white">Georji &amp; Co.</a>
+          <span class="text-slate-500" aria-hidden="true">/</span>
+          <a href="/industry/" class="text-slate-200 transition-colors hover:text-white">業種別</a>
+          <span class="text-slate-500" aria-hidden="true">/</span>
+          <span class="text-white/90">外構・エクステリア</span>
         </nav>
 
-        <p class="reveal mb-4 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-400">
+        <p class="reveal mb-4 inline-flex items-center gap-2 text-[0.68rem] font-normal tracking-[0.2em] text-slate-200">
           <span class="h-1 w-1 rounded-full bg-tealglow shadow-[0_0_12px_rgba(94,234,212,0.6)]" aria-hidden="true"></span>
           業種特化 / 外構・エクステリア
         </p>
@@ -446,15 +466,15 @@
           外構・エクステリア会社の集客を、<br />
           <span class="bg-gradient-to-r from-sand via-white to-cyanaccent bg-clip-text text-transparent">ウェブサイトで変える。</span>
         </h1>
-        <p class="reveal reveal-delay-2 mt-8 max-w-2xl text-[0.95rem] leading-[2] text-slate-400">
+        <p class="reveal reveal-delay-2 mt-8 max-w-2xl text-[0.95rem] leading-[2] text-slate-100 [text-wrap:pretty]">
           埼玉県西部（坂戸市・川越市・鶴ヶ島市・東松山市）の外構・エクステリア会社向けに、施工事例ギャラリー・問い合わせ動線・SEO対策を備えたWebサイトを制作しています。WordPressやテンプレートは使わず、HTML/CSS/JSで一から設計。表示速度が速く、スマートフォンでも崩れない、現場の技術力が正しく伝わるサイトを代表が一貫して制作します。
         </p>
         <div class="reveal reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-          <a href="/#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
+          <a href="/#contact" class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.08] px-8 py-3.5 text-[0.78rem] font-normal tracking-[0.12em] text-white transition-all hover:border-cyanaccent/50 hover:bg-cyanaccent/10 hover:shadow-[0_0_40px_-8px_rgba(125,211,252,0.35)]">
             無料相談はこちら
             <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
           </a>
-          <a href="#works" class="text-center text-[0.78rem] text-slate-500 underline decoration-white/10 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">制作実績を見る ↓</a>
+          <a href="#works" class="text-center text-[0.78rem] text-slate-200 underline decoration-white/30 underline-offset-8 transition-colors hover:text-cyanaccent sm:text-left">制作実績を見る ↓</a>
         </div>
       </div>
     </section>
