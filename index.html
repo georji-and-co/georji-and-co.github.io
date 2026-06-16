@@ -1963,9 +1963,9 @@
             '  vec3 col=vec3(0.0);',
             '  vec2 mouseUv=vec2(0.0);',
             '  if(interactive){mouseUv=(2.0*iMouse-iResolution.xy)/iResolution.y;mouseUv.y*=-1.0;}',
-            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.12;}}',
-            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*0.4;}}',
-            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.08;}}',
+            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.08;}}',
+            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*0.25;}}',
+            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.05;}}',
             '  col+=vec3(0.3,0.6,1.0)*0.15;',
             '  gl_FragColor=vec4(col,1.0);',
             '}'
