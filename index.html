@@ -1911,6 +1911,7 @@
 
     function startFloatingLines(container) {
           console.log('startFloatingLines called', container, container.clientWidth, container.clientHeight);
+          container.style.transition = 'opacity 0.6s ease';
           var vertSrc = 'precision highp float;\nvoid main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
 
           var fragSrc = [
@@ -1962,9 +1963,9 @@
             '  vec3 col=vec3(0.0);',
             '  vec2 mouseUv=vec2(0.0);',
             '  if(interactive){mouseUv=(2.0*iMouse-iResolution.xy)/iResolution.y;mouseUv.y*=-1.0;}',
-            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.35;}}',
-            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*1.25;}}',
-            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.22;}}',
+            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.12;}}',
+            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*0.4;}}',
+            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.08;}}',
             '  col+=vec3(0.3,0.6,1.0)*0.15;',
             '  gl_FragColor=vec4(col,1.0);',
             '}'
@@ -1988,7 +1989,7 @@
           var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
           camera.position.z = 1;
 
-          var COLORS = ['#0a1628','#1E3A5F','#185FA5','#4FC3F7','#00BCD4','#7dd3fc'];
+          var COLORS = ['#030305','#0a1628','#13294b','#1E3A5F','#185FA5','#2a6f95'];
           var gradArr = Array.from({ length: 8 }, function () { return new THREE.Vector3(1,1,1); });
           COLORS.forEach(function (c, i) { var v = hex3(c); gradArr[i].set(v.x, v.y, v.z); });
 
@@ -2072,8 +2073,9 @@
           function checkProgress() {
             var progress = parseFloat(document.documentElement.style.getPropertyValue('--intro-progress') || '0');
             var shouldRun = progress < 0.82;
+            container.style.opacity = shouldRun ? '1' : '0';
             if (shouldRun && !wasVisible) { wasVisible = true; start(); }
-            else if (!shouldRun && wasVisible) { wasVisible = false; pause(); }
+            else if (!shouldRun && wasVisible) { wasVisible = false; setTimeout(pause, 600); }
           }
 
           window.addEventListener('scroll', checkProgress, { passive: true });
