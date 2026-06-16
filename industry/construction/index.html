@@ -333,17 +333,10 @@
     color: #334155;
     font-weight: 400;
     line-height: 1.85;
+    text-wrap: pretty;
+    line-break: strict;
   }
-  .pain-section .pain-notes { border-color: rgba(148, 163, 184, 0.4); }
-  .pain-section .pain-notes p {
-    color: #475569;
-    font-size: 0.8rem;
-    line-height: 1.85;
-  }
-  .pain-section .pain-notes span {
-    color: #1e293b;
-    font-weight: 500;
-  }
+  .pain-section .pain-nobreak { white-space: nowrap; }
 
   /* 課題カード */
   .pain-card {
@@ -522,7 +515,7 @@
                 <span class="pain-card__num pain-card__num--sand">02</span>
                 スマホ対応していない
               </h3>
-              <p class="mt-3 text-[0.86rem]">外構を検索するお客様の7〜8割はスマートフォンを使っています。文字が小さい、レイアウトが崩れる、ボタンが押しにくいといった問題は、そのまま問い合わせの機会損失につながります。スマホ体験の質が、集客数を左右します。</p>
+              <p class="mt-3 text-[0.86rem]">外構を検索するお客様の<span class="pain-nobreak">7〜8割</span>はスマートフォンを使っています。文字が小さい、レイアウトが崩れる、ボタンが押しにくいといった問題は、そのまま問い合わせの機会損失につながります。スマホ体験の質が、集客数を左右します。</p>
             </div>
           </article>
           <!-- 課題3 -->
@@ -547,10 +540,52 @@
             </div>
           </article>
         </div>
-        <div class="pain-notes reveal reveal-delay-3 mt-10 space-y-4 border-t pt-8 lg:mt-12 lg:pt-10">
-          <p><span>問い合わせが来ない</span> — サイトに人が来ていても、問い合わせボタンが見つかりにくい・フォームが複雑で離脱が起きることも。見積もり依頼や施工事例から電話につながる導線設計が重要です。</p>
-          <p><span>更新できていない</span> — 施工事例の追加が制作会社への依頼コストで後回しになりがち。月額保守プランで軽微な修正・更新を月1〜3回対応し、素早く反映できる体制を整えています。</p>
-          <p><span>効果が見えない</span> — 訪問者数や流入経路が把握できないと改善のしようがありません。GA4による月次アクセスレポートで、データをもとに次の一手を一緒に考えます。</p>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:mt-10">
+          <!-- 課題4 -->
+          <article class="pain-card reveal reveal-delay-3 group rounded-2xl">
+            <div class="pain-card__visual" aria-hidden="true">
+              <img class="pain-card__visual-photo" src="../../assets/industry/pain-inquiry.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+              <div class="pain-card__visual-scrim"></div>
+              <span class="pain-card__visual-caption">問い合わせボタンが見つからない</span>
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title font-display text-lg font-medium">
+                <span class="pain-card__num pain-card__num--sand">04</span>
+                問い合わせが来ない
+              </h3>
+              <p class="mt-3 text-[0.86rem]">サイトに人が来ていても、問い合わせボタンが見つかりにくい・フォームが複雑で離脱が起きることも。見積もり依頼や施工事例から電話につながる導線設計が重要です。</p>
+            </div>
+          </article>
+          <!-- 課題5 -->
+          <article class="pain-card reveal reveal-delay-4 group rounded-2xl">
+            <div class="pain-card__visual" aria-hidden="true">
+              <img class="pain-card__visual-photo" src="../../assets/industry/pain-update.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+              <div class="pain-card__visual-scrim"></div>
+              <span class="pain-card__visual-caption">事例の追加が後回しに</span>
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title font-display text-lg font-medium">
+                <span class="pain-card__num pain-card__num--cyan">05</span>
+                更新できていない
+              </h3>
+              <p class="mt-3 text-[0.86rem]">施工事例の追加が制作会社への依頼コストで後回しになりがち。月額保守プランで軽微な修正・更新を月1〜3回対応し、素早く反映できる体制を整えています。</p>
+            </div>
+          </article>
+          <!-- 課題6 -->
+          <article class="pain-card reveal reveal-delay-4 group rounded-2xl sm:col-span-2 lg:col-span-1">
+            <div class="pain-card__visual" aria-hidden="true">
+              <img class="pain-card__visual-photo" src="../../assets/industry/pain-analytics.jpg" alt="" width="800" height="500" loading="lazy" decoding="async" />
+              <div class="pain-card__visual-scrim"></div>
+              <span class="pain-card__visual-caption">アクセス数が見えない</span>
+            </div>
+            <div class="pain-card__body">
+              <h3 class="pain-card__title font-display text-lg font-medium">
+                <span class="pain-card__num pain-card__num--sand">06</span>
+                効果が見えない
+              </h3>
+              <p class="mt-3 text-[0.86rem]">訪問者数や流入経路が把握できないと改善のしようがありません。GA4による月次アクセスレポートで、データをもとに次の一手を一緒に考えます。</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -606,7 +641,7 @@
             <span class="h-px w-8 bg-gradient-to-r from-cyanaccent to-sand" aria-hidden="true"></span>
             制作実績
           </p>
-          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">外構・エクステリア<br />の制作実績。</h2>
+          <h2 class="reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium tracking-wide text-white">外構・エクステリアの制作実績。</h2>
           <p class="reveal reveal-delay-2 mt-4 max-w-xl text-[0.88rem] leading-[2] text-slate-400">いずれも埼玉県内の外構・エクステリア会社様のコーポレートサイトです。</p>
         </div>
 
