@@ -143,29 +143,251 @@
   /* 課題セクション（明るめトーン） */
   .pain-section {
     background-color: #e8ecf2;
+    background-image:
+      linear-gradient(rgba(125, 211, 252, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 211, 252, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
     border-color: rgba(148, 163, 184, 0.35);
   }
-  .pain-section .pain-section__eyebrow { color: #64748b; }
+  .pain-section .pain-section__eyebrow { color: #475569; }
   .pain-section .pain-section__title { color: #0f172a; }
-  .pain-section .pain-section__title span { color: #475569; }
+  .pain-section .pain-section__title span { color: #334155; }
   .pain-section .pain-card {
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease, background 0.3s ease;
   }
   .pain-section .pain-card:hover {
-    border-color: rgba(125, 211, 252, 0.5);
+    border-color: rgba(125, 211, 252, 0.55);
     background: #ffffff;
+    box-shadow: 0 8px 32px -12px rgba(15, 23, 42, 0.14), 0 0 48px -16px rgba(125, 211, 252, 0.28);
+    transform: translateY(-4px);
   }
-  .pain-section .pain-card h3 { color: #0f172a; }
-  .pain-section .pain-card p { color: #475569; }
+  .pain-section .pain-card__visual {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    background: #dfe6ee;
+  }
+  .pain-section .pain-card__visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .pain-section .pain-card__visual--photo img {
+    object-position: top center;
+    filter: saturate(0.75) contrast(0.92);
+  }
+  .pain-section .pain-card__visual-grid {
+    position: absolute;
+    inset: 12% 10%;
+    border: 2px dashed rgba(148, 163, 184, 0.55);
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.12) 0px,
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+    pointer-events: none;
+  }
+  .pain-section .pain-card__visual-caption {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.25rem;
+    background: rgba(15, 23, 42, 0.72);
+    color: #f8fafc;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+  .pain-section .pain-mobile-compare {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 1rem 1rem 1.25rem;
+  }
+  .pain-section .pain-mobile-compare__device {
+    position: relative;
+    width: 4.5rem;
+    border-radius: 0.65rem;
+    border: 2px solid rgba(100, 116, 139, 0.45);
+    background: #f8fafc;
+    padding: 0.35rem 0.3rem 0.45rem;
+  }
+  .pain-section .pain-mobile-compare__device--good {
+    width: 5.25rem;
+    border-color: rgba(125, 211, 252, 0.65);
+    box-shadow: 0 4px 16px -6px rgba(125, 211, 252, 0.45);
+  }
+  .pain-section .pain-mobile-compare__screen {
+    height: 6.5rem;
+    border-radius: 0.35rem;
+    background: #e2e8f0;
+    overflow: hidden;
+  }
+  .pain-section .pain-mobile-compare__device--good .pain-mobile-compare__screen {
+    height: 7.25rem;
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+  }
+  .pain-section .pain-mobile-compare__messy {
+    height: 100%;
+    background:
+      linear-gradient(#94a3b8 2px, transparent 2px) 8px 10px / 70% 8px no-repeat,
+      linear-gradient(#94a3b8 2px, transparent 2px) 8px 24px / 90% 8px no-repeat,
+      linear-gradient(#94a3b8 2px, transparent 2px) 8px 38px / 55% 8px no-repeat,
+      linear-gradient(#cbd5e1 1px, transparent 1px) 0 0 / 100% 6px;
+  }
+  .pain-section .pain-mobile-compare__clean {
+    height: 100%;
+    padding: 0.5rem 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .pain-section .pain-mobile-compare__clean span {
+    display: block;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: rgba(125, 211, 252, 0.55);
+  }
+  .pain-section .pain-mobile-compare__clean span:nth-child(1) { width: 88%; }
+  .pain-section .pain-mobile-compare__clean span:nth-child(2) { width: 72%; background: rgba(148, 163, 184, 0.45); }
+  .pain-section .pain-mobile-compare__clean span:nth-child(3) { width: 56%; }
+  .pain-section .pain-mobile-compare__tag {
+    position: absolute;
+    left: 50%;
+    bottom: -0.55rem;
+    transform: translateX(-50%);
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    background: #fff;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    color: #64748b;
+  }
+  .pain-section .pain-mobile-compare__device--good .pain-mobile-compare__tag {
+    border-color: rgba(125, 211, 252, 0.5);
+    color: #0369a1;
+  }
+  .pain-section .pain-search-mock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    height: 100%;
+    padding: 1.1rem 1rem 1rem;
+    justify-content: center;
+  }
+  .pain-section .pain-search-mock__bar {
+    height: 1.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 0.65rem;
+    font-size: 0.62rem;
+    color: #64748b;
+    letter-spacing: 0.04em;
+  }
+  .pain-section .pain-search-mock__item {
+    padding: 0.45rem 0.55rem;
+    border-radius: 0.35rem;
+    font-size: 0.62rem;
+    line-height: 1.4;
+    color: #475569;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+  .pain-section .pain-search-mock__item strong {
+    display: block;
+    font-weight: 500;
+    color: #334155;
+    font-size: 0.65rem;
+  }
+  .pain-section .pain-search-mock__item--you {
+    border-style: dashed;
+    border-color: rgba(248, 113, 113, 0.45);
+    background: rgba(254, 242, 242, 0.85);
+    color: #b91c1c;
+  }
+  .pain-section .pain-card__body { padding: 1.5rem 1.5rem 1.75rem; }
+  @media (min-width: 640px) {
+    .pain-section .pain-card__body { padding: 1.75rem 1.75rem 2rem; }
+  }
+  .pain-section .pain-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .pain-section .pain-card__num {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+  .pain-section .pain-card__num--cyan {
+    color: #0369a1;
+    background: rgba(125, 211, 252, 0.22);
+    border: 1px solid rgba(125, 211, 252, 0.45);
+  }
+  .pain-section .pain-card__num--sand {
+    color: #92764a;
+    background: rgba(216, 203, 184, 0.35);
+    border: 1px solid rgba(184, 168, 146, 0.45);
+  }
   .pain-section .pain-card__icon {
-    border-color: rgba(148, 163, 184, 0.35);
-    background: rgba(255, 255, 255, 0.65);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
   }
-  .pain-section .pain-card svg { stroke: #64748b; }
-  .pain-section .pain-notes { border-color: rgba(148, 163, 184, 0.35); }
-  .pain-section .pain-notes p { color: #64748b; }
-  .pain-section .pain-notes span { color: #475569; }
+  .pain-section .pain-card__icon--cyan {
+    background: rgba(125, 211, 252, 0.18);
+    border-color: rgba(125, 211, 252, 0.35);
+  }
+  .pain-section .pain-card__icon--cyan svg { stroke: #0284c7; }
+  .pain-section .pain-card__icon--sand {
+    background: rgba(216, 203, 184, 0.28);
+    border-color: rgba(184, 168, 146, 0.4);
+  }
+  .pain-section .pain-card__icon--sand svg { stroke: #92764a; }
+  .pain-section .pain-card h3 { color: #0f172a; }
+  .pain-section .pain-card p {
+    color: #334155;
+    font-weight: 400;
+    line-height: 1.85;
+  }
+  .pain-section .pain-notes { border-color: rgba(148, 163, 184, 0.4); }
+  .pain-section .pain-notes p {
+    color: #475569;
+    font-size: 0.8rem;
+    line-height: 1.85;
+  }
+  .pain-section .pain-notes span {
+    color: #1e293b;
+    font-weight: 500;
+  }
 
   /* 課題カード */
   .pain-card {
@@ -310,42 +532,88 @@
           </p>
           <h2 class="pain-section__title reveal reveal-delay-1 font-display text-[clamp(1.85rem,3.8vw,2.85rem)] font-medium leading-snug tracking-wide">外構会社に多い、<br /><span>ウェブの課題。</span></h2>
         </div>
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <!-- 課題1 -->
-          <div class="pain-card reveal group rounded-2xl p-8 sm:p-10">
-            <div class="pain-card__icon mb-6 flex h-12 w-12 items-center justify-center rounded-lg border">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
+          <article class="pain-card reveal group rounded-2xl">
+            <div class="pain-card__visual pain-card__visual--photo" aria-hidden="true">
+              <img src="../../assets/work-den-preview.png" alt="" width="640" height="360" loading="lazy" decoding="async" />
+              <div class="pain-card__visual-grid"></div>
+              <span class="pain-card__visual-caption">テンプレの枠に収まった写真</span>
             </div>
-            <h3 class="font-display text-lg font-medium">写真映えしない</h3>
-            <p class="mt-3 text-[0.86rem] leading-[2]">施工写真はたくさんあるのに、サイトで魅力的に見せられていない。テンプレートの枠に写真を当てはめるだけでは、現場の質感や仕上がりの美しさは伝わりません。外構は特に「見た目で選ばれる」業種。写真の見せ方がそのまま受注に影響します。</p>
-          </div>
+            <div class="pain-card__body">
+              <div class="pain-card__head">
+                <span class="pain-card__num pain-card__num--cyan">01</span>
+                <div class="pain-card__icon pain-card__icon--cyan">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-lg font-medium">写真映えしない</h3>
+              <p class="mt-3 text-[0.86rem]">施工写真はたくさんあるのに、サイトで魅力的に見せられていない。テンプレートの枠に写真を当てはめるだけでは、現場の質感や仕上がりの美しさは伝わりません。外構は特に「見た目で選ばれる」業種。写真の見せ方がそのまま受注に影響します。</p>
+            </div>
+          </article>
           <!-- 課題2 -->
-          <div class="pain-card reveal reveal-delay-1 group rounded-2xl p-8 sm:p-10">
-            <div class="pain-card__icon mb-6 flex h-12 w-12 items-center justify-center rounded-lg border">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-              </svg>
+          <article class="pain-card reveal reveal-delay-1 group rounded-2xl">
+            <div class="pain-card__visual pain-card__visual--mobile" aria-hidden="true">
+              <div class="pain-mobile-compare">
+                <div class="pain-mobile-compare__device pain-mobile-compare__device--bad">
+                  <div class="pain-mobile-compare__screen">
+                    <div class="pain-mobile-compare__messy"></div>
+                  </div>
+                  <span class="pain-mobile-compare__tag">崩れる</span>
+                </div>
+                <div class="pain-mobile-compare__device pain-mobile-compare__device--good">
+                  <div class="pain-mobile-compare__screen">
+                    <div class="pain-mobile-compare__clean">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                  <span class="pain-mobile-compare__tag">読みやすい</span>
+                </div>
+              </div>
             </div>
-            <h3 class="font-display text-lg font-medium">スマホ対応していない</h3>
-            <p class="mt-3 text-[0.86rem] leading-[2]">外構を検索するお客様の7〜8割はスマートフォンを使っています。文字が小さい、レイアウトが崩れる、ボタンが押しにくいといった問題は、そのまま問い合わせの機会損失につながります。スマホ体験の質が、集客数を左右します。</p>
-          </div>
+            <div class="pain-card__body">
+              <div class="pain-card__head">
+                <span class="pain-card__num pain-card__num--sand">02</span>
+                <div class="pain-card__icon pain-card__icon--sand">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-lg font-medium">スマホ対応していない</h3>
+              <p class="mt-3 text-[0.86rem]">外構を検索するお客様の7〜8割はスマートフォンを使っています。文字が小さい、レイアウトが崩れる、ボタンが押しにくいといった問題は、そのまま問い合わせの機会損失につながります。スマホ体験の質が、集客数を左右します。</p>
+            </div>
+          </article>
           <!-- 課題3 -->
-          <div class="pain-card reveal reveal-delay-2 group rounded-2xl p-8 sm:p-10">
-            <div class="pain-card__icon mb-6 flex h-12 w-12 items-center justify-center rounded-lg border">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
+          <article class="pain-card reveal reveal-delay-2 group rounded-2xl sm:col-span-2 lg:col-span-1">
+            <div class="pain-card__visual pain-card__visual--search" aria-hidden="true">
+              <div class="pain-search-mock">
+                <div class="pain-search-mock__bar">坂戸市 外構工事</div>
+                <div class="pain-search-mock__item"><strong>競合 A 外構・エクステリア</strong>川越市 / 施工事例多数</div>
+                <div class="pain-search-mock__item"><strong>競合 B ガーデン工房</strong>鶴ヶ島市 / 無料見積もり</div>
+                <div class="pain-search-mock__item pain-search-mock__item--you"><strong>御社のサイト</strong>2ページ目以降…見つからない</div>
+              </div>
             </div>
-            <h3 class="font-display text-lg font-medium">Googleで出てこない</h3>
-            <p class="mt-3 text-[0.86rem] leading-[2]">「坂戸市 外構工事」「川越 エクステリア 見積もり」といった地域キーワードで検索上位に出るためには、Webサイトの構造・テキスト量・Googleビジネスプロフィール（GBP）の最適化が必要です。制作だけでなく、公開後のSEO・MEO対応まで一緒に取り組みます。</p>
-          </div>
+            <div class="pain-card__body">
+              <div class="pain-card__head">
+                <span class="pain-card__num pain-card__num--cyan">03</span>
+                <div class="pain-card__icon pain-card__icon--cyan">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="font-display text-lg font-medium">Googleで出てこない</h3>
+              <p class="mt-3 text-[0.86rem]">「坂戸市 外構工事」「川越 エクステリア 見積もり」といった地域キーワードで検索上位に出るためには、Webサイトの構造・テキスト量・Googleビジネスプロフィール（GBP）の最適化が必要です。制作だけでなく、公開後のSEO・MEO対応まで一緒に取り組みます。</p>
+            </div>
+          </article>
         </div>
         <div class="pain-notes reveal reveal-delay-3 mt-10 space-y-4 border-t pt-8 lg:mt-12 lg:pt-10">
-          <p class="text-[0.78rem] leading-[1.9]"><span class="font-medium">問い合わせが来ない</span> — サイトに人が来ていても、問い合わせボタンが見つかりにくい・フォームが複雑で離脱が起きることも。見積もり依頼や施工事例から電話につながる導線設計が重要です。</p>
-          <p class="text-[0.78rem] leading-[1.9]"><span class="font-medium">更新できていない</span> — 施工事例の追加が制作会社への依頼コストで後回しになりがち。月額保守プランで軽微な修正・更新を月1〜3回対応し、素早く反映できる体制を整えています。</p>
-          <p class="text-[0.78rem] leading-[1.9]"><span class="font-medium">効果が見えない</span> — 訪問者数や流入経路が把握できないと改善のしようがありません。GA4による月次アクセスレポートで、データをもとに次の一手を一緒に考えます。</p>
+          <p><span>問い合わせが来ない</span> — サイトに人が来ていても、問い合わせボタンが見つかりにくい・フォームが複雑で離脱が起きることも。見積もり依頼や施工事例から電話につながる導線設計が重要です。</p>
+          <p><span>更新できていない</span> — 施工事例の追加が制作会社への依頼コストで後回しになりがち。月額保守プランで軽微な修正・更新を月1〜3回対応し、素早く反映できる体制を整えています。</p>
+          <p><span>効果が見えない</span> — 訪問者数や流入経路が把握できないと改善のしようがありません。GA4による月次アクセスレポートで、データをもとに次の一手を一緒に考えます。</p>
         </div>
       </div>
     </section>
