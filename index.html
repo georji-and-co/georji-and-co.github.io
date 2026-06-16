@@ -1911,6 +1911,7 @@
     })();
 
     function startFloatingLines(container) {
+          console.log('startFloatingLines called', container, container.clientWidth, container.clientHeight);
           var vertSrc = 'precision highp float;\nvoid main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
 
           var fragSrc = [
@@ -2049,6 +2050,11 @@
             if (!running) return;
             raf = requestAnimationFrame(loop);
             uniforms.iTime.value = clock.getElapsedTime();
+            if (!window._flFrameCount) window._flFrameCount = 0;
+            window._flFrameCount++;
+            if (window._flFrameCount < 5) {
+              console.log('loop frame', window._flFrameCount, uniforms.iTime.value);
+            }
             currentMouse.lerp(targetMouse, DAMP);
             uniforms.iMouse.value.copy(currentMouse);
             currentInfluence += (targetInfluence - currentInfluence) * DAMP;
