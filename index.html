@@ -557,24 +557,6 @@
   .hero-bg-grid {
     position: relative;
     background-color: #030305;
-    background-image:
-      linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(125, 211, 252, 0.07) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-attachment: scroll;
-    mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, black 20%, transparent 72%);
-  }
-  .hero-bg-grid::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.45;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='540' viewBox='0 0 960 540'%3E%3Cg fill='none' stroke='%237dd3fc' stroke-opacity='0.12' stroke-width='0.75'%3E%3Crect x='80' y='60' width='320' height='200' rx='2'/%3E%3Cline x1='80' y1='120' x2='400' y2='120'/%3E%3Cline x1='200' y1='60' x2='200' y2='260'/%3E%3Crect x='520' y='140' width='280' height='160' rx='2' stroke-dasharray='4 6'/%3E%3Cline x1='520' y1='200' x2='800' y2='200'/%3E%3Cline x1='660' y1='140' x2='660' y2='300'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: min(92vw, 960px) auto;
-    background-position: 55% 42%;
-    background-repeat: no-repeat;
-    pointer-events: none;
   }
   @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
     .hero-bg-grid {
@@ -1078,6 +1060,14 @@
   gtag('js', new Date());
   gtag('config', 'G-V06KNLZ1MB');
 </script>
+<script>
+  if (window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+</script>
 </head>
 <body class="intro-active bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
 
@@ -1118,7 +1108,7 @@
     <!-- HERO：ロゴイントロ → スクロールで本文 -->
     <section id="hero" class="relative">
       <div class="hero-scroll-pin">
-        <div class="hero-bg hero-bg-grid" aria-hidden="true"></div>
+        <div class="hero-bg hero-bg-grid" aria-hidden="true" id="heroFloatingLines"></div>
         <div class="hero-bg hero-bg-noise" aria-hidden="true"></div>
         <div class="hero-paint" aria-hidden="true"></div>
         <div class="hero-paint-scrim" aria-hidden="true"></div>
@@ -1915,6 +1905,201 @@
           el.classList.add('visible');
         });
       }
+
+      // FloatingLines（デスクトップ・ロゴフェーズのみ）
+      (function () {
+        if (window.innerWidth < 768) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var container = document.getElementById('heroFloatingLines');
+        if (!container) return;
+
+        function tryInit() {
+          if (typeof THREE === 'undefined') { setTimeout(tryInit, 100); return; }
+          startLines(container);
+        }
+        setTimeout(tryInit, 300);
+
+        function startLines(container) {
+          var vertSrc = 'precision highp float;\nvoid main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
+
+          var fragSrc = [
+            'precision highp float;',
+            'uniform float iTime;',
+            'uniform vec3 iResolution;',
+            'uniform float animationSpeed;',
+            'uniform bool enableTop;',
+            'uniform bool enableMiddle;',
+            'uniform bool enableBottom;',
+            'uniform int topLineCount;',
+            'uniform int middleLineCount;',
+            'uniform int bottomLineCount;',
+            'uniform float topLineDistance;',
+            'uniform float middleLineDistance;',
+            'uniform float bottomLineDistance;',
+            'uniform vec3 topWavePosition;',
+            'uniform vec3 middleWavePosition;',
+            'uniform vec3 bottomWavePosition;',
+            'uniform vec2 iMouse;',
+            'uniform bool interactive;',
+            'uniform float bendRadius;',
+            'uniform float bendStrength;',
+            'uniform float bendInfluence;',
+            'uniform vec2 parallaxOffset;',
+            'uniform vec3 lineGradient[8];',
+            'uniform int lineGradientCount;',
+            'mat2 rotate(float r){return mat2(cos(r),sin(r),-sin(r),cos(r));}',
+            'vec3 getLineColor(float t){',
+            '  if(lineGradientCount<=0)return vec3(0.2,0.6,1.0);',
+            '  if(lineGradientCount==1)return lineGradient[0];',
+            '  float s=clamp(t,0.0,0.9999)*float(lineGradientCount-1);',
+            '  int idx=int(floor(s));float f=fract(s);',
+            '  int idx2=min(idx+1,lineGradientCount-1);',
+            '  return mix(lineGradient[idx],lineGradient[idx2],f)*0.6;',
+            '}',
+            'float wave(vec2 uv,float offset,vec2 screenUv,vec2 mouseUv,bool bend){',
+            '  float time=iTime*animationSpeed;',
+            '  float amp=sin(offset+time*0.2)*0.3;',
+            '  float y=sin(uv.x+offset+time*0.1)*amp;',
+            '  if(bend){vec2 d=screenUv-mouseUv;float infl=exp(-dot(d,d)*bendRadius);y+=(mouseUv.y-screenUv.y)*infl*bendStrength*bendInfluence;}',
+            '  float m=uv.y-y;',
+            '  return 0.0175/max(abs(m)+0.01,1e-3)+0.01;',
+            '}',
+            'void main(){',
+            '  vec2 baseUv=(2.0*gl_FragCoord.xy-iResolution.xy)/iResolution.y;',
+            '  baseUv.y*=-1.0;',
+            '  baseUv+=parallaxOffset;',
+            '  vec3 col=vec3(0.0);',
+            '  vec2 mouseUv=vec2(0.0);',
+            '  if(interactive){mouseUv=(2.0*iMouse-iResolution.xy)/iResolution.y;mouseUv.y*=-1.0;}',
+            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.2;}}',
+            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive);}}',
+            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.1;}}',
+            '  gl_FragColor=vec4(col,1.0);',
+            '}'
+          ].join('\n');
+
+          function hex3(h) {
+            var v = h.replace('#', '');
+            return new THREE.Vector3(parseInt(v.slice(0,2),16)/255, parseInt(v.slice(2,4),16)/255, parseInt(v.slice(4,6),16)/255);
+          }
+
+          var W = container.clientWidth || window.innerWidth;
+          var H = container.clientHeight || window.innerHeight;
+
+          var renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+          renderer.setSize(W, H, false);
+          renderer.domElement.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;';
+          container.appendChild(renderer.domElement);
+
+          var scene = new THREE.Scene();
+          var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+          camera.position.z = 1;
+
+          var COLORS = ['#0a1628','#1E3A5F','#185FA5','#4FC3F7','#00BCD4','#7dd3fc'];
+          var gradArr = Array.from({ length: 8 }, function () { return new THREE.Vector3(1,1,1); });
+          COLORS.forEach(function (c, i) { var v = hex3(c); gradArr[i].set(v.x, v.y, v.z); });
+
+          var uniforms = {
+            iTime:             { value: 0 },
+            iResolution:       { value: new THREE.Vector3(W, H, 1) },
+            animationSpeed:    { value: 0.8 },
+            enableTop:         { value: true },
+            enableMiddle:      { value: true },
+            enableBottom:      { value: true },
+            topLineCount:      { value: 8 },
+            middleLineCount:   { value: 12 },
+            bottomLineCount:   { value: 10 },
+            topLineDistance:   { value: 0.08 },
+            middleLineDistance:{ value: 0.06 },
+            bottomLineDistance:{ value: 0.04 },
+            topWavePosition:   { value: new THREE.Vector3(10.0, 0.5, -0.4) },
+            middleWavePosition:{ value: new THREE.Vector3(5.0, 0.0, 0.2) },
+            bottomWavePosition:{ value: new THREE.Vector3(2.0, -0.7, -1.0) },
+            iMouse:            { value: new THREE.Vector2(-1000, -1000) },
+            interactive:       { value: true },
+            bendRadius:        { value: 5.0 },
+            bendStrength:      { value: -0.5 },
+            bendInfluence:     { value: 0 },
+            parallaxOffset:    { value: new THREE.Vector2(0, 0) },
+            lineGradient:      { value: gradArr },
+            lineGradientCount: { value: COLORS.length }
+          };
+
+          var mat = new THREE.ShaderMaterial({ vertexShader: vertSrc, fragmentShader: fragSrc, uniforms: uniforms });
+          scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
+
+          var targetMouse = new THREE.Vector2(-1000, -1000);
+          var currentMouse = new THREE.Vector2(-1000, -1000);
+          var targetInfluence = 0, currentInfluence = 0;
+          var targetParallax = new THREE.Vector2(0, 0);
+          var currentParallax = new THREE.Vector2(0, 0);
+          var DAMP = 0.05;
+
+          window.addEventListener('mousemove', function (e) {
+            var rect = renderer.domElement.getBoundingClientRect();
+            if (e.clientY > rect.bottom) return;
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var dpr = renderer.getPixelRatio();
+            targetMouse.set(x * dpr, (rect.height - y) * dpr);
+            targetInfluence = 1.0;
+            targetParallax.set((x - rect.width/2) / rect.width * 0.15, -(y - rect.height/2) / rect.height * 0.15);
+          }, { passive: true });
+
+          window.addEventListener('mouseleave', function () { targetInfluence = 0; }, { passive: true });
+
+          var clock = new THREE.Clock();
+          var raf = null;
+          var running = false;
+
+          function loop() {
+            if (!running) return;
+            raf = requestAnimationFrame(loop);
+            uniforms.iTime.value = clock.getElapsedTime();
+            currentMouse.lerp(targetMouse, DAMP);
+            uniforms.iMouse.value.copy(currentMouse);
+            currentInfluence += (targetInfluence - currentInfluence) * DAMP;
+            uniforms.bendInfluence.value = currentInfluence;
+            currentParallax.lerp(targetParallax, DAMP);
+            uniforms.parallaxOffset.value.copy(currentParallax);
+            renderer.render(scene, camera);
+          }
+
+          function start() { if (running) return; running = true; clock.start(); loop(); }
+          function pause() { running = false; if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+          start();
+
+          var wasVisible = true;
+          function checkProgress() {
+            var progress = parseFloat(document.documentElement.style.getPropertyValue('--intro-progress') || '0');
+            var shouldRun = progress < 0.82;
+            if (shouldRun && !wasVisible) { wasVisible = true; start(); }
+            else if (!shouldRun && wasVisible) { wasVisible = false; pause(); }
+          }
+
+          window.addEventListener('scroll', checkProgress, { passive: true });
+
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) pause();
+            else if (wasVisible) start();
+          });
+
+          var resizeTimer;
+          window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+              if (window.innerWidth < 768) { pause(); return; }
+              W = container.clientWidth; H = container.clientHeight;
+              renderer.setSize(W, H, false);
+              var dpr = renderer.getPixelRatio();
+              uniforms.iResolution.value.set(renderer.domElement.width, renderer.domElement.height, 1);
+            }, 200);
+          }, { passive: true });
+        }
+      })();
     })();
   </script>
 </body>
