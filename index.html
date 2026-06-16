@@ -558,6 +558,9 @@
     position: relative;
     background-color: #030305;
   }
+  #heroFloatingLines {
+    z-index: 3;
+  }
   @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
     .hero-bg-grid {
       background-attachment: fixed;
@@ -1064,7 +1067,10 @@
   if (window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var s = document.createElement('script');
     s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.defer = true;
+    s.onload = function() {
+      var container = document.getElementById('heroFloatingLines');
+      if (container) startFloatingLines(container);
+    };
     document.head.appendChild(s);
   }
 </script>
@@ -1905,22 +1911,9 @@
           el.classList.add('visible');
         });
       }
+    })();
 
-      // FloatingLines（デスクトップ・ロゴフェーズのみ）
-      (function () {
-        if (window.innerWidth < 768) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        var container = document.getElementById('heroFloatingLines');
-        if (!container) return;
-
-        function tryInit() {
-          if (typeof THREE === 'undefined') { setTimeout(tryInit, 100); return; }
-          startLines(container);
-        }
-        setTimeout(tryInit, 300);
-
-        function startLines(container) {
+    function startFloatingLines(container) {
           var vertSrc = 'precision highp float;\nvoid main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
 
           var fragSrc = [
@@ -1955,7 +1948,7 @@
             '  float s=clamp(t,0.0,0.9999)*float(lineGradientCount-1);',
             '  int idx=int(floor(s));float f=fract(s);',
             '  int idx2=min(idx+1,lineGradientCount-1);',
-            '  return mix(lineGradient[idx],lineGradient[idx2],f)*0.6;',
+            '  return mix(lineGradient[idx],lineGradient[idx2],f)*1.1;',
             '}',
             'float wave(vec2 uv,float offset,vec2 screenUv,vec2 mouseUv,bool bend){',
             '  float time=iTime*animationSpeed;',
@@ -1963,7 +1956,7 @@
             '  float y=sin(uv.x+offset+time*0.1)*amp;',
             '  if(bend){vec2 d=screenUv-mouseUv;float infl=exp(-dot(d,d)*bendRadius);y+=(mouseUv.y-screenUv.y)*infl*bendStrength*bendInfluence;}',
             '  float m=uv.y-y;',
-            '  return 0.0175/max(abs(m)+0.01,1e-3)+0.01;',
+            '  return 0.028/max(abs(m)+0.008,1e-3)+0.018;',
             '}',
             'void main(){',
             '  vec2 baseUv=(2.0*gl_FragCoord.xy-iResolution.xy)/iResolution.y;',
@@ -1972,9 +1965,9 @@
             '  vec3 col=vec3(0.0);',
             '  vec2 mouseUv=vec2(0.0);',
             '  if(interactive){mouseUv=(2.0*iMouse-iResolution.xy)/iResolution.y;mouseUv.y*=-1.0;}',
-            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.2;}}',
-            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive);}}',
-            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.1;}}',
+            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.35;}}',
+            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*1.25;}}',
+            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.22;}}',
             '  gl_FragColor=vec4(col,1.0);',
             '}'
           ].join('\n');
@@ -2098,9 +2091,7 @@
               uniforms.iResolution.value.set(renderer.domElement.width, renderer.domElement.height, 1);
             }, 200);
           }, { passive: true });
-        }
-      })();
-    })();
+    }
   </script>
 </body>
 </html>
