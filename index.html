@@ -1886,16 +1886,18 @@
        * ヒーローパーティクル描画パラメータ（調整時の目安）
        * - 粒子数: モバイル 24 / デスクトップ 55
        * - 座標範囲: baseX/baseY は canvas 全幅・全高 (0〜w, 0〜h)。
-       *   描画位置 = base + sin/cos 揺れ（ampX 30〜80px, ampY 25〜65px）+ 緩やかな drift
-       * - 透明度: 各粒子 opacity 0.4〜0.7（flicker で ±8% 変動 → 実描画約 0.37〜0.76）
+       *   描画位置 = base + sin/cos 揺れ（ampX 30〜80px, ampY 25〜65px）+ 緩やかな drift（speed/drift は基準の1.4倍）
+       * - 透明度: 各粒子 opacity 0.4〜0.7（flicker で ±25% 変動、粒子ごとに位相・速度をランダム化 → 実描画約 0.30〜0.88）
        * - サイズ: 半径 2〜4px
-       * - 色: 水色系 (#b5d6eb, #a3cce0 ※見出し cyanaccent #7dd3fc を淡くしたトーン) 約65%
-       *       ベージュ・白系 (#f5ecd7, #e8dcc8, #fff, #d8cbb8) 約35%
+       * - 色: 水色系 (#b5d6eb, #a3cce0 ※見出し cyanaccent #7dd3fc を淡くしたトーン) 約85%
+       *       ベージュ・白系 (#f5ecd7, #e8dcc8, #fff, #d8cbb8) 約15%
+       * - キラキラ: 約15%の粒子に shadowBlur グロー（星の瞬き演出）
        */
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var isMobile = window.innerWidth < 768;
       var count = isMobile ? 24 : 55;
       var dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+      var motionScale = 1.4;
       var particles = [];
       var w = 0;
       var h = 0;
@@ -1916,7 +1918,7 @@
       ];
 
       function pickParticleColor() {
-        if (Math.random() < 0.35) {
+        if (Math.random() < 0.15) {
           return paletteWarm[Math.floor(Math.random() * paletteWarm.length)];
         }
         return paletteCyan[Math.floor(Math.random() * paletteCyan.length)];
@@ -1946,12 +1948,15 @@
             color: pickParticleColor(),
             phaseX: Math.random() * Math.PI * 2,
             phaseY: Math.random() * Math.PI * 2,
-            speedX: (Math.random() * 0.06 + 0.025) * (isMobile ? 0.65 : 1),
-            speedY: (Math.random() * 0.05 + 0.02) * (isMobile ? 0.65 : 1),
+            flickerPhase: Math.random() * Math.PI * 2,
+            flickerSpeed: Math.random() * 0.5 + 0.25,
+            glow: Math.random() < 0.15,
+            speedX: (Math.random() * 0.06 + 0.025) * motionScale * (isMobile ? 0.65 : 1),
+            speedY: (Math.random() * 0.05 + 0.02) * motionScale * (isMobile ? 0.65 : 1),
             ampX: Math.random() * 50 + 30,
             ampY: Math.random() * 40 + 25,
-            driftX: (Math.random() - 0.5) * 0.035,
-            driftY: (Math.random() - 0.5) * 0.028
+            driftX: (Math.random() - 0.5) * 0.035 * motionScale,
+            driftY: (Math.random() - 0.5) * 0.028 * motionScale
           });
         }
       }
@@ -1982,12 +1987,21 @@
             wrapParticle(p);
           }
 
-          var flicker = 0.92 + Math.sin(elapsed * 0.35 + p.phaseY) * 0.08;
+          var flicker = 1 + Math.sin(elapsed * p.flickerSpeed + p.flickerPhase) * 0.25;
+          var alpha = Math.min(1, p.opacity * flicker);
+          if (p.glow) {
+            ctx.shadowBlur = 10;
+            ctx.shadowColor =
+              'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + (alpha * 0.55) + ')';
+          } else {
+            ctx.shadowBlur = 0;
+          }
           ctx.beginPath();
           ctx.arc(x, y, p.r, 0, Math.PI * 2);
           ctx.fillStyle =
-            'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + (p.opacity * flicker) + ')';
+            'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + alpha + ')';
           ctx.fill();
+          ctx.shadowBlur = 0;
         }
       }
 
