@@ -1889,8 +1889,8 @@
        *   描画位置 = base + sin/cos 揺れ（ampX 30〜80px, ampY 25〜65px）+ 緩やかな drift
        * - 透明度: 各粒子 opacity 0.4〜0.7（flicker で ±8% 変動 → 実描画約 0.37〜0.76）
        * - サイズ: 半径 2〜4px
-       * - 色: ベージュ・白系 (#f5ecd7, #e8dcc8, #fff, #d8cbb8) 約75%
-       *       水色系 (#b5d6eb, #a3cce0 ※見出し cyanaccent #7dd3fc を淡くしたトーン) 約25%
+       * - 色: 水色系 (#b5d6eb, #a3cce0 ※見出し cyanaccent #7dd3fc を淡くしたトーン) 約65%
+       *       ベージュ・白系 (#f5ecd7, #e8dcc8, #fff, #d8cbb8) 約35%
        */
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var isMobile = window.innerWidth < 768;
@@ -1916,7 +1916,7 @@
       ];
 
       function pickParticleColor() {
-        if (Math.random() < 0.75) {
+        if (Math.random() < 0.35) {
           return paletteWarm[Math.floor(Math.random() * paletteWarm.length)];
         }
         return paletteCyan[Math.floor(Math.random() * paletteCyan.length)];
