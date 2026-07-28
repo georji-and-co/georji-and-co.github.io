@@ -1882,6 +1882,15 @@
       var ctx = canvas.getContext('2d');
       if (!ctx) return;
 
+      /*
+       * ヒーローパーティクル描画パラメータ（調整時の目安）
+       * - 粒子数: モバイル 24 / デスクトップ 40
+       * - 座標範囲: baseX/baseY は canvas 全幅・全高 (0〜w, 0〜h)。
+       *   描画位置 = base + sin/cos 揺れ（ampX 30〜80px, ampY 25〜65px）+ 緩やかな drift
+       * - 透明度: 各粒子 opacity 0.4〜0.7（flicker で ±8% 変動 → 実描画約 0.37〜0.76）
+       * - サイズ: 半径 2〜4px
+       * - 色: ベージュ・白系 (#f5ecd7, #e8dcc8, #fff, #d8cbb8)
+       */
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var isMobile = window.innerWidth < 768;
       var count = isMobile ? 24 : 40;
@@ -1920,26 +1929,26 @@
           particles.push({
             baseX: Math.random() * w,
             baseY: Math.random() * h,
-            r: Math.random() * 1.8 + 0.7,
-            opacity: Math.random() * 0.22 + 0.12,
+            r: Math.random() * 2 + 2,
+            opacity: Math.random() * 0.3 + 0.4,
             color: palette[Math.floor(Math.random() * palette.length)],
             phaseX: Math.random() * Math.PI * 2,
             phaseY: Math.random() * Math.PI * 2,
             speedX: (Math.random() * 0.06 + 0.025) * (isMobile ? 0.65 : 1),
             speedY: (Math.random() * 0.05 + 0.02) * (isMobile ? 0.65 : 1),
-            ampX: Math.random() * 22 + 10,
-            ampY: Math.random() * 18 + 8,
-            driftX: (Math.random() - 0.5) * 0.012,
-            driftY: (Math.random() - 0.5) * 0.01
+            ampX: Math.random() * 50 + 30,
+            ampY: Math.random() * 40 + 25,
+            driftX: (Math.random() - 0.5) * 0.035,
+            driftY: (Math.random() - 0.5) * 0.028
           });
         }
       }
 
       function wrapParticle(p) {
-        if (p.baseX < -30) p.baseX = w + 30;
-        if (p.baseX > w + 30) p.baseX = -30;
-        if (p.baseY < -30) p.baseY = h + 30;
-        if (p.baseY > h + 30) p.baseY = -30;
+        if (p.baseX < -60) p.baseX = w + 60;
+        if (p.baseX > w + 60) p.baseX = -60;
+        if (p.baseY < -60) p.baseY = h + 60;
+        if (p.baseY > h + 60) p.baseY = -60;
       }
 
       function draw(t) {
@@ -1961,7 +1970,7 @@
             wrapParticle(p);
           }
 
-          var flicker = 0.88 + Math.sin(elapsed * 0.35 + p.phaseY) * 0.12;
+          var flicker = 0.92 + Math.sin(elapsed * 0.35 + p.phaseY) * 0.08;
           ctx.beginPath();
           ctx.arc(x, y, p.r, 0, Math.PI * 2);
           ctx.fillStyle =
