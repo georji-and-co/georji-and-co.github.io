@@ -1884,7 +1884,7 @@
 
       /*
        * ヒーローパーティクル描画パラメータ（調整時の目安）
-       * - 粒子数: モバイル 24 / デスクトップ 40
+       * - 粒子数: モバイル 24 / デスクトップ 55
        * - 座標範囲: baseX/baseY は canvas 全幅・全高 (0〜w, 0〜h)。
        *   描画位置 = base + sin/cos 揺れ（ampX 30〜80px, ampY 25〜65px）+ 緩やかな drift
        * - 透明度: 各粒子 opacity 0.4〜0.7（flicker で ±8% 変動 → 実描画約 0.37〜0.76）
@@ -1893,7 +1893,7 @@
        */
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var isMobile = window.innerWidth < 768;
-      var count = isMobile ? 24 : 40;
+      var count = isMobile ? 24 : 55;
       var dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
       var particles = [];
       var w = 0;
@@ -2002,7 +2002,7 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
           isMobile = window.innerWidth < 768;
-          count = isMobile ? 24 : 40;
+          count = isMobile ? 24 : 55;
           dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
           resize();
           initParticles();
