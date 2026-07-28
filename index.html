@@ -443,69 +443,56 @@
     letter-spacing: 0.04em;
     color: rgb(148 163 184);
   }
-  /* ヒーロー：ペイント背景（黒地は screen で透過） */
-  .hero-paint {
-    position: absolute;
-    inset: 2% -12% -18% -12%;
-    z-index: 1;
-    pointer-events: none;
-    background: url('assets/hero-headline-paint.png') 62% 58% / min(130%, 1080px) auto no-repeat;
-    opacity: 0;
-    transform: translateY(10%) scale(1.08);
-    mix-blend-mode: screen;
-    filter: brightness(1.78) saturate(1.22) contrast(1.04);
-    -webkit-mask-image: linear-gradient(
-      100deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.25) 22%,
-      rgba(0, 0, 0, 0.72) 48%,
-      #000 72%
-    );
-    mask-image: linear-gradient(
-      100deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.25) 22%,
-      rgba(0, 0, 0, 0.72) 48%,
-      #000 72%
-    );
-    will-change: opacity, transform;
+  /* ヒーロー：ゆっくり動くダークネイビーグラデーション */
+  .hero-bg-gradient {
+    background-color: #030305;
+    background-image:
+      radial-gradient(ellipse 85% 65% at 18% 48%, rgba(17, 19, 28, 0.92) 0%, transparent 58%),
+      radial-gradient(ellipse 70% 50% at 82% 52%, rgba(13, 16, 23, 0.82) 0%, transparent 52%),
+      linear-gradient(
+        150deg,
+        #030305 0%,
+        #0a0b10 24%,
+        #111318 48%,
+        #0d0f15 72%,
+        #030305 100%
+      );
+    background-size: 100% 100%, 100% 100%, 320% 320%;
+    animation: hero-gradient-drift 26s ease-in-out infinite;
   }
-  .hero-paint-scrim {
+  @keyframes hero-gradient-drift {
+    0%, 100% { background-position: 0% 50%, 0% 50%, 0% 50%; }
+    50% { background-position: 0% 50%, 0% 50%, 100% 50%; }
+  }
+  .hero-bg-particles {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-scroll-pin.is-bg-visible .hero-bg-particles {
+    opacity: 1;
+  }
+  .hero-bg-scrim {
     position: absolute;
     inset: 0;
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(
       105deg,
-      rgba(3, 3, 5, 0.94) 0%,
-      rgba(3, 3, 5, 0.78) 34%,
-      rgba(3, 3, 5, 0.28) 58%,
+      rgba(3, 3, 5, 0.9) 0%,
+      rgba(3, 3, 5, 0.72) 36%,
+      rgba(3, 3, 5, 0.22) 62%,
       rgba(3, 3, 5, 0.02) 100%
     );
     opacity: 0;
   }
-  .hero-scroll-pin.is-paint-visible .hero-paint {
-    animation: hero-paint-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.62s forwards;
+  .hero-scroll-pin.is-bg-visible .hero-bg-scrim {
+    animation: hero-bg-scrim-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
   }
-  .hero-scroll-pin.is-paint-visible .hero-paint-scrim {
-    animation: hero-paint-scrim-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.78s forwards;
-  }
-  @keyframes hero-paint-in {
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  @keyframes hero-paint-scrim-in {
-    to {
-      opacity: 1;
-    }
-  }
-  @media (max-width: 639px) {
-    .hero-paint {
-      background-position: 54% 62%;
-      background-size: min(200%, 640px) auto;
-    }
+  @keyframes hero-bg-scrim-in {
+    to { opacity: 1; }
   }
   .hero-headline-mark__text {
     display: block;
@@ -537,12 +524,9 @@
     .logo-intro-visual.is-entered .logo-intro-glow,
     .logo-intro-visual.is-entered .logo-intro-mist,
     .logo-intro-visual.is-entered .logo-intro__mark { animation: none; }
-    .hero-paint {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-    .hero-paint-scrim {
+    .hero-bg-gradient { animation: none; }
+    .hero-bg-particles { opacity: 1; transition: none; }
+    .hero-bg-scrim {
       opacity: 1;
       animation: none;
     }
@@ -553,17 +537,8 @@
     z-index: 0;
     pointer-events: none;
   }
-  /* fixed はモバイルでスクロールが重くなるため scroll（大画面のみ fixed） */
-  .hero-bg-grid {
-    background-color: #020308;
-  }
-  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-    .hero-bg-grid {
-      background-attachment: fixed;
-    }
-  }
   #hero.is-scroll-complete .logo-intro,
-  #hero.is-scroll-complete .hero-paint {
+  #hero.is-scroll-complete .hero-bg-particles {
     will-change: auto;
   }
   /* 設計・図面を連想させる薄いグリッド（全ページ） */
@@ -626,7 +601,6 @@
   .reveal-delay-4 { transition-delay: 0.32s; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
-    .hero-bg-grid { background-attachment: scroll; }
     .hero-bg-glow-cyan,
     .hero-bg-glow-sand { transform: none; }
     html { scroll-behavior: auto; }
@@ -1059,17 +1033,6 @@
   gtag('js', new Date());
   gtag('config', 'G-V06KNLZ1MB');
 </script>
-<script>
-  if (window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.onload = function() {
-      var container = document.getElementById('heroFloatingLines');
-      if (container) startFloatingLines(container);
-    };
-    document.head.appendChild(s);
-  }
-</script>
 </head>
 <body class="intro-active bg-ink font-sans font-light text-slate-200 antialiased selection:bg-tealglow/25 selection:text-white overflow-x-hidden leading-relaxed tracking-wide">
 
@@ -1112,10 +1075,10 @@
     <!-- HERO：ロゴイントロ → スクロールで本文 -->
     <section id="hero" class="relative">
       <div class="hero-scroll-pin">
-        <div class="hero-bg hero-bg-grid" aria-hidden="true" id="heroFloatingLines"></div>
+        <div class="hero-bg hero-bg-gradient" aria-hidden="true"></div>
+        <canvas id="heroParticles" class="hero-bg hero-bg-particles" aria-hidden="true"></canvas>
         <div class="hero-bg hero-bg-noise" aria-hidden="true"></div>
-        <div class="hero-paint" aria-hidden="true"></div>
-        <div class="hero-paint-scrim" aria-hidden="true"></div>
+        <div class="hero-bg hero-bg-scrim" aria-hidden="true"></div>
         <div class="hero-bg hero-bg-glow hero-bg-glow-cyan" aria-hidden="true">
           <div class="absolute -left-1/4 top-1/4 h-[min(90vw,520px)] w-[min(90vw,520px)] rounded-full bg-cyanaccent/16 blur-[100px]"></div>
         </div>
@@ -1737,7 +1700,7 @@
         document.documentElement.style.setProperty('--intro-progress', String(progress));
         document.body.classList.toggle('intro-active', progress < 0.92);
         if (heroPin) {
-          heroPin.classList.toggle('is-paint-visible', progress > 0.42);
+          heroPin.classList.toggle('is-bg-visible', progress > 0.42);
         }
         if (heroMain) {
           heroMain.classList.toggle('is-interactive', progress > 0.48);
@@ -1791,7 +1754,7 @@
             });
           }
           if (logoIntro) logoIntro.setAttribute('aria-hidden', 'true');
-          if (heroPin) heroPin.classList.add('is-paint-visible');
+          if (heroPin) heroPin.classList.add('is-bg-visible');
         } else {
           if (logoIntroFrame) {
             logoIntroFrame.classList.add('is-entered');
@@ -1909,195 +1872,153 @@
           el.classList.add('visible');
         });
       }
+      var heroParticlesCanvas = document.getElementById('heroParticles');
+      if (heroParticlesCanvas) {
+        startHeroParticles(heroParticlesCanvas);
+      }
     })();
 
-    function startFloatingLines(container) {
-          console.log('startFloatingLines called', container, container.clientWidth, container.clientHeight);
-          container.style.transition = 'opacity 0.6s ease';
-          var vertSrc = 'precision highp float;\nvoid main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}';
+    function startHeroParticles(canvas) {
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
-          var fragSrc = [
-            'precision highp float;',
-            'uniform float iTime;',
-            'uniform vec3 iResolution;',
-            'uniform float animationSpeed;',
-            'uniform bool enableTop;',
-            'uniform bool enableMiddle;',
-            'uniform bool enableBottom;',
-            'uniform int topLineCount;',
-            'uniform int middleLineCount;',
-            'uniform int bottomLineCount;',
-            'uniform float topLineDistance;',
-            'uniform float middleLineDistance;',
-            'uniform float bottomLineDistance;',
-            'uniform vec3 topWavePosition;',
-            'uniform vec3 middleWavePosition;',
-            'uniform vec3 bottomWavePosition;',
-            'uniform vec2 iMouse;',
-            'uniform bool interactive;',
-            'uniform float bendRadius;',
-            'uniform float bendStrength;',
-            'uniform float bendInfluence;',
-            'uniform vec2 parallaxOffset;',
-            'uniform vec3 lineGradient[8];',
-            'uniform int lineGradientCount;',
-            'mat2 rotate(float r){return mat2(cos(r),sin(r),-sin(r),cos(r));}',
-            'vec3 getLineColor(float t){',
-            '  if(lineGradientCount<=0)return vec3(0.2,0.6,1.0);',
-            '  if(lineGradientCount==1)return lineGradient[0];',
-            '  float s=clamp(t,0.0,0.9999)*float(lineGradientCount-1);',
-            '  int idx=int(floor(s));float f=fract(s);',
-            '  int idx2=min(idx+1,lineGradientCount-1);',
-            '  return mix(lineGradient[idx],lineGradient[idx2],f)*1.1;',
-            '}',
-            'float wave(vec2 uv,float offset,vec2 screenUv,vec2 mouseUv,bool bend){',
-            '  float time=iTime*animationSpeed;',
-            '  float amp=sin(offset+time*0.2)*0.3;',
-            '  float y=sin(uv.x+offset+time*0.1)*amp;',
-            '  if(bend){vec2 d=screenUv-mouseUv;float infl=exp(-dot(d,d)*bendRadius);y+=(mouseUv.y-screenUv.y)*infl*bendStrength*bendInfluence;}',
-            '  float m=uv.y-y;',
-            '  return 0.028/max(abs(m)+0.008,1e-3)+0.018;',
-            '}',
-            'void main(){',
-            '  vec2 baseUv=(2.0*gl_FragCoord.xy-iResolution.xy)/iResolution.y;',
-            '  baseUv.y*=-1.0;',
-            '  baseUv+=parallaxOffset;',
-            '  vec3 col=vec3(0.0);',
-            '  vec2 mouseUv=vec2(0.0);',
-            '  if(interactive){mouseUv=(2.0*iMouse-iResolution.xy)/iResolution.y;mouseUv.y*=-1.0;}',
-            '  if(enableBottom){for(int i=0;i<20;i++){if(i>=bottomLineCount)break;float fi=float(i);float t=fi/max(float(bottomLineCount-1),1.0);float angle=bottomWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(bottomLineDistance*fi+bottomWavePosition.x,bottomWavePosition.y),1.5+0.2*fi,baseUv,mouseUv,interactive)*0.08;}}',
-            '  if(enableMiddle){for(int i=0;i<20;i++){if(i>=middleLineCount)break;float fi=float(i);float t=fi/max(float(middleLineCount-1),1.0);float angle=middleWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);col+=getLineColor(t)*wave(ruv+vec2(middleLineDistance*fi+middleWavePosition.x,middleWavePosition.y),2.0+0.15*fi,baseUv,mouseUv,interactive)*0.25;}}',
-            '  if(enableTop){for(int i=0;i<20;i++){if(i>=topLineCount)break;float fi=float(i);float t=fi/max(float(topLineCount-1),1.0);float angle=topWavePosition.z*log(length(baseUv)+1.0);vec2 ruv=baseUv*rotate(angle);ruv.x*=-1.0;col+=getLineColor(t)*wave(ruv+vec2(topLineDistance*fi+topWavePosition.x,topWavePosition.y),1.0+0.2*fi,baseUv,mouseUv,interactive)*0.05;}}',
-            '  gl_FragColor=vec4(col,1.0);',
-            '}'
-          ].join('\n');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.innerWidth < 768;
+      var count = isMobile ? 24 : 40;
+      var dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+      var particles = [];
+      var w = 0;
+      var h = 0;
+      var running = false;
+      var raf = null;
+      var startTime = performance.now();
+      var isInView = true;
 
-          function hex3(h) {
-            var v = h.replace('#', '');
-            return new THREE.Vector3(parseInt(v.slice(0,2),16)/255, parseInt(v.slice(2,4),16)/255, parseInt(v.slice(4,6),16)/255);
-          }
+      var palette = [
+        [245, 236, 215],
+        [232, 220, 200],
+        [255, 255, 255],
+        [216, 203, 184]
+      ];
 
-          var W = container.clientWidth || window.innerWidth;
-          var H = container.clientHeight || window.innerHeight;
+      function resize() {
+        var parent = canvas.parentElement;
+        if (!parent) return;
+        w = parent.clientWidth;
+        h = parent.clientHeight;
+        if (w <= 0 || h <= 0) return;
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
 
-          var renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false });
-          renderer.setClearColor(0x020308, 1);
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-          renderer.setSize(W, H, false);
-          renderer.domElement.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;';
-          container.appendChild(renderer.domElement);
-
-          var scene = new THREE.Scene();
-          var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-          camera.position.z = 1;
-
-          var COLORS = ['#020308','#03050a','#061018','#0a1828','#0f2238','#142d48'];
-          var gradArr = Array.from({ length: 8 }, function () { return new THREE.Vector3(1,1,1); });
-          COLORS.forEach(function (c, i) { var v = hex3(c); gradArr[i].set(v.x, v.y, v.z); });
-
-          var uniforms = {
-            iTime:             { value: 0 },
-            iResolution:       { value: new THREE.Vector3(W, H, 1) },
-            animationSpeed:    { value: 0.8 },
-            enableTop:         { value: true },
-            enableMiddle:      { value: true },
-            enableBottom:      { value: true },
-            topLineCount:      { value: 8 },
-            middleLineCount:   { value: 12 },
-            bottomLineCount:   { value: 10 },
-            topLineDistance:   { value: 0.08 },
-            middleLineDistance:{ value: 0.06 },
-            bottomLineDistance:{ value: 0.04 },
-            topWavePosition:   { value: new THREE.Vector3(0, 0.3, 0) },
-            middleWavePosition:{ value: new THREE.Vector3(0, 0.0, 0) },
-            bottomWavePosition:{ value: new THREE.Vector3(0, -0.3, 0) },
-            iMouse:            { value: new THREE.Vector2(-1000, -1000) },
-            interactive:       { value: true },
-            bendRadius:        { value: 5.0 },
-            bendStrength:      { value: -0.5 },
-            bendInfluence:     { value: 0 },
-            parallaxOffset:    { value: new THREE.Vector2(0, 0) },
-            lineGradient:      { value: gradArr },
-            lineGradientCount: { value: COLORS.length }
-          };
-
-          var mat = new THREE.ShaderMaterial({ vertexShader: vertSrc, fragmentShader: fragSrc, uniforms: uniforms });
-          scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
-
-          var targetMouse = new THREE.Vector2(-1000, -1000);
-          var currentMouse = new THREE.Vector2(-1000, -1000);
-          var targetInfluence = 0, currentInfluence = 0;
-          var targetParallax = new THREE.Vector2(0, 0);
-          var currentParallax = new THREE.Vector2(0, 0);
-          var DAMP = 0.05;
-
-          window.addEventListener('mousemove', function (e) {
-            var rect = renderer.domElement.getBoundingClientRect();
-            if (e.clientY > rect.bottom) return;
-            var x = e.clientX - rect.left;
-            var y = e.clientY - rect.top;
-            var dpr = renderer.getPixelRatio();
-            targetMouse.set(x * dpr, (rect.height - y) * dpr);
-            targetInfluence = 1.0;
-            targetParallax.set((x - rect.width/2) / rect.width * 0.15, -(y - rect.height/2) / rect.height * 0.15);
-          }, { passive: true });
-
-          window.addEventListener('mouseleave', function () { targetInfluence = 0; }, { passive: true });
-
-          var clock = new THREE.Clock();
-          var raf = null;
-          var running = false;
-
-          function loop() {
-            if (!running) return;
-            raf = requestAnimationFrame(loop);
-            uniforms.iTime.value = clock.getElapsedTime();
-            if (!window._flFrameCount) window._flFrameCount = 0;
-            window._flFrameCount++;
-            if (window._flFrameCount < 5) {
-              console.log('loop frame', window._flFrameCount, uniforms.iTime.value);
-            }
-            currentMouse.lerp(targetMouse, DAMP);
-            uniforms.iMouse.value.copy(currentMouse);
-            currentInfluence += (targetInfluence - currentInfluence) * DAMP;
-            uniforms.bendInfluence.value = currentInfluence;
-            currentParallax.lerp(targetParallax, DAMP);
-            uniforms.parallaxOffset.value.copy(currentParallax);
-            renderer.render(scene, camera);
-          }
-
-          function start() { if (running) return; running = true; clock.start(); loop(); }
-          function pause() { running = false; if (raf) { cancelAnimationFrame(raf); raf = null; } }
-
-          start();
-
-          var wasVisible = true;
-          function checkProgress() {
-            var progress = parseFloat(document.documentElement.style.getPropertyValue('--intro-progress') || '0');
-            var shouldRun = progress < 0.82;
-            container.style.opacity = shouldRun ? '1' : '0';
-            if (shouldRun && !wasVisible) { wasVisible = true; start(); }
-            else if (!shouldRun && wasVisible) { wasVisible = false; setTimeout(pause, 600); }
-          }
-
-          window.addEventListener('scroll', checkProgress, { passive: true });
-
-          document.addEventListener('visibilitychange', function () {
-            if (document.hidden) pause();
-            else if (wasVisible) start();
+      function initParticles() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            baseX: Math.random() * w,
+            baseY: Math.random() * h,
+            r: Math.random() * 1.8 + 0.7,
+            opacity: Math.random() * 0.22 + 0.12,
+            color: palette[Math.floor(Math.random() * palette.length)],
+            phaseX: Math.random() * Math.PI * 2,
+            phaseY: Math.random() * Math.PI * 2,
+            speedX: (Math.random() * 0.06 + 0.025) * (isMobile ? 0.65 : 1),
+            speedY: (Math.random() * 0.05 + 0.02) * (isMobile ? 0.65 : 1),
+            ampX: Math.random() * 22 + 10,
+            ampY: Math.random() * 18 + 8,
+            driftX: (Math.random() - 0.5) * 0.012,
+            driftY: (Math.random() - 0.5) * 0.01
           });
+        }
+      }
 
-          var resizeTimer;
-          window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-              if (window.innerWidth < 768) { pause(); return; }
-              W = container.clientWidth; H = container.clientHeight;
-              renderer.setSize(W, H, false);
-              var dpr = renderer.getPixelRatio();
-              uniforms.iResolution.value.set(renderer.domElement.width, renderer.domElement.height, 1);
-            }, 200);
-          }, { passive: true });
+      function wrapParticle(p) {
+        if (p.baseX < -30) p.baseX = w + 30;
+        if (p.baseX > w + 30) p.baseX = -30;
+        if (p.baseY < -30) p.baseY = h + 30;
+        if (p.baseY > h + 30) p.baseY = -30;
+      }
+
+      function draw(t) {
+        if (!running) return;
+        raf = requestAnimationFrame(draw);
+        var elapsed = (t - startTime) * 0.001;
+        ctx.clearRect(0, 0, w, h);
+
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          var x = p.baseX;
+          var y = p.baseY;
+
+          if (!reduceMotion) {
+            x += Math.sin(elapsed * p.speedX + p.phaseX) * p.ampX;
+            y += Math.cos(elapsed * p.speedY + p.phaseY) * p.ampY;
+            p.baseX += p.driftX;
+            p.baseY += p.driftY;
+            wrapParticle(p);
+          }
+
+          var flicker = 0.88 + Math.sin(elapsed * 0.35 + p.phaseY) * 0.12;
+          ctx.beginPath();
+          ctx.arc(x, y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle =
+            'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + (p.opacity * flicker) + ')';
+          ctx.fill();
+        }
+      }
+
+      function start() {
+        if (running || !isInView || document.hidden) return;
+        running = true;
+        startTime = performance.now();
+        draw(startTime);
+      }
+
+      function stop() {
+        running = false;
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = null;
+        }
+      }
+
+      resize();
+      initParticles();
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          isMobile = window.innerWidth < 768;
+          count = isMobile ? 24 : 40;
+          dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
+          resize();
+          initParticles();
+        }, 200);
+      }, { passive: true });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop();
+        else start();
+      });
+
+      var hero = document.getElementById('hero');
+      if (hero && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            isInView = entries[0].isIntersecting;
+            if (isInView) start();
+            else stop();
+          },
+          { threshold: 0.05 }
+        );
+        observer.observe(hero);
+      }
+
+      start();
     }
   </script>
 </body>
