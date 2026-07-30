@@ -499,6 +499,22 @@
     line-height: 1.12;
     white-space: nowrap;
   }
+  @media (max-width: 639px) {
+    #heroMain .hero-title {
+      max-width: 100%;
+      font-size: clamp(1.375rem, 6vw, 1.875rem);
+    }
+    #heroMain .hero-headline-mark {
+      width: 100%;
+      max-width: 100%;
+    }
+    #heroMain .hero-headline-mark__text {
+      white-space: normal;
+      text-wrap: balance;
+      word-break: keep-all;
+      line-break: strict;
+    }
+  }
   .hero-scroll-hint {
     opacity: clamp(0, (var(--intro-progress, 0) - 0.7) * 3.5, 1);
   }
