@@ -86,6 +86,12 @@
   #menuBtn [data-bar="1"], #menuBtn [data-bar="3"] { transition: transform 0.3s ease; }
   #menuBtn [data-bar="2"] { transition: opacity 0.3s ease; }
 
+  .article-title {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+
   /* 記事本文スタイル */
   .prose h2 {
     font-family: 'Zen Old Mincho', serif;
@@ -244,7 +250,7 @@
           <span class="rounded border border-white/15 px-2.5 py-1 text-[0.62rem] tracking-[0.08em] text-slate-400">SEO・MEO</span>
           <time class="text-[0.72rem] text-slate-500" datetime="2026-07-07">2026年7月7日</time>
         </div>
-        <h1 class="reveal font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold text-white leading-snug tracking-[0.02em] mb-6" style="word-break: normal;">
+        <h1 class="reveal article-title font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold text-white leading-snug tracking-[0.02em] mb-6">
           外構会社がGoogleマップで<br class="hidden sm:inline">見つけてもらうために——<br class="hidden sm:inline">MEO対策の基本とやるべきこと
         </h1>
       </header>
